@@ -1,39 +1,47 @@
 package bootstrap
 
 import (
-	"laravelgo/foundation"
-	interfaceConsole "laravelgo/interface/console"
-	interfaceExceptions "laravelgo/interface/exception"
-	interfaceHttp "laravelgo/interface/http"
-	"laravelgo/src/app/console"
-	"laravelgo/src/app/exception"
-	"laravelgo/src/app/http"
+	"lanvard/foundation"
+	interfaceApp "lanvard/interface/application"
+	interfaceConsole "lanvard/interface/console"
+	interfaceExceptions "lanvard/interface/exception"
+	interfaceHttp "lanvard/interface/http"
+	"lanvard/src/app/console"
+	"lanvard/src/app/exception"
+	"lanvard/src/app/http"
+	"path/filepath"
+	"runtime"
 )
 
-func App() foundation.ApplicationStruct {
+func App() foundation.Application {
 
 	/*
-	|--------------------------------------------------------------------------
-	| Create The ApplicationStruct
-	|--------------------------------------------------------------------------
-	|
-	| The first thing we will do is create a new Laravel application instance
-	| which serves as the "glue" for all the components of Laravel, and is
-	| the IoC container for the system binding all of the various parts.
-	|
+		|--------------------------------------------------------------------------
+		| Create The Application
+		|--------------------------------------------------------------------------
+		|
+		| The first thing we will do is create a new Laravel application instance
+		| which serves as the "glue" for all the components of Laravel, and is
+		| the IoC container for the system binding all of the various parts.
+		|
 	*/
 
-	app := foundation.Application()
+	app := foundation.Application{Container: foundation.Container()}
+
+	_, filename, _, _ := runtime.Caller(1)
+	app.SetBasePath(filepath.Dir(filepath.Dir(filepath.Dir(filepath.Dir(filename)))))
+
+	app.Container.Instance((*interfaceApp.Container)(nil), app)
 
 	/*
-	|--------------------------------------------------------------------------
-	| Bind Important Interfaces
-	|--------------------------------------------------------------------------
-	|
-	| Next, we need to bind some important interfaces into the container so
-	| we will be able to resolve them when needed. The kernels serve the
-	| incoming requests to this application from both the web and CLI.
-	|
+		|--------------------------------------------------------------------------
+		| Bind Important Interfaces
+		|--------------------------------------------------------------------------
+		|
+		| Next, we need to bind some important interfaces into the container so
+		| we will be able to resolve them when needed. The kernels serve the
+		| incoming requests to this application from both the web and CLI.
+		|
 	*/
 
 	app.Container.Singleton(

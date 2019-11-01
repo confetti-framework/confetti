@@ -1,10 +1,10 @@
 package http
 
 import (
-	"laravelgo/foundation"
-	"laravelgo/foundation/http"
+	"lanvard/foundation"
+	"lanvard/foundation/http"
 )
 
-func Kernel(app foundation.ApplicationStruct) http.KernelStruct {
+func Kernel(app foundation.Application) http.KernelStruct {
 	return http.KernelStruct{app}
 }

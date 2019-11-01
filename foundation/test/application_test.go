@@ -2,15 +2,15 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"laravelgo/foundation"
-	httpFoundation "laravelgo/foundation/http"
-	interfaceHttp "laravelgo/interface/http"
-	"laravelgo/src/app/http"
+	httpFoundation "lanvard/foundation/http"
+	interfaceHttp "lanvard/interface/http"
+	"lanvard/src/app/http"
+	"lanvard/src/bootstrap"
 	"testing"
 )
 
 func Test_binding(t *testing.T) {
-	app := foundation.Application()
+	app := bootstrap.App()
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
@@ -20,7 +20,7 @@ func Test_binding(t *testing.T) {
 }
 
 func Test_application_make(t *testing.T) {
-	app := foundation.Application()
+	app := bootstrap.App()
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),

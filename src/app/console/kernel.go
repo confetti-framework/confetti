@@ -1,11 +1,11 @@
 package console
 
-import "laravelgo/foundation"
+import "lanvard/foundation"
 
 type KernelStruct struct {
-	app foundation.ApplicationStruct
+	app foundation.Application
 }
 
-func Kernel(app foundation.ApplicationStruct) KernelStruct {
+func Kernel(app foundation.Application) KernelStruct {
 	return KernelStruct{app}
 }

@@ -1,7 +1,9 @@
 package decorator
 
-import "laravelgo/interface/application"
+import (
+	"lanvard/foundation"
+)
 
 type Bootstrap interface {
-	Bootstrap(app application.App) application.App
+	Bootstrap(app foundation.Application) foundation.Application
 }

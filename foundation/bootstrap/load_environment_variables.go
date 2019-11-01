@@ -2,9 +2,8 @@ package bootstrap
 
 import (
 	"github.com/joho/godotenv"
-	"laravelgo/interface/application"
-	"laravelgo/interface/decorator"
-	"log"
+	"lanvard/foundation"
+	"lanvard/interface/decorator"
 )
 
 type LoadEnvironmentVariablesStruct struct {
@@ -15,16 +14,13 @@ func LoadEnvironmentVariables() decorator.Bootstrap {
 	return LoadEnvironmentVariablesStruct{}
 }
 
-func (l LoadEnvironmentVariablesStruct) Bootstrap(app application.App) application.App {
+func (l LoadEnvironmentVariablesStruct) Bootstrap(app foundation.Application) foundation.Application {
 
-	err := godotenv.Load()
+	err := godotenv.Load(app.BasePath.EnvironmentFile())
 	if err != nil {
 		println(err)
-		log.Fatal("Error loading .env file")
+		panic("Error loading .env file")
 	}
 
-	l.environmentVariables = environmentVariables
-
-	println(environmentVariables)
 	return app
 }

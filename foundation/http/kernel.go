@@ -1,12 +1,12 @@
 package http
 
 import (
-	"laravelgo/foundation"
+	"lanvard/foundation"
 	"net/http"
 )
 
 type KernelStruct struct {
-	App foundation.ApplicationStruct
+	App foundation.Application
 }
 
 // Handle an incoming HTTP request.
@@ -24,7 +24,7 @@ func (k KernelStruct) sendRequestThroughRouter(request http.Request) string {
 }
 
 func (k KernelStruct) Bootstrap() {
-	if ! k.App.HasBeenBootstrapped {
+	if !k.App.HasBeenBootstrapped {
 		k.App.HasBeenBootstrapped = true
 
 	}
