@@ -2,9 +2,9 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"laravelgo/foundation"
-	httpFoundation "laravelgo/foundation/http"
-	contractsHttp "laravelgo/interface/http"
+	"lanvard/foundation"
+	httpFoundation "lanvard/foundation/http"
+	contractsHttp "lanvard/interface/http"
 	"testing"
 )
 

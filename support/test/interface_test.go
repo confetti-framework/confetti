@@ -2,8 +2,8 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	kernelAlias "laravelgo/interface/http"
-	"laravelgo/support"
+	kernelAlias "lanvard/interface/http"
+	"lanvard/support"
 	"reflect"
 	"testing"
 )
