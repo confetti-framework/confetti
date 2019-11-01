@@ -1,9 +1,9 @@
-package lanvard
+package main
 
 import (
 	"fmt"
-	. "laravelgo/interface/http"
-	"laravelgo/src/bootstrap"
+	. "lanvard/interface/http"
+	"lanvard/src/bootstrap"
 	"log"
 	net "net/http"
 )

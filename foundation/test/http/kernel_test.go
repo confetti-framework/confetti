@@ -2,18 +2,18 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"laravelgo/foundation"
-	"laravelgo/src/app/http"
+	"lanvard/src/app/http"
+	"lanvard/src/bootstrap"
 	net "net/http"
 	"net/url"
 	"testing"
 )
 
 func Test_handleRouting(t *testing.T) {
-	app := foundation.Application()
+	app := bootstrap.App()
 
 	kernel := http.Kernel(app)
-	
+
 	request := net.Request{
 		Method:     "GET",
 		Host:       "example.com",

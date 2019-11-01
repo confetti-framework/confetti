@@ -1,11 +1,11 @@
 package exception
 
-import "laravelgo/foundation"
+import "lanvard/foundation"
 
 type HandlerStruct struct {
-	app foundation.ApplicationStruct
+	app foundation.Application
 }
 
-func Handler(app foundation.ApplicationStruct) HandlerStruct {
+func Handler(app foundation.Application) HandlerStruct {
 	return HandlerStruct{app}
 }

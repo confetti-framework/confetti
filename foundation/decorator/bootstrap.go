@@ -1,16 +1,20 @@
 package decorator
 
 import (
-	"laravelgo/interface/application"
-	"laravelgo/interface/decorator"
+	"lanvard/foundation"
+	"lanvard/interface/decorator"
 )
 
-type BootstrapDecoratorStruct struct {}
+type BootstrapDecoratorStruct struct{}
 
 func (d BootstrapDecoratorStruct) BootstrapWith(
-	app application.App,
+	app foundation.Application,
 	bootstrappers []decorator.Bootstrap,
-) application.App {
+) foundation.Application {
+
+	for _, bootstrapper := range bootstrappers {
+		app = bootstrapper.Bootstrap(app)
+	}
 
 	return app
 }
