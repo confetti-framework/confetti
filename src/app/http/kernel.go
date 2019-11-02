@@ -6,5 +6,5 @@ import (
 )
 
 func Kernel(app foundation.Application) http.KernelStruct {
-	return http.KernelStruct{app}
+	return http.KernelStruct{App: app}
 }

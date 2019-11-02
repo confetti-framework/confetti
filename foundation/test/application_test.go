@@ -16,7 +16,8 @@ func Test_binding(t *testing.T) {
 		(*interfaceHttp.Kernel)(nil),
 		http.Kernel(app),
 	)
-	assert.Len(t, app.Container.GetBindings(), 1)
+
+	assert.GreaterOrEqual(t, len(app.Container.GetBindings()), 1)
 }
 
 func Test_application_make(t *testing.T) {
