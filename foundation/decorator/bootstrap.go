@@ -5,14 +5,12 @@ import (
 	"lanvard/interface/decorator"
 )
 
-type BootstrapDecoratorStruct struct{}
+type BootstrapDecoratorStruct struct {
+	Bootstraps []decorator.Bootstrap
+}
 
-func (d BootstrapDecoratorStruct) BootstrapWith(
-	app foundation.Application,
-	bootstrappers []decorator.Bootstrap,
-) foundation.Application {
-
-	for _, bootstrapper := range bootstrappers {
+func (d BootstrapDecoratorStruct) BootstrapWith(app foundation.Application) foundation.Application {
+	for _, bootstrapper := range d.Bootstraps {
 		app = bootstrapper.Bootstrap(app)
 	}
 

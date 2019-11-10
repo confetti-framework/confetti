@@ -1,19 +1,18 @@
-package http
+package decorator
 
 import (
 	"lanvard/foundation"
 	"lanvard/foundation/bootstrap"
-	decorators "lanvard/foundation/decorator"
+	"lanvard/foundation/decorator"
 	contract "lanvard/interface/decorator"
 )
 
-var bootstrappers = []contract.Bootstrap{
+var bootstraps = []contract.Bootstrap{
 	bootstrap.LoadEnvironmentVariables(),
 }
 
 func Bootstrap(app foundation.Application) foundation.Application {
+	dec := decorator.BootstrapDecoratorStruct{Bootstraps: bootstraps}
 
-	decorator := decorators.BootstrapDecoratorStruct{}
-
-	return decorator.BootstrapWith(app, bootstrappers)
+	return dec.BootstrapWith(app)
 }

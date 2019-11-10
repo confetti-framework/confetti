@@ -10,6 +10,14 @@
   version = "v1.1.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:79b12149793d2879561af016d7464964890951e2685aae24a72f91690aa3cd53"
+  name = "github.com/jinzhu/copier"
+  packages = ["."]
+  pruneopts = ""
+  revision = "b57f9002281ac48ed8cbc489b1e91121e1a0824c"
+
+[[projects]]
   digest = "1:7df5a9695a743c3e1626b28bb8741602c8c15527e1efaeaec48ab2ff9a23f74c"
   name = "github.com/joho/godotenv"
   packages = ["."]
@@ -45,6 +53,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/jinzhu/copier",
     "github.com/joho/godotenv",
     "github.com/stretchr/testify/assert",
   ]
