@@ -2,6 +2,7 @@ package http
 
 import (
 	"lanvard/foundation"
+	"lanvard/src/app/http/decorator"
 	"net/http"
 )
 
@@ -18,14 +19,15 @@ func (k KernelStruct) Handle(request http.Request) string {
 func (k KernelStruct) sendRequestThroughRouter(request http.Request) string {
 	k.App.Container.Instance("request", request)
 
-	k.Bootstrap()
-
 	return "response"
 }
 
-func (k KernelStruct) Bootstrap() {
+func (k KernelStruct) Bootstrap() KernelStruct {
+	decorator.Bootstrap(k.App)
+
 	if !k.App.HasBeenBootstrapped {
 		k.App.HasBeenBootstrapped = true
-
 	}
+
+	return k
 }

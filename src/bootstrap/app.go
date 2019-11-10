@@ -1,20 +1,21 @@
 package bootstrap
 
 import (
+	"fmt"
+	"github.com/jinzhu/copier"
 	"lanvard/foundation"
 	interfaceApp "lanvard/interface/application"
-	interfaceConsole "lanvard/interface/console"
-	interfaceExceptions "lanvard/interface/exception"
+	consoleInterface "lanvard/interface/console"
+	exceptionInterface "lanvard/interface/exception"
 	interfaceHttp "lanvard/interface/http"
 	"lanvard/src/app/console"
 	"lanvard/src/app/exception"
 	"lanvard/src/app/http"
-	"path/filepath"
-	"runtime"
 )
 
-func App() foundation.Application {
+var bootApp foundation.Application
 
+func init() {
 	/*
 		|--------------------------------------------------------------------------
 		| Create The Application
@@ -26,12 +27,11 @@ func App() foundation.Application {
 		|
 	*/
 
-	app := foundation.Application{Container: foundation.Container()}
+	bootApp = foundation.Application{Container: foundation.Container()}
 
-	_, filename, _, _ := runtime.Caller(1)
-	app.SetBasePath(filepath.Dir(filepath.Dir(filepath.Dir(filepath.Dir(filename)))))
+	bootApp.SetBasePath()
 
-	app.Container.Instance((*interfaceApp.Container)(nil), app)
+	bootApp.Container.Instance((*interfaceApp.Container)(nil), bootApp)
 
 	/*
 		|--------------------------------------------------------------------------
@@ -44,20 +44,30 @@ func App() foundation.Application {
 		|
 	*/
 
-	app.Container.Singleton(
+	bootApp.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
-		http.Kernel(app),
+		http.Kernel(bootApp).Bootstrap(),
 	)
 
-	app.Container.Singleton(
-		(*interfaceConsole.Kernel)(nil),
-		console.Kernel(app),
+	bootApp.Container.Singleton(
+		(*consoleInterface.Kernel)(nil),
+		console.Kernel(bootApp),
 	)
 
-	app.Container.Singleton(
-		(*interfaceExceptions.Handler)(nil),
-		exception.Handler(app),
+	bootApp.Container.Singleton(
+		(*exceptionInterface.Handler)(nil),
+		exception.Handler(bootApp),
 	)
+}
+
+func App() foundation.Application {
+	var app foundation.Application
+
+	err := copier.Copy(&app, &bootApp)
+	if err != nil {
+		fmt.Println(err)
+		panic("Can't copy application")
+	}
 
 	return app
 }

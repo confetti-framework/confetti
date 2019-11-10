@@ -1,5 +1,10 @@
 package foundation
 
+import (
+	"path/filepath"
+	"runtime"
+)
+
 type Application struct {
 	// The service container
 	Container ContainerStruct
@@ -12,7 +17,10 @@ type Application struct {
 }
 
 // Set the base path for the application.
-func (a *Application) SetBasePath(basePath string) {
+func (a *Application) SetBasePath() {
+	_, filename, _, _ := runtime.Caller(0)
+
+	basePath := filepath.Dir(filepath.Dir(filename))
 	a.BasePath = BasePath(basePath)
 	a.bindPathsInContainer()
 }

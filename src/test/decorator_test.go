@@ -2,7 +2,7 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"lanvard/src/app/http"
+	"lanvard/src/app/http/decorator"
 	"lanvard/src/bootstrap"
 	"os"
 	"testing"
@@ -10,7 +10,7 @@ import (
 
 func Test_bootstrap_environments(t *testing.T) {
 
-	_ = http.Bootstrap(bootstrap.App())
+	_ = decorator.Bootstrap(bootstrap.App())
 
 	assert.NotZero(t, os.Getenv("APP_ENV"))
 }

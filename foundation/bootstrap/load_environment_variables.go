@@ -1,6 +1,7 @@
 package bootstrap
 
 import (
+	"fmt"
 	"github.com/joho/godotenv"
 	"lanvard/foundation"
 	"lanvard/interface/decorator"
@@ -15,11 +16,11 @@ func LoadEnvironmentVariables() decorator.Bootstrap {
 }
 
 func (l LoadEnvironmentVariablesStruct) Bootstrap(app foundation.Application) foundation.Application {
-
-	err := godotenv.Load(app.BasePath.EnvironmentFile())
+	file := app.BasePath.EnvironmentFile()
+	err := godotenv.Load(file)
 	if err != nil {
 		println(err)
-		panic("Error loading .env file")
+		panic("Error loading " + file + " file in directory ")
 	}
 
 	return app
