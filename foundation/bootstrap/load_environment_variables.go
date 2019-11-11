@@ -1,7 +1,6 @@
 package bootstrap
 
 import (
-	"fmt"
 	"github.com/joho/godotenv"
 	"lanvard/foundation"
 	"lanvard/interface/decorator"

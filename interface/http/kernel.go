@@ -5,5 +5,5 @@ import (
 )
 
 type Kernel interface {
-	Handle(request *http.Request) string
+	Handle(request *http.Request) http.ResponseWriter
 }

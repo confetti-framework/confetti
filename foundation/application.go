@@ -16,6 +16,10 @@ type Application struct {
 	HasBeenBootstrapped bool
 }
 
+func (a Application) Make(abstract interface{}) interface{} {
+	return a.Container.Make(abstract)
+}
+
 // Set the base path for the application.
 func (a *Application) SetBasePath() {
 	_, filename, _, _ := runtime.Caller(0)

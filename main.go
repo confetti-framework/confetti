@@ -19,38 +19,52 @@ func main() {
 	log.Println("Server stopped")
 }
 
-func handleKernel(w net.ResponseWriter, request *net.Request) {
+func handleKernel(response net.ResponseWriter, request *net.Request) {
 
 	/*
-		|--------------------------------------------------------------------------
-		| Turn On The Lights
-		|--------------------------------------------------------------------------
-		|
-		| We need to illuminate PHP development, so let us turn on the lights.
-		| This bootstraps the framework and gets it ready for use, then it
-		| will load up this application so that we can run it and send
-		| the responses back to the browser and delight our users.
-		|
+	   |--------------------------------------------------------------------------
+	   | Turn On The Lights
+	   |--------------------------------------------------------------------------
+	   |
+	   | We need to illuminate PHP development, so let us turn on the lights.
+	   | This bootstraps the framework and gets it ready for use, then it
+	   | will load up this application so that we can run it and send
+	   | the responses back to the browser and delight our users.
+	   |
 	*/
 	app := bootstrap.App()
 
 	/*
-		|--------------------------------------------------------------------------
-		| Run The Application
-		|--------------------------------------------------------------------------
-		|
-		| Once we have the application, we can handle the incoming request
-		| through the kernel, and send the associated response back to
-		| the client's browser allowing them to enjoy the creative
-		| and wonderful application we have prepared for them.
-		|
+	   |--------------------------------------------------------------------------
+	   | Register the response writer
+	   |--------------------------------------------------------------------------
+	   |
+	   | Register the response writer so that we can fill it at another time. For
+	   | example, the response writer is provided by the middleware.
+	   |
+	*/
+	app.Container.Singleton(
+		(*net.ResponseWriter)(nil),
+		response,
+	)
+
+	/*
+	   |--------------------------------------------------------------------------
+	   | Run The Application
+	   |--------------------------------------------------------------------------
+	   |
+	   | Once we have the application, we can handle the incoming request
+	   | through the kernel, and send the associated res back to
+	   | the client's browser allowing them to enjoy the creative
+	   | and wonderful application we have prepared for them.
+	   |
 	*/
 
 	fmt.Println(request.URL.Query())
-	kernel := app.Container.Make((*Kernel)(nil)).(Kernel)
+	kernel := app.Make((*Kernel)(nil)).(Kernel)
 
-	response := kernel.Handle(request)
+	response = kernel.Handle(request)
 
-	w.WriteHeader(net.StatusOK)
-	_, _ = fmt.Fprintf(w, response)
+	response.WriteHeader(net.StatusOK)
+	_, _ = fmt.Fprint(response)
 }
