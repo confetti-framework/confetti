@@ -37,36 +37,26 @@ func (p PipelineStruct) Through(pipes []contract.Pipe) PipelineStruct {
 // Run the contract with a final destination callback.
 func (p PipelineStruct) Then(destination func(data interface{}) interface{}) interface{} {
 
-	var callback func(data interface{}) interface{}
-	// var lastCallback func(data interface{}) interface{}
-	var pipe contract.Pipe
+	var callbacks []func(data interface{}) interface{}
+	var nextCallback = 0
 
-	// var destinationPipe = Destination(p.App, p.Passable, destination)
-
-	var destinationCallback = func(data interface{}) interface{} {
-		return destination(data)
-	}
-	callback = destinationCallback
-
-	for _, pipe = range p.Pipes {
-
-		callback = func(data interface{}) interface{} {
-			// next := p.Pipes[len(p.Pipes)-1-i]
-
-			return pipe.Handle(p.Passable, destinationCallback)
+	for i, pipe := range p.Pipes {
+		pipe := pipe
+		if i == 0 {
+			callback := func(data interface{}) interface{} {
+				return pipe.Handle(data, destination)
+			}
+			callbacks = append(callbacks, callback)
+		} else {
+			callback := func(data interface{}) interface{} {
+				nextCallback--
+				return pipe.Handle(data, callbacks[nextCallback])
+			}
+			callbacks = append(callbacks, callback)
 		}
-		// lastCallback = callback
-
-		// fmt.Println(i)
-		// fmt.Println(pipe)
-		// next := p.Pipes[len(p.Pipes)-1-i]
-
-		// handle = p.Pipes[len(p.Pipes)-1-i].Handle(p.Passable)
 	}
 
-	return callback(p.Passable)
-}
+	nextCallback = len(callbacks) - 1
 
-// func (p PipelineStruct) response() http.ResponseWriter {
-// 	return p.app.Make((*http.ResponseWriter)(nil)).(http.ResponseWriter)
-// }
+	return callbacks[nextCallback](p.Passable)
+}
