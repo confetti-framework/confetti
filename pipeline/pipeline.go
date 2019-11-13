@@ -40,7 +40,9 @@ func (p PipelineStruct) Then(destination func(data interface{}) interface{}) int
 	var callbacks []func(data interface{}) interface{}
 	var nextCallback = 0
 
-	for i, pipe := range p.Pipes {
+	pipes := reverse(p.Pipes)
+
+	for i, pipe := range pipes {
 		pipe := pipe
 		if i == 0 {
 			callback := func(data interface{}) interface{} {
@@ -59,4 +61,12 @@ func (p PipelineStruct) Then(destination func(data interface{}) interface{}) int
 	nextCallback = len(callbacks) - 1
 
 	return callbacks[nextCallback](p.Passable)
+}
+
+func reverse(pipes []contract.Pipe) []contract.Pipe {
+	for left, right := 0, len(pipes)-1; left < right; left, right = left+1, right-1 {
+		pipes[left], pipes[right] = pipes[right], pipes[left]
+	}
+
+	return pipes
 }

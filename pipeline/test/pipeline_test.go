@@ -1,10 +1,7 @@
 package test
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/assert"
-
-	// "github.com/stretchr/testify/assert"
 	"lanvard/foundation"
 	pipelineContract "lanvard/interface/pipeline"
 	"lanvard/pipeline"
@@ -16,14 +13,11 @@ type PipeOneStruct struct {
 	App foundation.Application
 }
 
-func (l PipeOneStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
-	data = data.(string) + " - bef.one data "
-	println(" one data ")
-	fmt.Println("before one:" + data.(string))
+func (p PipeOneStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
+	data = data.(string) + " - before.one data "
 	response := next(data)
-	fmt.Println("after one:" + response.(string))
 
-	response = response.(string) + " - aft.one "
+	response = response.(string) + " - after.one "
 	return response
 }
 
@@ -32,13 +26,10 @@ type PipeTwoStruct struct {
 }
 
 func (p PipeTwoStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
-	data = data.(string) + " - bef.two data "
-	println(" two data ")
-	fmt.Println("before two:" + data.(string))
+	data = data.(string) + " - before.two data "
 	response := next(data)
-	fmt.Println("after two:" + response.(string))
 
-	response = response.(string) + " - aft.two "
+	response = response.(string) + " - after.two "
 	return response
 }
 
@@ -47,30 +38,28 @@ type PipeThreeStruct struct {
 }
 
 func (p PipeThreeStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
-	data = data.(string) + " - bef.three data "
-	println(" three data")
-	fmt.Println("before three:" + data.(string))
+	data = data.(string) + " - before.three data "
 	response := next(data)
-	fmt.Println("after after:" + response.(string))
 
-	response = response.(string) + " - aft.three "
+	response = response.(string) + " - after.three "
 	return response
 }
 
 func Test_normal_pipe(t *testing.T) {
-	middleware := pipeline.Pipeline(bootstrap.App())
+	app := bootstrap.App()
+	middleware := pipeline.Pipeline(app)
 
 	var pipes []pipelineContract.Pipe
-	pipes = append(pipes, PipeOneStruct{bootstrap.App()})
-	pipes = append(pipes, PipeTwoStruct{bootstrap.App()})
-	pipes = append(pipes, PipeThreeStruct{bootstrap.App()})
+	pipes = append(pipes, PipeOneStruct{app})
+	pipes = append(pipes, PipeTwoStruct{app})
+	pipes = append(pipes, PipeThreeStruct{app})
 
 	function := func(data interface{}) interface{} {
 		return data
 	}
 
 	result := middleware.Send("start").Through(pipes).Then(function)
-	fmt.Println(result)
 
-	assert.Equal(t, "qwerty", result.(string))
+	assert.Equal(t, "start - before.one data  - before.two data  - before.three data  - after.three  - after.two  - after.one ",
+		result.(string))
 }
