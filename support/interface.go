@@ -17,6 +17,15 @@ func Name(element interface{}) string {
 	return reflect.TypeOf(element).Elem().String()
 }
 
+func Package(element interface{}) string {
+
+	if element == nil {
+		return reflect.TypeOf(&element).Elem().PkgPath()
+	}
+
+	return reflect.TypeOf(element).Elem().PkgPath()
+}
+
 func Type(element interface{}) interface{} {
 
 	if element == nil {

@@ -4,12 +4,10 @@ import (
 	"github.com/joho/godotenv"
 	"os"
 	"path/filepath"
-	"runtime"
 )
 
 func init() {
-	_, filename, _, _ := runtime.Caller(0)
-	basePath := filepath.Dir(filepath.Dir(filename))
+	basePath := filepath.Dir(CurrentDir())
 
 	file := basePath + string(os.PathSeparator) + ".env"
 	err := godotenv.Load(file)

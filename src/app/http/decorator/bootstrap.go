@@ -8,6 +8,7 @@ import (
 )
 
 var bootstraps = []contract.Bootstrap{
+	bootstrap.ProfessorGenerator(),
 	bootstrap.LoadEnvironmentVariables(),
 }
 

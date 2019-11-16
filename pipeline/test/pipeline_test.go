@@ -3,7 +3,6 @@ package test
 import (
 	"github.com/stretchr/testify/assert"
 	"lanvard/foundation"
-	pipelineContract "lanvard/interface/pipeline"
 	"lanvard/pipeline"
 	"lanvard/src/bootstrap"
 	"testing"
@@ -13,7 +12,7 @@ type PipeOneStruct struct {
 	App foundation.Application
 }
 
-func (p PipeOneStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
+func (p PipeOneStruct) Handle(data pipeline.Passable, next pipeline.Destination) pipeline.Result {
 	data = data.(string) + " - before.one data "
 	response := next(data)
 
@@ -25,7 +24,7 @@ type PipeTwoStruct struct {
 	App foundation.Application
 }
 
-func (p PipeTwoStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
+func (p PipeTwoStruct) Handle(data pipeline.Passable, next pipeline.Destination) pipeline.Result {
 	data = data.(string) + " - before.two data "
 	response := next(data)
 
@@ -37,7 +36,7 @@ type PipeThreeStruct struct {
 	App foundation.Application
 }
 
-func (p PipeThreeStruct) Handle(data interface{}, next func(next interface{}) interface{}) interface{} {
+func (p PipeThreeStruct) Handle(data pipeline.Passable, next pipeline.Destination) pipeline.Result {
 	data = data.(string) + " - before.three data "
 	response := next(data)
 
@@ -49,7 +48,7 @@ func Test_normal_pipe(t *testing.T) {
 	app := bootstrap.App()
 	middleware := pipeline.Pipeline(app)
 
-	var pipes []pipelineContract.Pipe
+	var pipes []pipeline.PipeInterface
 	pipes = append(pipes, PipeOneStruct{app})
 	pipes = append(pipes, PipeTwoStruct{app})
 	pipes = append(pipes, PipeThreeStruct{app})
