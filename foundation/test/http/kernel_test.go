@@ -5,12 +5,14 @@ import (
 	"lanvard/src/app/http"
 	"lanvard/src/bootstrap"
 	net "net/http"
+	"net/http/httptest"
 	"net/url"
 	"testing"
 )
 
 func Test_handleRouting(t *testing.T) {
 	app := bootstrap.App()
+	app.Container.Singleton("response", httptest.NewRecorder())
 
 	kernel := http.Kernel(app)
 
