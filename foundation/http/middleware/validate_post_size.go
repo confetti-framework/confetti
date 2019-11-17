@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"lanvard/foundation"
-	"lanvard/pipeline"
+	"lanvard/src/app/http/pipeline"
 )
 
 type ValidatePostSizeStruct struct {

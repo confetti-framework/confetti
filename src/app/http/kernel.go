@@ -4,7 +4,7 @@ import (
 	"lanvard/foundation"
 	"lanvard/foundation/http"
 	"lanvard/foundation/http/middleware"
-	"lanvard/pipeline"
+	"lanvard/src/app/http/pipeline"
 )
 
 func Kernel(app foundation.Application) http.KernelStruct {

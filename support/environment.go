@@ -2,12 +2,13 @@ package support
 
 import (
 	"github.com/joho/godotenv"
+	"lanvard/support/caller"
 	"os"
 	"path/filepath"
 )
 
 func init() {
-	basePath := filepath.Dir(CurrentDir())
+	basePath := filepath.Dir(caller.CurrentDir())
 
 	file := basePath + string(os.PathSeparator) + ".env"
 	err := godotenv.Load(file)

@@ -2,15 +2,15 @@ package http
 
 import (
 	"lanvard/foundation"
-	. "lanvard/pipeline"
 	"lanvard/src/app/http/decorator"
+	"lanvard/src/app/http/pipeline"
 	"net/http"
 	"net/http/httptest"
 )
 
 type KernelStruct struct {
 	App        foundation.Application
-	Middleware []PipeInterface
+	Middleware []pipeline.PipeInterface
 }
 
 // Handle an incoming HTTP request.
