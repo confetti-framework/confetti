@@ -6,12 +6,11 @@ package pipeline
 
 import (
 	"lanvard/foundation"
-	"lanvard/src/app/http/pipeline"
 	"lanvard/support/caller"
 )
 
-type Passable interface{}
-type Result interface{}
+type Passable = interface{}
+type Result = interface{}
 
 type Destination func(data Passable) Result
 type PipeInterface interface {
@@ -57,9 +56,9 @@ func (p PipelineStruct) Then(destination Destination) Result {
 	var callbacks []func(data Passable) Result
 	var nextCallback = 0
 
-	pipes := pipeline.Slice(p.Pipes)
+	pipes := reverse(p.Pipes)
 
-	for i, pipe := range pipes.ToSlice() {
+	for i, pipe := range pipes {
 		pipe := pipe
 		if i == 0 {
 			callback := func(data Passable) Result {
@@ -78,4 +77,12 @@ func (p PipelineStruct) Then(destination Destination) Result {
 	nextCallback = len(callbacks) - 1
 
 	return callbacks[nextCallback](p.Passable)
+}
+
+func reverse(pipes []PipeInterface) []PipeInterface {
+	for left, right := 0, len(pipes)-1; left < right; left, right = left+1, right-1 {
+		pipes[left], pipes[right] = pipes[right], pipes[left]
+	}
+
+	return pipes
 }

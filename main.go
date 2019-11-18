@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "lanvard/interface/http"
+	"lanvard/interface/http"
 	"lanvard/src/bootstrap"
 	"log"
 	net "net/http"
@@ -61,7 +61,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	*/
 
 	fmt.Println(request.URL.Query())
-	kernel := app.Make((*Kernel)(nil)).(Kernel)
+	kernel := app.Make((*http.Kernel)(nil)).(Kernel)
 
 	response = kernel.Handle(request)
 

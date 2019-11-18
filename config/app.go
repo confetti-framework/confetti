@@ -12,6 +12,7 @@ var App = struct {
 	Debug          bool
 	Url            string
 	AssetUrl       string
+	LineSeparator  string
 	BasePath       string
 	Timezone       string
 	Locale         string
@@ -79,6 +80,16 @@ var App = struct {
 	   |
 	*/
 	AssetUrl: EnvOr("ASSET_URL", "http://asset.localhost"),
+
+	/*
+	   |--------------------------------------------------------------------------
+	   |
+	   |--------------------------------------------------------------------------
+	   |
+	   |
+	   |
+	*/
+	LineSeparator: EnvOr("LINE_SEPARATOR", "\n"),
 
 	/*
 	   |--------------------------------------------------------------------------
