@@ -18,15 +18,20 @@ type Generic struct {
 	Vars   Vars
 }
 
+/*
+   |--------------------------------------------------------------------------
+   | Generics
+   |--------------------------------------------------------------------------
+   |
+   | Struct: Specify the struct to create a generic yourself
+   | SaveTo: The go file need to be in an empty directory
+   | Vars: Here you can override the default types
+   |
+*/
 var Generics = []Generic{
 	{
-		// Specify the struct to create a generic yourself
 		Struct: pipeline.PipelineStruct{},
-
-		// The go file need to be in an empty directory
 		SaveTo: config.App.BasePath + "/src/app/http/pipeline.go",
-
-		// Here you can override the default types
 		Vars: Vars{
 			"Passable": (*http.Request)(nil),
 			"Result":   (*http.ResponseWriter)(nil),
