@@ -1,6 +1,7 @@
 package foundation
 
 import (
+	"fmt"
 	"lanvard/support"
 	"reflect"
 )
@@ -9,7 +10,6 @@ type bindings map[string]interface{}
 type instances map[string]interface{}
 
 type ContainerStruct struct {
-
 	// The container's bindings.
 	bindings bindings
 
@@ -93,15 +93,27 @@ func (c *ContainerStruct) Make(abstract interface{}) interface{} {
 
 // Resolve the given type from the container.
 func (c *ContainerStruct) resolve(abstract interface{}) interface{} {
-	abstractString := reflect.TypeOf(abstract).Elem().String()
+	var abstractString string
+
+	if support.Type(abstract) == reflect.String {
+		abstractString = abstract.(string)
+	} else {
+		abstractString = reflect.TypeOf(abstract).Elem().String()
+	}
+
+	if support.Type(abstract) == reflect.String && c.IsAlias(abstract.(string)) {
+		return c.aliases[abstract.(string)]
+	}
 
 	object, present := c.bindings[abstractString]
 
 	if present {
 		return object
 	}
-
-	panic("Can't resole container")
+	fmt.Println("c.bindings")
+	fmt.Printf("%p\n", &c)
+	fmt.Println(c.bindings)
+	panic("Can't resole container with: " + abstractString)
 }
 
 // Remove an alias from the contextual binding alias cache.

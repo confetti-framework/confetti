@@ -2,14 +2,14 @@ package http
 
 import (
 	"lanvard/foundation"
-	httpApp "lanvard/src/app/http"
 	"lanvard/src/app/http/decorator"
+	"lanvard/src/app/http/middleware"
 	"net/http"
 )
 
 type KernelStruct struct {
 	App        foundation.Application
-	Middleware []httpApp.PipeInterface
+	Middleware []middleware.PipeInterface
 }
 
 // Handle an incoming HTTP request.
@@ -22,7 +22,7 @@ func (k KernelStruct) Handle(request http.Request) http.ResponseWriter {
 func (k KernelStruct) sendRequestThroughRouter(request http.Request) http.ResponseWriter {
 	k.App.Container.Instance("request", request)
 
-	return httpApp.Pipeline(k.App).
+	return middleware.Pipeline(k.App).
 		Send(request).
 		Through(k.Middleware).
 		Then(k.dispatchToRouter())
@@ -37,7 +37,7 @@ func (k KernelStruct) Bootstrap() KernelStruct {
 
 func (k KernelStruct) dispatchToRouter() func(data http.Request) http.ResponseWriter {
 	return func(data http.Request) http.ResponseWriter {
-		response := k.App.Make("response").(http.ResponseWriter)
+		response := k.App.Make((*http.ResponseWriter)(nil)).(http.ResponseWriter)
 
 		_, _ = response.Write([]byte("ResponseTest"))
 

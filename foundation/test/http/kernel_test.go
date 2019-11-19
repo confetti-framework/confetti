@@ -12,7 +12,7 @@ import (
 
 func Test_handleRouting(t *testing.T) {
 	app := bootstrap.App()
-	app.Container.Singleton("response", httptest.NewRecorder())
+	app.Container.Singleton((*net.ResponseWriter)(nil), httptest.NewRecorder())
 
 	kernel := http.Kernel(app)
 
@@ -25,5 +25,5 @@ func Test_handleRouting(t *testing.T) {
 	}
 	response := kernel.Handle(request)
 
-	assert.Equal(t, "response", response)
+	assert.Equal(t, (*net.ResponseWriter)(nil), response)
 }

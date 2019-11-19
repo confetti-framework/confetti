@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"lanvard/interface/http"
+	"lanvard/foundation/http"
+	httpInterface "lanvard/interface/http"
 	"lanvard/src/bootstrap"
 	"log"
 	net "net/http"
@@ -34,6 +35,9 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	*/
 	app := bootstrap.App()
 
+	fmt.Println("app.Container.Singleton")
+	fmt.Println(len(app.Container.GetBindings()))
+
 	/*
 	   |--------------------------------------------------------------------------
 	   | Register the response writer
@@ -60,10 +64,11 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   |
 	*/
 
-	fmt.Println(request.URL.Query())
-	kernel := app.Make((*http.Kernel)(nil)).(Kernel)
+	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.KernelStruct)
 
-	response = kernel.Handle(request)
+	fmt.Println("In kernel:")
+	fmt.Println(len(kernel.App.Container.GetBindings()))
+	response = kernel.Handle(*request)
 
 	response.WriteHeader(net.StatusOK)
 	_, _ = fmt.Fprint(response)

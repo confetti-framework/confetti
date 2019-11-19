@@ -29,6 +29,7 @@ func (c SliceStruct) Reverse() SliceStruct {
 
 	return c
 }
+
 func (c SliceStruct) ToSlice() Items {
 	return c.Items
 }

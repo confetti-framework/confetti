@@ -3,16 +3,16 @@ package http
 import (
 	"lanvard/foundation"
 	"lanvard/foundation/http"
-	"lanvard/foundation/http/middleware"
-	"lanvard/pipeline"
+	foundationMiddleware "lanvard/foundation/http/middleware"
+	"lanvard/src/app/http/middleware"
 )
 
 func Kernel(app foundation.Application) http.KernelStruct {
 	return http.KernelStruct{App: app, Middleware: pipes()}
 }
 
-func pipes() []pipeline.PipeInterface {
-	return []pipeline.PipeInterface{
-		middleware.ValidatePostSizeStruct{},
+func pipes() []middleware.PipeInterface {
+	return []middleware.PipeInterface{
+		foundationMiddleware.ValidatePostSizeStruct{},
 	}
 }
