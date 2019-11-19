@@ -24,7 +24,10 @@ type ContainerStruct struct {
 }
 
 func Container() ContainerStruct {
-	return ContainerStruct{}
+	containerStruct := ContainerStruct{}
+	containerStruct.bindings = make(bindings)
+
+	return containerStruct
 }
 
 // Determine if the given abstract type has been bound.
@@ -50,9 +53,6 @@ func (c *ContainerStruct) IsAlias(name string) bool {
 
 // Register a binding with the container.
 func (c *ContainerStruct) Bind(abstract interface{}, concrete interface{}) {
-	if c.bindings == nil {
-		c.bindings = make(bindings)
-	}
 	abstractString := support.Name(abstract)
 
 	c.bindings[abstractString] = concrete

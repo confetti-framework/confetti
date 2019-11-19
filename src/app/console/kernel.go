@@ -3,7 +3,7 @@ package console
 import "lanvard/foundation"
 
 type KernelStruct struct {
-	app foundation.Application
+	App foundation.Application
 }
 
 func Kernel(app foundation.Application) KernelStruct {

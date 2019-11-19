@@ -17,7 +17,12 @@ func Test_binding(t *testing.T) {
 		http.Kernel(app),
 	)
 
-	assert.GreaterOrEqual(t, len(app.Container.GetBindings()), 1)
+	app.Container.Singleton(
+		"testSingleton",
+		"testSingletonValue",
+	)
+
+	assert.GreaterOrEqual(t, len(app.Container.GetBindings()), 3)
 }
 
 func Test_application_make(t *testing.T) {
