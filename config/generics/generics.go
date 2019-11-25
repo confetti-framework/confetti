@@ -1,9 +1,11 @@
+// +build generic
+
 package generics
 
 import (
 	"lanvard/config"
+	"lanvard/http"
 	"lanvard/pipeline"
-	"net/http"
 )
 
 type Vars map[string]interface{}
@@ -33,8 +35,8 @@ var Generics = []Generic{
 		Struct: pipeline.PipelineStruct{},
 		SaveTo: config.App.BasePath + "/src/app/http/middleware/pipeline.go",
 		Vars: Vars{
-			"Passable": (*http.Request)(nil),
-			"Result":   (*http.ResponseWriter)(nil),
+			"Passable": (*http.RequestStruct)(nil),
+			"Result":   (*http.ResponseStruct)(nil),
 		},
 	},
 }

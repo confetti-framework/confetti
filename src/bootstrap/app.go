@@ -1,10 +1,8 @@
 package bootstrap
 
 import (
-	"fmt"
 	"github.com/jinzhu/copier"
 	"lanvard/foundation"
-	interfaceApp "lanvard/interface/application"
 	consoleInterface "lanvard/interface/console"
 	exceptionInterface "lanvard/interface/exception"
 	interfaceHttp "lanvard/interface/http"
@@ -31,43 +29,40 @@ func init() {
 
 	bootApp.SetBasePath()
 
-	bootApp.Container.Instance((*interfaceApp.Container)(nil), bootApp)
-
-	/*
-		|--------------------------------------------------------------------------
-		| Bind Important Interfaces
-		|--------------------------------------------------------------------------
-		|
-		| Next, we need to bind some important interfaces into the container so
-		| we will be able to resolve them when needed. The kernels serve the
-		| incoming requests to this application from both the web and CLI.
-		|
-	*/
-
-	bootApp.Container.Singleton(
-		(*interfaceHttp.Kernel)(nil),
-		http.Kernel(bootApp).Bootstrap(),
-	)
-
-	bootApp.Container.Singleton(
-		(*consoleInterface.Kernel)(nil),
-		console.Kernel(bootApp),
-	)
-
-	bootApp.Container.Singleton(
-		(*exceptionInterface.Handler)(nil),
-		exception.Handler(bootApp),
-	)
+	bootApp = http.Kernel(bootApp).Bootstrap()
 }
 
 func App() foundation.Application {
 	var app foundation.Application
 
-	err := copier.Copy(&app, &bootApp)
-	if err != nil {
-		fmt.Println(err)
+	// Copy booted app
+	if copier.Copy(&app, &bootApp) != nil {
 		panic("Can't copy application")
 	}
+
+	// Copy relations of booted app
+	// Copy relation container
+	container := foundation.Container()
+	if copier.Copy(&container, &app.Container) != nil {
+		panic("Can't copy container")
+	}
+
+	app.Container = container
+
+	app.Container.Singleton(
+		(*interfaceHttp.Kernel)(nil),
+		http.Kernel(app),
+	)
+
+	app.Container.Singleton(
+		(*consoleInterface.Kernel)(nil),
+		console.Kernel(app),
+	)
+
+	app.Container.Singleton(
+		(*exceptionInterface.Handler)(nil),
+		exception.Handler(app),
+	)
 
 	return app
 }

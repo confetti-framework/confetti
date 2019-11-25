@@ -1,3 +1,5 @@
+// +build generic
+
 package main
 
 import (

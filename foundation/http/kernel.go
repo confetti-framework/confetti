@@ -2,9 +2,9 @@ package http
 
 import (
 	"lanvard/foundation"
+	"lanvard/http"
 	"lanvard/src/app/http/decorator"
 	"lanvard/src/app/http/middleware"
-	"net/http"
 )
 
 type KernelStruct struct {
@@ -13,13 +13,13 @@ type KernelStruct struct {
 }
 
 // Handle an incoming HTTP request.
-func (k KernelStruct) Handle(request http.Request) http.ResponseWriter {
+func (k KernelStruct) Handle(request http.RequestStruct) http.ResponseStruct {
 	return k.sendRequestThroughRouter(request)
 	// @todo event RequestHandled
 }
 
 // Send the given request through the middleware / router.
-func (k KernelStruct) sendRequestThroughRouter(request http.Request) http.ResponseWriter {
+func (k KernelStruct) sendRequestThroughRouter(request http.RequestStruct) http.ResponseStruct {
 	k.App.Container.Instance("request", request)
 
 	return middleware.Pipeline(k.App).
@@ -28,20 +28,16 @@ func (k KernelStruct) sendRequestThroughRouter(request http.Request) http.Respon
 		Then(k.dispatchToRouter())
 }
 
-func (k KernelStruct) Bootstrap() KernelStruct {
-	decorator.Bootstrap(k.App)
+func (k KernelStruct) Bootstrap() foundation.Application {
+	k.App = decorator.Bootstrap(k.App)
 	k.App.HasBeenBootstrapped = true
 
-	return k
+	return k.App
 }
 
-func (k KernelStruct) dispatchToRouter() func(data http.Request) http.ResponseWriter {
-	return func(data http.Request) http.ResponseWriter {
-		response := k.App.Make((*http.ResponseWriter)(nil)).(http.ResponseWriter)
+func (k KernelStruct) dispatchToRouter() func(request http.RequestStruct) http.ResponseStruct {
 
-		_, _ = response.Write([]byte("ResponseTest"))
-
-		// todo handle route
-		return response
+	return func(r http.RequestStruct) http.ResponseStruct {
+		return http.Response().SetContent("ResponseTest")
 	}
 }

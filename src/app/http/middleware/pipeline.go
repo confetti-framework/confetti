@@ -5,12 +5,12 @@ package middleware
 
 import (
 	"lanvard/foundation"
+	"lanvard/http"
 	"lanvard/support/caller"
-	"net/http"
 )
 
-type Passable = http.Request
-type Result = http.ResponseWriter
+type Passable = http.RequestStruct
+type Result = http.ResponseStruct
 
 type Destination func(data Passable) Result
 type PipeInterface interface {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"lanvard/foundation/http"
+	http2 "lanvard/http"
 	httpInterface "lanvard/interface/http"
 	"lanvard/src/bootstrap"
 	"log"
@@ -35,16 +35,13 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	*/
 	app := bootstrap.App()
 
-	fmt.Println("app.Container.Singleton")
-	fmt.Println(len(app.Container.GetBindings()))
-
 	/*
 	   |--------------------------------------------------------------------------
 	   | Register the response writer
 	   |--------------------------------------------------------------------------
 	   |
-	   | Register the response writer so that we can fill it at another time. For
-	   | example, the response writer is provided by the middleware.
+	   | Lanvard only uses the response writer here in main.go. But we register
+	   | the response writer if you need it anyway
 	   |
 	*/
 	app.Container.Singleton(
@@ -58,18 +55,16 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   |--------------------------------------------------------------------------
 	   |
 	   | Once we have the application, we can handle the incoming request
-	   | through the kernel, and send the associated res back to
-	   | the client's browser allowing them to enjoy the creative
+	   | through the kernel, and send the associated response back to
+	   | the client allowing them to enjoy the creative
 	   | and wonderful application we have prepared for them.
 	   |
 	*/
-
 	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.KernelStruct)
+	appResponse := kernel.Handle(http2.Request(app, *request))
 
-	fmt.Println("In kernel:")
-	fmt.Println(len(kernel.App.Container.GetBindings()))
-	response = kernel.Handle(*request)
+	println("appResponse")
+	println(appResponse)
 
-	response.WriteHeader(net.StatusOK)
-	_, _ = fmt.Fprint(response)
+	// todo convert custom 'buffer' response to default go response
 }

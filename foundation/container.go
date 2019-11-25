@@ -1,7 +1,6 @@
 package foundation
 
 import (
-	"fmt"
 	"lanvard/support"
 	"reflect"
 )
@@ -110,9 +109,7 @@ func (c *ContainerStruct) resolve(abstract interface{}) interface{} {
 	if present {
 		return object
 	}
-	fmt.Println("c.bindings")
-	fmt.Printf("%p\n", &c)
-	fmt.Println(c.bindings)
+
 	panic("Can't resole container with: " + abstractString)
 }
 
