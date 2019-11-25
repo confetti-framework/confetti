@@ -33,7 +33,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | the responses back to the browser and delight our users.
 	   |
 	*/
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -60,11 +60,11 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | and wonderful application we have prepared for them.
 	   |
 	*/
-	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.KernelStruct)
-	appResponse := kernel.Handle(http2.Request(app, *request))
+	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.Kernel)
+	appResponse := kernel.Handle(http2.NewRequest(app, *request))
 
 	println("appResponse")
-	println(appResponse)
+	println(appResponse.Content())
 
 	// todo convert custom 'buffer' response to default go response
 }

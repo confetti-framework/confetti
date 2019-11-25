@@ -5,21 +5,21 @@ import "lanvard/support/caller"
 type Item []interface{}
 type Items []Item
 
-type SliceStruct struct {
+type Slice struct {
 	Items Items
 }
 
-func Slice(items Items) SliceStruct {
-	return SliceStruct{Items: items}
+func NewSlice(items Items) Slice {
+	return Slice{Items: items}
 }
 
-func (c SliceStruct) Push(item Item) SliceStruct {
+func (c Slice) Push(item Item) Slice {
 	c.Items = append(c.Items, item)
 
 	return c
 }
 
-func (c SliceStruct) Reverse() SliceStruct {
+func (c Slice) Reverse() Slice {
 	items := c.Items
 	for left, right := 0, len(items)-1; left < right; left, right = left+1, right-1 {
 		items[left], items[right] = items[right], items[left]
@@ -30,8 +30,8 @@ func (c SliceStruct) Reverse() SliceStruct {
 	return c
 }
 
-func (c SliceStruct) ToSlice() Items {
+func (c Slice) ToSlice() Items {
 	return c.Items
 }
 
-func (c SliceStruct) Path() string { return caller.Path() }
+func (c Slice) Path() string { return caller.Path() }

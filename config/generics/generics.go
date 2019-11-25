@@ -32,11 +32,11 @@ type Generic struct {
 */
 var Generics = []Generic{
 	{
-		Struct: pipeline.PipelineStruct{},
+		Struct: pipeline.Pipeline{},
 		SaveTo: config.App.BasePath + "/src/app/http/middleware/pipeline.go",
 		Vars: Vars{
-			"Passable": (*http.RequestStruct)(nil),
-			"Result":   (*http.ResponseStruct)(nil),
+			"Passable": (*http.Request)(nil),
+			"Result":   (*http.Response)(nil),
 		},
 	},
 }

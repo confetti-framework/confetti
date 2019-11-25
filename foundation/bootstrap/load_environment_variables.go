@@ -6,15 +6,15 @@ import (
 	"lanvard/interface/decorator"
 )
 
-type LoadEnvironmentVariablesStruct struct {
+type LoadEnvironmentVariables struct {
 	environmentVariables map[string]string
 }
 
-func LoadEnvironmentVariables() decorator.Bootstrap {
-	return LoadEnvironmentVariablesStruct{}
+func BootLoadEnvironmentVariables() decorator.Bootstrap {
+	return LoadEnvironmentVariables{}
 }
 
-func (l LoadEnvironmentVariablesStruct) Bootstrap(app foundation.Application) foundation.Application {
+func (l LoadEnvironmentVariables) Bootstrap(app foundation.Application) foundation.Application {
 	file := app.BasePath.EnvironmentFile()
 	err := godotenv.Load(file)
 	if err != nil {

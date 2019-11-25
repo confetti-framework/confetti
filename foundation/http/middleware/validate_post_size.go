@@ -5,10 +5,11 @@ import (
 	"lanvard/src/app/http/middleware"
 )
 
-type ValidatePostSizeStruct struct {
+type ValidatePostSize struct {
 	App foundation.Application
 }
 
-func (v ValidatePostSizeStruct) Handle(data middleware.Passable, next middleware.Destination) middleware.Result {
+func (v ValidatePostSize) Handle(data middleware.Passable, next middleware.Destination) middleware.Result {
+	// todo validate
 	return next(data)
 }

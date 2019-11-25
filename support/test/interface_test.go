@@ -8,8 +8,8 @@ import (
 	"testing"
 )
 
-type testInterface interface {}
-type testStruct struct {}
+type testInterface interface{}
+type testStruct struct{}
 
 func TestNameFromNil(t *testing.T) {
 	name := support.Name((*testInterface)(nil))
@@ -28,7 +28,7 @@ func TestNameFromString(t *testing.T) {
 
 func TestNameWithAlias(t *testing.T) {
 	name := support.Name((*kernelAlias.Kernel)(nil))
-	assert.Equal(t, "http.Kernel", name)
+	assert.Equal(t, "http.NewKernel", name)
 }
 
 func TestTypeFromInterface(t *testing.T) {
@@ -40,4 +40,3 @@ func TestTypeFromString(t *testing.T) {
 	reflectType := support.Type("string")
 	assert.Equal(t, reflect.String, reflectType)
 }
-

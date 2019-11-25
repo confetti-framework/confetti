@@ -15,7 +15,7 @@ type PipeOneStruct struct {
 	App foundation.Application
 }
 
-func (p PipeOneStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.ResponseStruct {
+func (p PipeOneStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.Response {
 	content := request.Content()
 	request = request.SetContent(content + " - before.one request ")
 
@@ -28,7 +28,7 @@ type PipeTwoStruct struct {
 	App foundation.Application
 }
 
-func (p PipeTwoStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.ResponseStruct {
+func (p PipeTwoStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.Response {
 	content := request.Content()
 	request = request.SetContent(content + " - before.two request ")
 
@@ -41,7 +41,7 @@ type PipeThreeStruct struct {
 	App foundation.Application
 }
 
-func (p PipeThreeStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.ResponseStruct {
+func (p PipeThreeStruct) Handle(request pipeline.Passable, next pipeline.Destination) http.Response {
 	content := request.Content()
 	request = request.SetContent(content + " - before.three request ")
 
@@ -51,19 +51,19 @@ func (p PipeThreeStruct) Handle(request pipeline.Passable, next pipeline.Destina
 }
 
 func Test_normal_pipe(t *testing.T) {
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 	requestOriginal, _ := net.NewRequest("GET", "/health-check", strings.NewReader("start"))
-	request := http.Request(app, *requestOriginal)
+	request := http.NewRequest(app, *requestOriginal)
 
-	middleware := pipeline.Pipeline(app)
+	middleware := pipeline.NewPipeline(app)
 
 	var pipes []pipeline.PipeInterface
 	pipes = append(pipes, PipeOneStruct{app})
 	pipes = append(pipes, PipeTwoStruct{app})
 	pipes = append(pipes, PipeThreeStruct{app})
 
-	function := func(request http.RequestStruct) http.ResponseStruct {
-		return http.Response().SetContent(request.Content())
+	function := func(request http.Request) http.Response {
+		return http.NewResponse().SetContent(request.Content())
 	}
 
 	result := middleware.Send(request).Through(pipes).Then(function)

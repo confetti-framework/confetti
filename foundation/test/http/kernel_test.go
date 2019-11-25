@@ -11,10 +11,10 @@ import (
 )
 
 func Test_handleRouting(t *testing.T) {
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 	app.Container.Singleton((*net.ResponseWriter)(nil), httptest.NewRecorder())
 
-	kernel := http.Kernel(app)
+	kernel := http.NewKernel(app)
 
 	request := net.Request{
 		Method:     "GET",

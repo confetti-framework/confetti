@@ -25,14 +25,14 @@ func init() {
 		|
 	*/
 
-	bootApp = foundation.Application{Container: foundation.Container()}
+	bootApp = foundation.Application{Container: foundation.NewContainer()}
 
 	bootApp.SetBasePath()
 
-	bootApp = http.Kernel(bootApp).Bootstrap()
+	bootApp = http.NewKernel(bootApp).Bootstrap()
 }
 
-func App() foundation.Application {
+func NewApp() foundation.Application {
 	var app foundation.Application
 
 	// Copy booted app
@@ -42,7 +42,7 @@ func App() foundation.Application {
 
 	// Copy relations of booted app
 	// Copy relation container
-	container := foundation.Container()
+	container := foundation.NewContainer()
 	if copier.Copy(&container, &app.Container) != nil {
 		panic("Can't copy container")
 	}
@@ -51,17 +51,17 @@ func App() foundation.Application {
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
-		http.Kernel(app),
+		http.NewKernel(app),
 	)
 
 	app.Container.Singleton(
 		(*consoleInterface.Kernel)(nil),
-		console.Kernel(app),
+		console.NewKernel(app),
 	)
 
 	app.Container.Singleton(
 		(*exceptionInterface.Handler)(nil),
-		exception.Handler(app),
+		exception.NewHandler(app),
 	)
 
 	return app

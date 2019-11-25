@@ -7,12 +7,12 @@ import (
 	"lanvard/src/app/http/middleware"
 )
 
-func Kernel(app foundation.Application) http.KernelStruct {
-	return http.KernelStruct{App: app, Middleware: pipes()}
+func NewKernel(app foundation.Application) http.Kernel {
+	return http.Kernel{App: app, Middleware: pipes()}
 }
 
 func pipes() []middleware.PipeInterface {
 	return []middleware.PipeInterface{
-		foundationMiddleware.ValidatePostSizeStruct{},
+		foundationMiddleware.ValidatePostSize{},
 	}
 }

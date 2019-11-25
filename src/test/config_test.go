@@ -10,7 +10,7 @@ import (
 )
 
 func Test_get_config(t *testing.T) {
-	_ = bootstrap.App()
+	_ = bootstrap.NewApp()
 
 	assert.IsType(t, reflect.String, support.Type(config.App.Name))
 }

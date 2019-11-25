@@ -10,11 +10,11 @@ import (
 )
 
 func Test_binding(t *testing.T) {
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
-		http.Kernel(app),
+		http.NewKernel(app),
 	)
 
 	app.Container.Singleton(
@@ -26,14 +26,14 @@ func Test_binding(t *testing.T) {
 }
 
 func Test_application_make(t *testing.T) {
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
-		httpFoundation.KernelStruct{},
+		httpFoundation.Kernel{},
 	)
 
 	kernel := app.Container.Make((*interfaceHttp.Kernel)(nil))
 
-	assert.Equal(t, httpFoundation.KernelStruct{}, kernel)
+	assert.Equal(t, httpFoundation.Kernel{}, kernel)
 }

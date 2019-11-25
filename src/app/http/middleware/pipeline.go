@@ -9,8 +9,8 @@ import (
 	"lanvard/support/caller"
 )
 
-type Passable = http.RequestStruct
-type Result = http.ResponseStruct
+type Passable = http.Request
+type Result = http.Response
 
 type Destination func(data Passable) Result
 type PipeInterface interface {
@@ -18,7 +18,7 @@ type PipeInterface interface {
 }
 
 // noinspection GoNameStartsWithPackageName
-type PipelineStruct struct {
+type Pipeline struct {
 	App foundation.Application
 
 	// The object being passed through the contract.
@@ -28,30 +28,30 @@ type PipelineStruct struct {
 	Pipes []PipeInterface
 }
 
-func Pipeline(app foundation.Application) PipelineStruct {
-	return PipelineStruct{App: app}
+func NewPipeline(app foundation.Application) Pipeline {
+	return Pipeline{App: app}
 }
 
-func (p PipelineStruct) Path() string {
+func (p Pipeline) Path() string {
 	return caller.Path()
 }
 
 // Set the object being sent through the contract.
-func (p PipelineStruct) Send(passable Passable) PipelineStruct {
+func (p Pipeline) Send(passable Passable) Pipeline {
 	p.Passable = passable
 
 	return p
 }
 
 // Set the array of pipes.
-func (p PipelineStruct) Through(pipes []PipeInterface) PipelineStruct {
+func (p Pipeline) Through(pipes []PipeInterface) Pipeline {
 	p.Pipes = pipes
 
 	return p
 }
 
 // Run the contract with a final destination callback.
-func (p PipelineStruct) Then(destination Destination) Result {
+func (p Pipeline) Then(destination Destination) Result {
 
 	var callbacks []func(data Passable) Result
 	var nextCallback = 0

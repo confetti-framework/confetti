@@ -1,18 +1,18 @@
 package http
 
-type ResponseStruct struct {
+type Response struct {
 	content string
 }
 
-func Response() ResponseStruct {
-	return ResponseStruct{}
+func NewResponse() Response {
+	return Response{}
 }
 
-func (r ResponseStruct) Content() string {
+func (r Response) Content() string {
 	return r.content
 }
 
-func (r ResponseStruct) SetContent(content string) ResponseStruct {
+func (r Response) SetContent(content string) Response {
 	r.content = content
 
 	return r

@@ -7,7 +7,7 @@ import (
 
 type Application struct {
 	// The service container
-	Container ContainerStruct
+	Container Container
 
 	// The base path for the Laravel installation.
 	BasePath BasePath
