@@ -8,8 +8,7 @@ import (
 type bindings map[string]interface{}
 type instances map[string]interface{}
 
-type ContainerStruct struct {
-
+type Container struct {
 	// The container's bindings.
 	bindings bindings
 
@@ -23,12 +22,15 @@ type ContainerStruct struct {
 	instances instances
 }
 
-func Container() ContainerStruct {
-	return ContainerStruct{}
+func NewContainer() Container {
+	containerStruct := Container{}
+	containerStruct.bindings = make(bindings)
+
+	return containerStruct
 }
 
 // Determine if the given abstract type has been bound.
-func (c *ContainerStruct) Bound(abstract string) bool {
+func (c *Container) Bound(abstract string) bool {
 	_, bind := c.bindings[abstract]
 	_, instance := c.instances[abstract]
 
@@ -40,7 +42,7 @@ func (c *ContainerStruct) Bound(abstract string) bool {
 }
 
 // Determine if a given string is an alias.
-func (c *ContainerStruct) IsAlias(name string) bool {
+func (c *Container) IsAlias(name string) bool {
 	if _, ok := c.aliases[name]; ok {
 		return true
 	}
@@ -49,22 +51,19 @@ func (c *ContainerStruct) IsAlias(name string) bool {
 }
 
 // Register a binding with the container.
-func (c *ContainerStruct) Bind(abstract interface{}, concrete interface{}) {
-	if c.bindings == nil {
-		c.bindings = make(bindings)
-	}
+func (c *Container) Bind(abstract interface{}, concrete interface{}) {
 	abstractString := support.Name(abstract)
 
 	c.bindings[abstractString] = concrete
 }
 
 // Register a shared binding in the container.
-func (c *ContainerStruct) Singleton(abstract interface{}, concrete interface{}) {
+func (c *Container) Singleton(abstract interface{}, concrete interface{}) {
 	c.Bind(abstract, concrete)
 }
 
 // Register an existing instance as shared in the container.
-func (c ContainerStruct) Instance(abstract interface{}, instance interface{}) {
+func (c Container) Instance(abstract interface{}, instance interface{}) {
 	abstractName := support.Name(abstract)
 
 	c.removeAbstractAlias(abstractName)
@@ -82,18 +81,28 @@ func (c ContainerStruct) Instance(abstract interface{}, instance interface{}) {
 }
 
 // Get the container's bindings.
-func (c ContainerStruct) GetBindings() bindings {
+func (c Container) GetBindings() bindings {
 	return c.bindings
 }
 
 // Resolve the given type from the container.
-func (c *ContainerStruct) Make(abstract interface{}) interface{} {
+func (c *Container) Make(abstract interface{}) interface{} {
 	return c.resolve(abstract)
 }
 
 // Resolve the given type from the container.
-func (c *ContainerStruct) resolve(abstract interface{}) interface{} {
-	abstractString := reflect.TypeOf(abstract).Elem().String()
+func (c *Container) resolve(abstract interface{}) interface{} {
+	var abstractString string
+
+	if support.Type(abstract) == reflect.String {
+		abstractString = abstract.(string)
+	} else {
+		abstractString = reflect.TypeOf(abstract).Elem().String()
+	}
+
+	if support.Type(abstract) == reflect.String && c.IsAlias(abstract.(string)) {
+		return c.aliases[abstract.(string)]
+	}
 
 	object, present := c.bindings[abstractString]
 
@@ -101,11 +110,11 @@ func (c *ContainerStruct) resolve(abstract interface{}) interface{} {
 		return object
 	}
 
-	panic("Can't resole container")
+	panic("Can't resole container with: " + abstractString)
 }
 
 // Remove an alias from the contextual binding alias cache.
-func (c ContainerStruct) removeAbstractAlias(abstract string) {
+func (c Container) removeAbstractAlias(abstract string) {
 	if _, ok := c.aliases[abstract]; !ok {
 		return
 	}

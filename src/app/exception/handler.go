@@ -2,10 +2,10 @@ package exception
 
 import "lanvard/foundation"
 
-type HandlerStruct struct {
+type Handler struct {
 	app foundation.Application
 }
 
-func Handler(app foundation.Application) HandlerStruct {
-	return HandlerStruct{app}
+func NewHandler(app foundation.Application) Handler {
+	return Handler{app}
 }

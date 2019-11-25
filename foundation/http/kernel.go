@@ -2,32 +2,42 @@ package http
 
 import (
 	"lanvard/foundation"
+	"lanvard/http"
 	"lanvard/src/app/http/decorator"
-	"net/http"
+	"lanvard/src/app/http/middleware"
 )
 
-type KernelStruct struct {
-	App foundation.Application
+type Kernel struct {
+	App        foundation.Application
+	Middleware []middleware.PipeInterface
 }
 
 // Handle an incoming HTTP request.
-func (k KernelStruct) Handle(request http.Request) string {
+func (k Kernel) Handle(request http.Request) http.Response {
 	return k.sendRequestThroughRouter(request)
+	// @todo event RequestHandled
 }
 
 // Send the given request through the middleware / router.
-func (k KernelStruct) sendRequestThroughRouter(request http.Request) string {
+func (k Kernel) sendRequestThroughRouter(request http.Request) http.Response {
 	k.App.Container.Instance("request", request)
 
-	return "response"
+	return middleware.NewPipeline(k.App).
+		Send(request).
+		Through(k.Middleware).
+		Then(k.dispatchToRouter())
 }
 
-func (k KernelStruct) Bootstrap() KernelStruct {
-	decorator.Bootstrap(k.App)
+func (k Kernel) Bootstrap() foundation.Application {
+	k.App = decorator.Bootstrap(k.App)
+	k.App.HasBeenBootstrapped = true
 
-	if !k.App.HasBeenBootstrapped {
-		k.App.HasBeenBootstrapped = true
+	return k.App
+}
+
+func (k Kernel) dispatchToRouter() func(request http.Request) http.Response {
+
+	return func(r http.Request) http.Response {
+		return http.NewResponse().SetContent("ResponseTest")
 	}
-
-	return k
 }

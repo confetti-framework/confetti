@@ -7,13 +7,17 @@ import (
 
 type Application struct {
 	// The service container
-	Container ContainerStruct
+	Container Container
 
 	// The base path for the Laravel installation.
 	BasePath BasePath
 
 	// Indicates if the application has been bootstrapped before.
 	HasBeenBootstrapped bool
+}
+
+func (a Application) Make(abstract interface{}) interface{} {
+	return a.Container.Make(abstract)
 }
 
 // Set the base path for the application.

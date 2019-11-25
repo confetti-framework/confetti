@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
-	. "lanvard/interface/http"
+	"lanvard/foundation/http"
+	http2 "lanvard/http"
+	httpInterface "lanvard/interface/http"
 	"lanvard/src/bootstrap"
 	"log"
 	net "net/http"
@@ -19,38 +20,51 @@ func main() {
 	log.Println("Server stopped")
 }
 
-func handleKernel(w net.ResponseWriter, request *net.Request) {
+func handleKernel(response net.ResponseWriter, request *net.Request) {
 
 	/*
-		|--------------------------------------------------------------------------
-		| Turn On The Lights
-		|--------------------------------------------------------------------------
-		|
-		| We need to illuminate PHP development, so let us turn on the lights.
-		| This bootstraps the framework and gets it ready for use, then it
-		| will load up this application so that we can run it and send
-		| the responses back to the browser and delight our users.
-		|
+	   |--------------------------------------------------------------------------
+	   | Turn On The Lights
+	   |--------------------------------------------------------------------------
+	   |
+	   | We need to illuminate PHP development, so let us turn on the lights.
+	   | This bootstraps the framework and gets it ready for use, then it
+	   | will load up this application so that we can run it and send
+	   | the responses back to the browser and delight our users.
+	   |
 	*/
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
 
 	/*
-		|--------------------------------------------------------------------------
-		| Run The Application
-		|--------------------------------------------------------------------------
-		|
-		| Once we have the application, we can handle the incoming request
-		| through the kernel, and send the associated response back to
-		| the client's browser allowing them to enjoy the creative
-		| and wonderful application we have prepared for them.
-		|
+	   |--------------------------------------------------------------------------
+	   | Register the response writer
+	   |--------------------------------------------------------------------------
+	   |
+	   | Lanvard only uses the response writer here in main.go. But we register
+	   | the response writer if you need it anyway
+	   |
 	*/
+	app.Container.Singleton(
+		(*net.ResponseWriter)(nil),
+		response,
+	)
 
-	fmt.Println(request.URL.Query())
-	kernel := app.Container.Make((*Kernel)(nil)).(Kernel)
+	/*
+	   |--------------------------------------------------------------------------
+	   | Run The Application
+	   |--------------------------------------------------------------------------
+	   |
+	   | Once we have the application, we can handle the incoming request
+	   | through the kernel, and send the associated response back to
+	   | the client allowing them to enjoy the creative
+	   | and wonderful application we have prepared for them.
+	   |
+	*/
+	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.Kernel)
+	appResponse := kernel.Handle(http2.NewRequest(app, *request))
 
-	response := kernel.Handle(request)
+	println("appResponse")
+	println(appResponse.Content())
 
-	w.WriteHeader(net.StatusOK)
-	_, _ = fmt.Fprintf(w, response)
+	// todo convert custom 'buffer' response to default go response
 }

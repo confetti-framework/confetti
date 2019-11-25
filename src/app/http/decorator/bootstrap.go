@@ -8,11 +8,11 @@ import (
 )
 
 var bootstraps = []contract.Bootstrap{
-	bootstrap.LoadEnvironmentVariables(),
+	bootstrap.BootLoadEnvironmentVariables(),
 }
 
 func Bootstrap(app foundation.Application) foundation.Application {
-	dec := decorator.BootstrapDecoratorStruct{Bootstraps: bootstraps}
+	dec := decorator.BootstrapDecorator{Bootstraps: bootstraps}
 
 	return dec.BootstrapWith(app)
 }

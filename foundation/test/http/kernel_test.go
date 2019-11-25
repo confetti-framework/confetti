@@ -5,14 +5,16 @@ import (
 	"lanvard/src/app/http"
 	"lanvard/src/bootstrap"
 	net "net/http"
+	"net/http/httptest"
 	"net/url"
 	"testing"
 )
 
 func Test_handleRouting(t *testing.T) {
-	app := bootstrap.App()
+	app := bootstrap.NewApp()
+	app.Container.Singleton((*net.ResponseWriter)(nil), httptest.NewRecorder())
 
-	kernel := http.Kernel(app)
+	kernel := http.NewKernel(app)
 
 	request := net.Request{
 		Method:     "GET",
@@ -23,5 +25,5 @@ func Test_handleRouting(t *testing.T) {
 	}
 	response := kernel.Handle(request)
 
-	assert.Equal(t, "response", response)
+	assert.Equal(t, (*net.ResponseWriter)(nil), response)
 }
