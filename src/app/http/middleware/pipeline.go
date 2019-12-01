@@ -14,7 +14,7 @@ type Result = http.Response
 
 type Destination func(app foundation.Application, data Passable) Result
 type PipeInterface interface {
-	Handle(data Passable, next Destination) Result
+	Handle(data Passable, next func(data Passable) Result) Result
 }
 
 // noinspection GoNameStartsWithPackageName
