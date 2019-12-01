@@ -8,21 +8,17 @@ import (
 
 type Request struct {
 	App      foundation.Application
-	original http.Request
+	Original http.Request
 	body     []byte
 }
 
 func NewRequest(app foundation.Application, request http.Request) Request {
-	return Request{App: app, original: request}
-}
-
-func (r Request) Original() http.Request {
-	return r.original
+	return Request{App: app, Original: request}
 }
 
 func (r Request) Content() string {
 	if r.body == nil {
-		bodyBytes, err := ioutil.ReadAll(r.original.Body)
+		bodyBytes, err := ioutil.ReadAll(r.Original.Body)
 		r.body = bodyBytes
 		if err != nil {
 			panic(err)
@@ -36,4 +32,8 @@ func (r Request) SetContent(content string) Request {
 	r.body = []byte(content)
 
 	return r
+}
+
+func (r Request) GetMethod() string {
+	return r.Original.Method
 }

@@ -10,6 +10,14 @@
   version = "v1.1.1"
 
 [[projects]]
+  digest = "1:883e2fdbdd0e577187bd8106fec775b1176059af267a7f40eba5308955c67d52"
+  name = "github.com/gorilla/mux"
+  packages = ["."]
+  pruneopts = ""
+  revision = "00bdffe0f3c77e27d2cf6f5c70232a2d3e4d9c15"
+  version = "v1.7.3"
+
+[[projects]]
   branch = "master"
   digest = "1:79b12149793d2879561af016d7464964890951e2685aae24a72f91690aa3cd53"
   name = "github.com/jinzhu/copier"
@@ -53,6 +61,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/gorilla/mux",
     "github.com/jinzhu/copier",
     "github.com/joho/godotenv",
     "github.com/stretchr/testify/assert",

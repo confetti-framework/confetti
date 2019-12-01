@@ -3,12 +3,14 @@ package http
 import (
 	"lanvard/foundation"
 	"lanvard/http"
+	"lanvard/routing/router"
 	"lanvard/src/app/http/decorator"
 	"lanvard/src/app/http/middleware"
 )
 
 type Kernel struct {
 	App        foundation.Application
+	Router     routing.Router
 	Middleware []middleware.PipeInterface
 }
 
@@ -35,9 +37,8 @@ func (k Kernel) Bootstrap() foundation.Application {
 	return k.App
 }
 
-func (k Kernel) dispatchToRouter() func(request http.Request) http.Response {
-
-	return func(r http.Request) http.Response {
-		return http.NewResponse().SetContent("ResponseTest")
+func (k Kernel) dispatchToRouter() middleware.Destination {
+	return func(app foundation.Application, request http.Request) http.Response {
+		return router.NewRouter(app).DispatchToRoute(request)
 	}
 }

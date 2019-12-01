@@ -8,6 +8,10 @@ func NewResponse() Response {
 	return Response{}
 }
 
+func Json(content string) Response {
+	return Response{content: content}
+}
+
 func (r Response) Content() string {
 	return r.content
 }
