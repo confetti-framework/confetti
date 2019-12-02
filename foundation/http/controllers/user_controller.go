@@ -3,6 +3,7 @@ package controllers
 import "lanvard/http"
 
 type User struct {
+	Controller
 }
 
 func (u User) Index(request http.Request) http.Response {

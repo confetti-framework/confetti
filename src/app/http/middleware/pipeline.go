@@ -12,9 +12,9 @@ import (
 type Passable = http.Request
 type Result = http.Response
 
-type Destination func(app foundation.Application, data Passable) Result
+type Destination func(data Passable) Result
 type PipeInterface interface {
-	Handle(data Passable, next func(data Passable) Result) Result
+	Handle(data Passable, next Destination) Result
 }
 
 // noinspection GoNameStartsWithPackageName

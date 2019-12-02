@@ -10,7 +10,7 @@ import (
 
 type Kernel struct {
 	App        foundation.Application
-	Router     routing.Router
+	Router     router.Router
 	Middleware []middleware.PipeInterface
 }
 
@@ -38,7 +38,7 @@ func (k Kernel) Bootstrap() foundation.Application {
 }
 
 func (k Kernel) dispatchToRouter() middleware.Destination {
-	return func(app foundation.Application, request http.Request) http.Response {
-		return router.NewRouter(app).DispatchToRoute(request)
+	return func(request http.Request) http.Response {
+		return router.NewRouter(k.App).DispatchToRoute(request)
 	}
 }

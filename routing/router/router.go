@@ -2,6 +2,7 @@ package router
 
 import (
 	"lanvard/foundation"
+	"lanvard/foundation/http/controllers"
 	"lanvard/http"
 )
 
@@ -24,5 +25,6 @@ func (r Router) DispatchToRoute(request http.Request) http.Response {
 	// todo implement event Events\RouteMatched
 	// todo implement RouteMiddleware
 	// todo remove nil
+	var nil controllers.Controller
 	return route.Controller(nil, request)
 }
