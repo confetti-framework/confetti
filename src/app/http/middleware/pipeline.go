@@ -61,11 +61,13 @@ func (p Pipeline) Then(destination Destination) Result {
 	for i, pipe := range pipes {
 		pipe := pipe
 		if i == 0 {
+			// Give the last callback a destination callback
 			callback := func(data Passable) Result {
 				return pipe.Handle(data, destination)
 			}
 			callbacks = append(callbacks, callback)
 		} else {
+			// Give other callback the next callback
 			callback := func(data Passable) Result {
 				nextCallback--
 				return pipe.Handle(data, callbacks[nextCallback])

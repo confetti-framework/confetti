@@ -1,25 +1,29 @@
 package config
 
 import (
+	"lanvard/interface/decorator"
+	"lanvard/src/app/providers"
 	. "lanvard/support"
 	"path/filepath"
 	"runtime"
 )
 
 var App = struct {
-	Name           string
-	Env            string
-	Debug          bool
-	Url            string
-	AssetUrl       string
-	LineSeparator  string
-	BasePath       string
-	Timezone       string
-	Locale         string
-	FallbackLocale string
-	FakerLocale    string
-	Key            string
-	Cipher         string
+	Name              string
+	Env               string
+	Debug             bool
+	Url               string
+	AssetUrl          string
+	LineSeparator     string
+	BasePath          string
+	Timezone          string
+	Locale            string
+	FallbackLocale    string
+	FakerLocale       string
+	Key               string
+	Cipher            string
+	RegisterProviders []decorator.RegisterServiceProvider
+	BootProviders     []decorator.BootServiceProvider
 }{
 
 	/*
@@ -173,6 +177,39 @@ var App = struct {
 	   |
 	*/
 	Cipher: "AES-256-CBC",
+
+	/*
+	   |--------------------------------------------------------------------------
+	   | Autoloaded Register Service Providers
+	   |--------------------------------------------------------------------------
+	   |
+	   | The service providers listed here will be automatically loaded on the
+	   | request to your application. Within the register method, you should only
+	   | bind things into the service container. You should never attempt to
+	   | register any event listeners, routes, or any other piece of functionality
+	   | within the register method. Otherwise, you may accidentally use a service
+	   | that is provided by a service provider which has not loaded yet.
+	   |
+	*/
+	RegisterProviders: []decorator.RegisterServiceProvider{},
+
+	/*
+	   |--------------------------------------------------------------------------
+	   | Autoloaded Boot Service Providers
+	   |--------------------------------------------------------------------------
+	   |
+	   | This method is called after all other service providers have been
+	   | registered, meaning you have access to all other services that have been
+	   | registered by the framework. Feel free to add your own services to this
+	   | slice to grant expanded functionality to your applications.
+	   |
+	   | You can have a service provider with a register and a boot method. Than
+	   | you have to add this service to RegisterProviders and BootProviders
+	   |
+	*/
+	BootProviders: []decorator.BootServiceProvider{
+		providers.RouteServiceProvider{},
+	},
 }
 
 func getBasePath() string {

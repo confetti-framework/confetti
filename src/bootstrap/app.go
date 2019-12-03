@@ -1,7 +1,6 @@
 package bootstrap
 
 import (
-	"github.com/jinzhu/copier"
 	"lanvard/foundation"
 	consoleInterface "lanvard/interface/console"
 	exceptionInterface "lanvard/interface/exception"
@@ -33,21 +32,11 @@ func init() {
 }
 
 func NewApp() foundation.Application {
-	var app foundation.Application
 
-	// Copy booted app
-	if copier.Copy(&app, &bootApp) != nil {
-		panic("Can't copy application")
+	app := foundation.Application{
+		Container: bootApp.Container.Copy(),
+		BasePath:  bootApp.BasePath,
 	}
-
-	// Copy relations of booted app
-	// Copy relation container
-	container := foundation.NewContainer()
-	if copier.Copy(&container, &app.Container) != nil {
-		panic("Can't copy container")
-	}
-
-	app.Container = container
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),

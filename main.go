@@ -1,8 +1,8 @@
 package main
 
 import (
-	"lanvard/foundation/http"
-	http2 "lanvard/http"
+	foundation "lanvard/foundation/http"
+	appHttp "lanvard/http"
 	httpInterface "lanvard/interface/http"
 	"lanvard/src/bootstrap"
 	"log"
@@ -60,8 +60,8 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | and wonderful application we have prepared for them.
 	   |
 	*/
-	kernel := app.Make((*httpInterface.Kernel)(nil)).(http.Kernel)
-	appResponse := kernel.Handle(http2.NewRequest(app, *request))
+	kernel := app.Make((*httpInterface.Kernel)(nil)).(foundation.Kernel)
+	appResponse := kernel.Handle(appHttp.NewRequest(app, *request))
 
 	println("appResponse")
 	println(appResponse.Content())

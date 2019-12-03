@@ -8,11 +8,15 @@ import (
 )
 
 func NewKernel(app foundation.Application) http.Kernel {
-	return http.Kernel{App: app, Middleware: pipes()}
+	return http.Kernel{
+		App:        app,
+		Middleware: pipes(),
+	}
 }
 
 func pipes() []middleware.PipeInterface {
 	return []middleware.PipeInterface{
+		// todo push app
 		foundationMiddleware.ValidatePostSize{},
 	}
 }

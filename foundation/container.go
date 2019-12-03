@@ -25,8 +25,31 @@ type Container struct {
 func NewContainer() Container {
 	containerStruct := Container{}
 	containerStruct.bindings = make(bindings)
+	containerStruct.instances = make(instances)
 
 	return containerStruct
+}
+
+func (c Container) Copy() Container {
+	container := NewContainer()
+
+	for key, value := range c.bindings {
+		container.bindings[key] = value
+	}
+
+	for key, value := range c.aliases {
+		container.aliases[key] = value
+	}
+
+	for key, value := range c.abstractAliases {
+		container.abstractAliases[key] = value
+	}
+
+	for key, value := range c.instances {
+		container.instances[key] = value
+	}
+
+	return container
 }
 
 // Determine if the given abstract type has been bound.
@@ -63,7 +86,7 @@ func (c *Container) Singleton(abstract interface{}, concrete interface{}) {
 }
 
 // Register an existing instance as shared in the container.
-func (c Container) Instance(abstract interface{}, instance interface{}) {
+func (c *Container) Instance(abstract interface{}, instance interface{}) {
 	abstractName := support.Name(abstract)
 
 	c.removeAbstractAlias(abstractName)

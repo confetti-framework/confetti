@@ -8,7 +8,9 @@ import (
 )
 
 var bootstraps = []contract.Bootstrap{
-	bootstrap.BootLoadEnvironmentVariables(),
+	bootstrap.LoadEnvironmentVariables{},
+	RegisterProviders{},
+	BootProviders{},
 }
 
 func Bootstrap(app foundation.Application) foundation.Application {
