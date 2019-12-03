@@ -40,14 +40,7 @@ func NewApp() foundation.Application {
 		panic("Can't copy application")
 	}
 
-	// Copy relations of booted app
-	// Copy relation container
-	container := foundation.NewContainer()
-	if copier.Copy(&container, &app.Container) != nil {
-		panic("Can't copy container")
-	}
-
-	app.Container = container
+	app.Container = foundation.CopyContainer(bootApp.Container)
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),

@@ -1,4 +1,4 @@
-package router
+package routing
 
 import (
 	"github.com/gorilla/mux"
@@ -15,12 +15,23 @@ type RouteCollection struct {
 }
 
 func NewRouteCollection() RouteCollection {
-	return RouteCollection{}
+	collection := RouteCollection{}
+
+	return collection
 }
 
 func (c *RouteCollection) Push(route Route) {
 	// Todo add domain
 	domainAndUri := route.Uri
+
+	if c.routesMapRoutes == nil {
+		c.routesMapRoutes = make(MapMethodRoutes)
+	}
+
+	if c.routesMapRoutes[route.Method] == nil {
+		c.routesMapRoutes[route.Method] = make(MapUrlRoutes)
+	}
+
 	c.routesMapRoutes[route.Method][domainAndUri] = route
 	c.routes = append(c.routes, route)
 }

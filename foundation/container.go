@@ -1,6 +1,7 @@
 package foundation
 
 import (
+	"fmt"
 	"lanvard/support"
 	"reflect"
 )
@@ -27,6 +28,10 @@ func NewContainer() Container {
 	containerStruct.bindings = make(bindings)
 
 	return containerStruct
+}
+
+func CopyContainer(olcContainer Container) Container {
+	return olcContainer
 }
 
 // Determine if the given abstract type has been bound.
@@ -63,7 +68,7 @@ func (c *Container) Singleton(abstract interface{}, concrete interface{}) {
 }
 
 // Register an existing instance as shared in the container.
-func (c Container) Instance(abstract interface{}, instance interface{}) {
+func (c *Container) Instance(abstract interface{}, instance interface{}) {
 	abstractName := support.Name(abstract)
 
 	c.removeAbstractAlias(abstractName)
@@ -83,6 +88,17 @@ func (c Container) Instance(abstract interface{}, instance interface{}) {
 // Get the container's bindings.
 func (c Container) GetBindings() bindings {
 	return c.bindings
+}
+
+// Get the container's bindings.
+func (c Container) DebugBindings() {
+	fmt.Println("\n\nDebugBindings: ________________")
+	fmt.Println(len(c.GetBindings()))
+
+	fmt.Println("Bind:")
+	for s := range c.GetBindings() {
+		println(s)
+	}
 }
 
 // Resolve the given type from the container.

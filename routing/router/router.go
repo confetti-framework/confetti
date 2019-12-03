@@ -2,18 +2,18 @@ package router
 
 import (
 	"lanvard/foundation"
-	"lanvard/foundation/http/controllers"
 	"lanvard/http"
+	"lanvard/routing"
 )
 
 type Router struct {
 	app            foundation.Application
-	routes         RouteCollection
+	routes         routing.RouteCollection
 	currentRequest http.Request
 }
 
 func NewRouter(app foundation.Application) Router {
-	routes := app.Make("routes").(RouteCollection)
+	routes := app.Make("routes").(routing.RouteCollection)
 	return Router{app: app, routes: routes}
 }
 
@@ -25,6 +25,5 @@ func (r Router) DispatchToRoute(request http.Request) http.Response {
 	// todo implement event Events\RouteMatched
 	// todo implement RouteMiddleware
 	// todo remove nil
-	var nil controllers.Controller
-	return route.Controller(nil, request)
+	return route.Controller(request)
 }

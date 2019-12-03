@@ -1,4 +1,4 @@
-package router
+package routing
 
 type Route struct {
 	Uri        string

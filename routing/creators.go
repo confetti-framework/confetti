@@ -1,4 +1,4 @@
-package router
+package routing
 
 func createRoutes(methods []string, uri string, controller ControllerMethod) RouteCollection {
 	routes := NewRouteCollection()

@@ -2,7 +2,7 @@ package routes
 
 import (
 	"lanvard/foundation/http/controllers"
-	"lanvard/routing/router"
+	"lanvard/routing"
 )
 
 /*
@@ -15,8 +15,8 @@ import (
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-var Api = []router.RouteCollection{
-	router.Get("/users/{ids?}", controllers.User.Index),
-	router.Post("/users", controllers.User.Store),
-	router.Delete("/users/{ids?}", controllers.User.Destroy),
+var Api = []routing.RouteCollection{
+	routing.Get("/users/{ids?}", controllers.User.Index),
+	routing.Post("/users", controllers.User.Store),
+	routing.Delete("/users/{ids?}", controllers.User.Destroy),
 }

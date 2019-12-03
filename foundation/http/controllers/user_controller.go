@@ -2,13 +2,13 @@ package controllers
 
 import (
 	"lanvard/http"
-	. "lanvard/routing/router"
+	"lanvard/routing"
 )
 
 var User = struct {
-	Index   ControllerMethod
-	Store   ControllerMethod
-	Destroy ControllerMethod
+	Index   routing.ControllerMethod
+	Store   routing.ControllerMethod
+	Destroy routing.ControllerMethod
 }{
 	Index: func(request http.Request) http.Response {
 		return http.Json("{\"test Index\": 123}")
