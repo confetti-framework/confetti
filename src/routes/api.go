@@ -16,7 +16,7 @@ import (
 |
 */
 var Api = []routing.RouteCollection{
-	routing.Get("/users/{ids?}", controllers.User.Index),
+	routing.Get("/users/{ids}", controllers.User.Index),
 	routing.Post("/users", controllers.User.Store),
 	routing.Delete("/users/{ids?}", controllers.User.Destroy),
 }

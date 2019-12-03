@@ -1,7 +1,6 @@
 package foundation
 
 import (
-	"fmt"
 	"lanvard/support"
 	"reflect"
 )
@@ -26,12 +25,31 @@ type Container struct {
 func NewContainer() Container {
 	containerStruct := Container{}
 	containerStruct.bindings = make(bindings)
+	containerStruct.instances = make(instances)
 
 	return containerStruct
 }
 
-func CopyContainer(olcContainer Container) Container {
-	return olcContainer
+func (c Container) Copy() Container {
+	container := NewContainer()
+
+	for key, value := range c.bindings {
+		container.bindings[key] = value
+	}
+
+	for key, value := range c.aliases {
+		container.aliases[key] = value
+	}
+
+	for key, value := range c.abstractAliases {
+		container.abstractAliases[key] = value
+	}
+
+	for key, value := range c.instances {
+		container.instances[key] = value
+	}
+
+	return container
 }
 
 // Determine if the given abstract type has been bound.
@@ -88,17 +106,6 @@ func (c *Container) Instance(abstract interface{}, instance interface{}) {
 // Get the container's bindings.
 func (c Container) GetBindings() bindings {
 	return c.bindings
-}
-
-// Get the container's bindings.
-func (c Container) DebugBindings() {
-	fmt.Println("\n\nDebugBindings: ________________")
-	fmt.Println(len(c.GetBindings()))
-
-	fmt.Println("Bind:")
-	for s := range c.GetBindings() {
-		println(s)
-	}
 }
 
 // Resolve the given type from the container.
