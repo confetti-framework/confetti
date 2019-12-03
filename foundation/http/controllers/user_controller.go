@@ -1,19 +1,24 @@
 package controllers
 
-import "lanvard/http"
+import (
+	"lanvard/http"
+	. "lanvard/routing/router"
+)
 
-type User struct {
-	Controller
-}
+var User = struct {
+	Index   ControllerMethod
+	Store   ControllerMethod
+	Destroy ControllerMethod
+}{
+	Index: func(request http.Request) http.Response {
+		return http.Json("{\"test Index\": 123}")
+	},
 
-func (u User) Index(request http.Request) http.Response {
-	return http.Json("{\"test\":  123}")
-}
+	Store: func(request http.Request) http.Response {
+		return http.Json("{\"test Store\": 123}")
+	},
 
-func (u User) Store(request http.Request) http.Response {
-	return http.NewResponse()
-}
-
-func (u User) Destroy(request http.Request) http.Response {
-	return http.NewResponse()
+	Destroy: func(request http.Request) http.Response {
+		return http.Json("{\"test Destroy\": 123}")
+	},
 }

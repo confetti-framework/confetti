@@ -1,12 +1,11 @@
 package router
 
 import (
-	"lanvard/foundation/http/controllers"
 	"lanvard/http"
 	net "net/http"
 )
 
-type ControllerMethod func(controllers.Controller, http.Request) http.Response
+type ControllerMethod func(http.Request) http.Response
 
 // All of the methods supported by the router.
 var allMethods = []string{
