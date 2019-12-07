@@ -28,7 +28,7 @@ func TestNameFromString(t *testing.T) {
 
 func TestNameWithAlias(t *testing.T) {
 	name := support.Name((*kernelAlias.Kernel)(nil))
-	assert.Equal(t, "http.NewKernel", name)
+	assert.Equal(t, "http.Kernel", name)
 }
 
 func TestTypeFromInterface(t *testing.T) {
