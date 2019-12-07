@@ -1,10 +1,10 @@
 package bootstrap
 
 import (
+	consoleInterface "lanvard/contract/console"
+	exceptionInterface "lanvard/contract/exception"
+	interfaceHttp "lanvard/contract/http"
 	"lanvard/foundation"
-	consoleInterface "lanvard/interface/console"
-	exceptionInterface "lanvard/interface/exception"
-	interfaceHttp "lanvard/interface/http"
 	"lanvard/src/app/console"
 	"lanvard/src/app/exception"
 	"lanvard/src/app/http"

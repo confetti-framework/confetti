@@ -1,10 +1,10 @@
 package decorator
 
 import (
+	contract "lanvard/contract/decorator"
 	"lanvard/foundation"
 	"lanvard/foundation/bootstrap"
 	"lanvard/foundation/decorator"
-	contract "lanvard/interface/decorator"
 )
 
 var bootstraps = []contract.Bootstrap{

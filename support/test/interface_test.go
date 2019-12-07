@@ -2,7 +2,7 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	kernelAlias "lanvard/interface/http"
+	kernelAlias "lanvard/contract/http"
 	"lanvard/support"
 	"reflect"
 	"testing"

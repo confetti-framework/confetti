@@ -7,9 +7,5 @@
   version = "^1.4.0"
 
 [[constraint]]
-  branch = "master"
-  name = "github.com/jinzhu/copier"
-
-[[constraint]]
   name = "github.com/gorilla/mux"
   version = "^1.7.0"

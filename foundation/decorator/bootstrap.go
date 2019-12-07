@@ -1,8 +1,8 @@
 package decorator
 
 import (
+	"lanvard/contract/decorator"
 	"lanvard/foundation"
-	"lanvard/interface/decorator"
 )
 
 type BootstrapDecorator struct {

@@ -18,14 +18,6 @@
   version = "v1.7.3"
 
 [[projects]]
-  branch = "master"
-  digest = "1:79b12149793d2879561af016d7464964890951e2685aae24a72f91690aa3cd53"
-  name = "github.com/jinzhu/copier"
-  packages = ["."]
-  pruneopts = ""
-  revision = "b57f9002281ac48ed8cbc489b1e91121e1a0824c"
-
-[[projects]]
   digest = "1:7df5a9695a743c3e1626b28bb8741602c8c15527e1efaeaec48ab2ff9a23f74c"
   name = "github.com/joho/godotenv"
   packages = ["."]
@@ -50,19 +42,18 @@
   version = "v1.4.0"
 
 [[projects]]
-  digest = "1:ab9547706f32a7535bb4f25d6b58ad00436630593cd3e3ed4602f1613ed84783"
+  digest = "1:5a53f6ef09fb1ac261a97f8a72e8837ff53cbaa969022a6679da210e4cbe9b0f"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
   pruneopts = ""
-  revision = "f221b8435cfb71e54062f6c6e99e9ade30b124d5"
-  version = "v2.2.4"
+  revision = "1f64d6156d11335c3f22d9330b0ad14fc1e789ce"
+  version = "v2.2.7"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
     "github.com/gorilla/mux",
-    "github.com/jinzhu/copier",
     "github.com/joho/godotenv",
     "github.com/stretchr/testify/assert",
   ]

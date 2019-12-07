@@ -2,8 +2,8 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
+	interfaceHttp "lanvard/contract/http"
 	httpFoundation "lanvard/foundation/http"
-	interfaceHttp "lanvard/interface/http"
 	"lanvard/src/app/http"
 	"lanvard/src/bootstrap"
 	"testing"

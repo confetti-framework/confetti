@@ -1,7 +1,7 @@
 package config
 
 import (
-	"lanvard/interface/decorator"
+	"lanvard/contract/decorator"
 	"lanvard/src/app/providers"
 	. "lanvard/support"
 	"path/filepath"

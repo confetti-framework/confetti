@@ -2,9 +2,9 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
+	contractsHttp "lanvard/contract/http"
 	"lanvard/foundation"
 	httpFoundation "lanvard/foundation/http"
-	contractsHttp "lanvard/interface/http"
 	"testing"
 )
 
