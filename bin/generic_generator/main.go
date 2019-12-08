@@ -4,10 +4,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/lanvard/support"
 	"io/ioutil"
 	"lanvard/config"
 	"lanvard/config/generics"
-	"lanvard/support"
 	"os"
 	"path/filepath"
 	"regexp"

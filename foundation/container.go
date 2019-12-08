@@ -1,7 +1,7 @@
 package foundation
 
 import (
-	"lanvard/support"
+	"github.com/lanvard/support"
 	"reflect"
 )
 

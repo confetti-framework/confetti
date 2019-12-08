@@ -1,10 +1,10 @@
 package test
 
 import (
+	"github.com/lanvard/support"
 	"github.com/stretchr/testify/assert"
 	"lanvard/config"
 	"lanvard/src/bootstrap"
-	"lanvard/support"
 	"reflect"
 	"testing"
 )

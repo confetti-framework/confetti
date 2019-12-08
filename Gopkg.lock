@@ -26,6 +26,17 @@
   version = "v1.3.0"
 
 [[projects]]
+  branch = "develop"
+  digest = "1:2cdf08674514c1ef4574415c98451b2baa17c915871be1746b6c46b0781f5c38"
+  name = "github.com/lanvard/support"
+  packages = [
+    ".",
+    "caller",
+  ]
+  pruneopts = ""
+  revision = "30dbcfc8263c55c1d57190d8e768bb7878eec674"
+
+[[projects]]
   digest = "1:256484dbbcd271f9ecebc6795b2df8cad4c458dd0f5fd82a8c2fa0c29f233411"
   name = "github.com/pmezard/go-difflib"
   packages = ["difflib"]
@@ -55,6 +66,8 @@
   input-imports = [
     "github.com/gorilla/mux",
     "github.com/joho/godotenv",
+    "github.com/lanvard/support",
+    "github.com/lanvard/support/caller",
     "github.com/stretchr/testify/assert",
   ]
   solver-name = "gps-cdcl"

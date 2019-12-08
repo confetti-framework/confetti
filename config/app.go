@@ -1,9 +1,9 @@
 package config
 
 import (
+	. "github.com/lanvard/support"
 	"lanvard/contract/decorator"
 	"lanvard/src/app/providers"
-	. "lanvard/support"
 	"path/filepath"
 	"runtime"
 )
