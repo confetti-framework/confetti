@@ -27,14 +27,14 @@
 
 [[projects]]
   branch = "develop"
-  digest = "1:2cdf08674514c1ef4574415c98451b2baa17c915871be1746b6c46b0781f5c38"
+  digest = "1:6be841b9c5d5f5b72648dbc35bd27284422e931df4f11050a69610be7f9c3c3e"
   name = "github.com/lanvard/support"
   packages = [
     ".",
     "caller",
   ]
   pruneopts = ""
-  revision = "30dbcfc8263c55c1d57190d8e768bb7878eec674"
+  revision = "4e2b1b2941b9987f5e64ad7bf61e31174438e662"
 
 [[projects]]
   digest = "1:256484dbbcd271f9ecebc6795b2df8cad4c458dd0f5fd82a8c2fa0c29f233411"
