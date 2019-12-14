@@ -4,7 +4,7 @@ import (
 	"github.com/lanvard/support/environment/boo"
 	"github.com/lanvard/support/environment/str"
 	"golang.org/x/text/language"
-	"lanvard/config/helpers"
+	"lanvard/config/entity"
 	"time"
 )
 
@@ -15,7 +15,7 @@ var App = struct {
 	Url            string
 	AssetUrl       string
 	LineSeparator  string
-	BasePath       helpers.BasePath
+	BasePath       entity.BasePath
 	Timezone       *time.Location
 	Locale         language.Tag
 	FallbackLocale language.Tag
@@ -101,7 +101,7 @@ var App = struct {
 	   | The base path is the fully qualified path to the project root.
 	   |
 	*/
-	BasePath: helpers.NewBasePath(),
+	BasePath: entity.NewBasePath(),
 
 	/*
 	   |--------------------------------------------------------------------------
