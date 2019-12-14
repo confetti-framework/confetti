@@ -1,6 +1,6 @@
 package console
 
-import "lanvard/foundation"
+import "github.com/lanvard/foundation"
 
 type Kernel struct {
 	App foundation.Application

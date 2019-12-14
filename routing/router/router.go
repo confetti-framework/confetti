@@ -1,8 +1,8 @@
 package router
 
 import (
-	"lanvard/foundation"
-	"lanvard/http"
+	"github.com/lanvard/foundation"
+	"github.com/lanvard/http"
 	"lanvard/routing"
 )
 

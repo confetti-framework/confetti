@@ -1,6 +1,6 @@
 package exception
 
-import "lanvard/foundation"
+import "github.com/lanvard/foundation"
 
 type Handler struct {
 	app foundation.Application

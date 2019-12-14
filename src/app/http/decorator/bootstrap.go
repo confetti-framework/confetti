@@ -1,13 +1,14 @@
 package decorator
 
 import (
-	contract "lanvard/contract/decorator"
-	"lanvard/foundation"
-	"lanvard/foundation/bootstrap"
-	"lanvard/foundation/decorator"
+	contract "github.com/lanvard/contract/decorator"
+	"github.com/lanvard/foundation"
+	"github.com/lanvard/foundation/bootstrap"
+	"github.com/lanvard/foundation/decorator"
 )
 
 var bootstraps = []contract.Bootstrap{
+	bootstrap.BasePathProvider{},
 	bootstrap.LoadEnvironmentVariables{},
 	RegisterProviders{},
 	BootProviders{},

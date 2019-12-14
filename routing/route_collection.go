@@ -2,7 +2,7 @@ package routing
 
 import (
 	"github.com/gorilla/mux"
-	"lanvard/http"
+	"github.com/lanvard/http"
 )
 
 type MapUrlRoutes = map[string]Route

@@ -53,6 +53,21 @@
   version = "v1.4.0"
 
 [[projects]]
+  digest = "1:740b51a55815493a8d0f2b1e0d0ae48fe48953bf7eaf3fcc4198823bf67768c0"
+  name = "golang.org/x/text"
+  packages = [
+    "internal/gen",
+    "internal/language",
+    "internal/language/compact",
+    "internal/tag",
+    "language",
+    "unicode/cldr",
+  ]
+  pruneopts = ""
+  revision = "342b2e1fbaa52c93f31447ad2c6abc048c63e475"
+  version = "v0.3.2"
+
+[[projects]]
   digest = "1:5a53f6ef09fb1ac261a97f8a72e8837ff53cbaa969022a6679da210e4cbe9b0f"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
@@ -69,6 +84,7 @@
     "github.com/lanvard/support",
     "github.com/lanvard/support/caller",
     "github.com/stretchr/testify/assert",
+    "golang.org/x/text/language",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

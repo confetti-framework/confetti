@@ -1,9 +1,9 @@
 package main
 
 import (
-	httpInterface "lanvard/contract/http"
-	foundation "lanvard/foundation/http"
-	appHttp "lanvard/http"
+	httpInterface "github.com/lanvard/contract/http"
+	foundation "github.com/lanvard/foundation/http"
+	appHttp "github.com/lanvard/http"
 	"lanvard/src/bootstrap"
 	"log"
 	net "net/http"

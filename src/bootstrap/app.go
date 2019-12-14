@@ -1,10 +1,10 @@
 package bootstrap
 
 import (
-	consoleInterface "lanvard/contract/console"
-	exceptionInterface "lanvard/contract/exception"
-	interfaceHttp "lanvard/contract/http"
-	"lanvard/foundation"
+	consoleInterface "github.com/lanvard/contract/console"
+	exceptionInterface "github.com/lanvard/contract/exception"
+	interfaceHttp "github.com/lanvard/contract/http"
+	"github.com/lanvard/foundation"
 	"lanvard/src/app/console"
 	"lanvard/src/app/exception"
 	"lanvard/src/app/http"
@@ -26,7 +26,7 @@ func init() {
 
 	bootApp = foundation.Application{Container: foundation.NewContainer()}
 
-	bootApp.SetBasePath()
+	bootApp.BindPathsInContainer()
 
 	bootApp = http.NewKernel(bootApp).Bootstrap()
 }
@@ -35,7 +35,6 @@ func NewApp() foundation.Application {
 
 	app := foundation.Application{
 		Container: bootApp.Container.Copy(),
-		BasePath:  bootApp.BasePath,
 	}
 
 	app.Container.Singleton(

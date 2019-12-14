@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"lanvard/http"
+	"github.com/lanvard/http"
 	"lanvard/routing"
 )
 

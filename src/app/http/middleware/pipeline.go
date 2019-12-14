@@ -4,9 +4,9 @@
 package middleware
 
 import (
+	"github.com/lanvard/foundation"
+	"github.com/lanvard/http"
 	"github.com/lanvard/support/caller"
-	"lanvard/foundation"
-	"lanvard/http"
 )
 
 type Passable = http.Request
@@ -32,7 +32,7 @@ func NewPipeline(app foundation.Application) Pipeline {
 	return Pipeline{App: app}
 }
 
-func (p Pipeline) Path() string {
+func (p Pipeline) AppPath() string {
 	return caller.Path()
 }
 

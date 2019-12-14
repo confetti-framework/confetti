@@ -3,15 +3,15 @@
 package generics
 
 import (
+	"github.com/lanvard/http"
+	"github.com/lanvard/pipeline"
 	"lanvard/config"
-	"lanvard/http"
-	"lanvard/pipeline"
 )
 
 type Vars map[string]interface{}
 
 type GenericAble interface {
-	Path() string
+	AppPath() string
 }
 
 type Generic struct {

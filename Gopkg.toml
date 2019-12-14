@@ -11,5 +11,20 @@
   version = "^1.7.0"
 
 [[constraint]]
+  name = "golang.org/x/text"
+  version = "^0.3.0"
+
+[[constraint]]
   name = "github.com/lanvard/support"
-  branch = "develop"
+
+[[constraint]]
+  name = "github.com/lanvard/contract"
+
+[[constraint]]
+  name = "github.com/lanvard/foundation"
+
+[[constraint]]
+  name = "github.com/lanvard/http"
+
+[[constraint]]
+  name = "github.com/lanvard/pipeline"

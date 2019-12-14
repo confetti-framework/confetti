@@ -1,7 +1,7 @@
 package routing
 
 import (
-	"lanvard/http"
+	"github.com/lanvard/http"
 	net "net/http"
 )
 

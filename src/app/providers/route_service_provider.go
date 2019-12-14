@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"lanvard/foundation"
+	"github.com/lanvard/foundation"
 	"lanvard/routing"
 	"lanvard/src/routes"
 )

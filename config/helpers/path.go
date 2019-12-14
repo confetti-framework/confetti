@@ -1,13 +1,22 @@
-package foundation
+package helpers
 
-import "os"
-
-type BasePath string
+import (
+	"os"
+	"path/filepath"
+	"runtime"
+)
 
 const pathSeparator = string(os.PathSeparator)
 
+type BasePath string
+
+func NewBasePath() BasePath {
+	_, filename, _, _ := runtime.Caller(0)
+	return BasePath(filepath.Dir(filepath.Dir(filename)))
+}
+
 // Get the path to the application "app" directory.
-func (basePath BasePath) Path() string {
+func (basePath BasePath) AppPath() string {
 	return string(basePath) + pathSeparator + "app"
 }
 
@@ -21,7 +30,7 @@ func (basePath BasePath) BootstrapPath() string {
 	return string(basePath) + pathSeparator + "bootstrap"
 }
 
-// Get the path to the application configuration files.
+// Get the path to the ration files.
 func (basePath BasePath) ConfigPath() string {
 	return string(basePath) + pathSeparator + "app"
 }

@@ -17,7 +17,7 @@ import (
 func main() {
 	for _, generic := range generics.Generics {
 
-		file := generic.Struct.Path()
+		file := generic.Struct.AppPath()
 		content := contentByPath(file)
 
 		content = replaceDocs(content, file)

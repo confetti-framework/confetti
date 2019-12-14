@@ -1,9 +1,9 @@
 package http
 
 import (
-	"lanvard/foundation"
-	"lanvard/foundation/http"
-	foundationMiddleware "lanvard/foundation/http/middleware"
+	"github.com/lanvard/foundation"
+	"github.com/lanvard/foundation/http"
+	foundationMiddleware "github.com/lanvard/foundation/http/middleware"
 	"lanvard/src/app/http/middleware"
 )
 

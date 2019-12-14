@@ -1,14 +1,14 @@
 package decorator
 
 import (
-	"lanvard/config"
-	"lanvard/foundation"
+	"github.com/lanvard/foundation"
+	"lanvard/config/providers"
 )
 
 type BootProviders struct{}
 
 func (r BootProviders) Bootstrap(app foundation.Application) foundation.Application {
-	for _, bootstrapper := range config.App.BootProviders {
+	for _, bootstrapper := range providers.Providers.BootProviders {
 		app = bootstrapper.Boot(app)
 	}
 
