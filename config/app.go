@@ -85,10 +85,10 @@ var App = struct {
 
 	/*
 	   |--------------------------------------------------------------------------
-	   |
+	   | Line separator
 	   |--------------------------------------------------------------------------
 	   |
-	   |
+	   | Determine what the line separator should be for your application
 	   |
 	*/
 	LineSeparator: str.EnvOr("LINE_SEPARATOR", "\n"),
