@@ -4,7 +4,7 @@ import (
 	"github.com/lanvard/foundation"
 	"github.com/lanvard/foundation/http"
 	foundationMiddleware "github.com/lanvard/foundation/http/middleware"
-	middleware2 "lanvard/app/http/middleware"
+	"lanvard/app/http/middleware"
 )
 
 func NewKernel(app foundation.Application) http.Kernel {
@@ -14,8 +14,8 @@ func NewKernel(app foundation.Application) http.Kernel {
 	}
 }
 
-func pipes() []middleware2.PipeInterface {
-	return []middleware2.PipeInterface{
+func pipes() []middleware.PipeInterface {
+	return []middleware.PipeInterface{
 		// todo push app
 		foundationMiddleware.ValidatePostSize{},
 	}

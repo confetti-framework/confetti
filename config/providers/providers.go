@@ -22,7 +22,9 @@ var Providers = struct {
 	   | that is provided by a service provider which has not loaded yet.
 	   |
 	*/
-	RegisterProviders: []decorator.RegisterServiceProvider{},
+	RegisterProviders: []decorator.RegisterServiceProvider{
+		providers.AppServiceProvider{},
+	},
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -39,6 +41,7 @@ var Providers = struct {
 	   |
 	*/
 	BootProviders: []decorator.BootServiceProvider{
+		providers.AppServiceProvider{},
 		providers.RouteServiceProvider{},
 	},
 }
