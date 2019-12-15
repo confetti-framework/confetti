@@ -3,8 +3,8 @@ package test
 import (
 	"github.com/lanvard/support"
 	"github.com/stretchr/testify/assert"
+	"lanvard/bootstrap"
 	"lanvard/config"
-	"lanvard/src/bootstrap"
 	"reflect"
 	"testing"
 )

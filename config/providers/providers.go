@@ -2,7 +2,7 @@ package providers
 
 import (
 	"github.com/lanvard/contract/decorator"
-	"lanvard/src/app/providers"
+	"lanvard/app/providers"
 )
 
 var Providers = struct {

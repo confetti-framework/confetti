@@ -5,9 +5,9 @@ import (
 	exceptionInterface "github.com/lanvard/contract/exception"
 	interfaceHttp "github.com/lanvard/contract/http"
 	"github.com/lanvard/foundation"
-	"lanvard/src/app/console"
-	"lanvard/src/app/exception"
-	"lanvard/src/app/http"
+	"lanvard/app/console"
+	"lanvard/app/exception"
+	"lanvard/app/http"
 )
 
 var bootApp foundation.Application

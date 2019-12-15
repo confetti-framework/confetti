@@ -4,7 +4,7 @@ import (
 	httpInterface "github.com/lanvard/contract/http"
 	foundation "github.com/lanvard/foundation/http"
 	appHttp "github.com/lanvard/http"
-	"lanvard/src/bootstrap"
+	"lanvard/bootstrap"
 	"log"
 	net "net/http"
 )

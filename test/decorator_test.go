@@ -2,8 +2,8 @@ package test
 
 import (
 	"github.com/stretchr/testify/assert"
-	"lanvard/src/app/http/decorator"
-	"lanvard/src/bootstrap"
+	"lanvard/app/http/decorator"
+	"lanvard/bootstrap"
 	"os"
 	"testing"
 )

@@ -2,8 +2,8 @@ package providers
 
 import (
 	"github.com/lanvard/foundation"
+	"lanvard/routes"
 	"lanvard/routing"
-	"lanvard/src/routes"
 )
 
 type RouteServiceProvider struct{}

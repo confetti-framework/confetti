@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"lanvard/app/http/controllers"
 	"lanvard/routing"
-	"lanvard/src/app/http/controllers"
 )
 
 /*
