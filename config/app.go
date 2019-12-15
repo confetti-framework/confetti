@@ -1,29 +1,27 @@
 package config
 
 import (
-	"lanvard/interface/decorator"
-	"lanvard/src/app/providers"
-	. "lanvard/support"
-	"path/filepath"
-	"runtime"
+	"github.com/lanvard/support/environment/boo"
+	"github.com/lanvard/support/environment/str"
+	"golang.org/x/text/language"
+	"lanvard/config/entity"
+	"time"
 )
 
 var App = struct {
-	Name              string
-	Env               string
-	Debug             bool
-	Url               string
-	AssetUrl          string
-	LineSeparator     string
-	BasePath          string
-	Timezone          string
-	Locale            string
-	FallbackLocale    string
-	FakerLocale       string
-	Key               string
-	Cipher            string
-	RegisterProviders []decorator.RegisterServiceProvider
-	BootProviders     []decorator.BootServiceProvider
+	Name           string
+	Env            string
+	Debug          bool
+	Url            string
+	AssetUrl       string
+	LineSeparator  string
+	BasePath       entity.BasePath
+	Timezone       *time.Location
+	Locale         language.Tag
+	FallbackLocale language.Tag
+	FakerLocale    language.Tag
+	Key            string
+	Cipher         string
 }{
 
 	/*
@@ -36,7 +34,7 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: EnvOr("APP_NAME", "Lanvard"),
+	Name: str.EnvOr("APP_NAME", "Lanvard"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -48,7 +46,7 @@ var App = struct {
 	   | services the application utilizes. Set this in your ".env" file.
 	   |
 	*/
-	Env: EnvOr("APP_ENV", "production"),
+	Env: str.EnvOr("APP_ENV", "production"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -60,7 +58,7 @@ var App = struct {
 	   | application. If disabled, a simple generic error page is shown.
 	   |
 	*/
-	Debug: EnvOrBool("APP_DEBUG", false),
+	Debug: boo.EnvOr("APP_DEBUG", false),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -72,7 +70,7 @@ var App = struct {
 	   | your application so that it is used when running Artisan tasks.
 	   |
 	*/
-	Url: EnvOr("APP_URL", "http://localhost"),
+	Url: str.EnvOr("APP_URL", "http://localhost"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -83,27 +81,27 @@ var App = struct {
 	   | assets on an external service like Amazon S3.
 	   |
 	*/
-	AssetUrl: EnvOr("ASSET_URL", "http://asset.localhost"),
+	AssetUrl: str.EnvOr("ASSET_URL", "http://asset.localhost"),
 
 	/*
 	   |--------------------------------------------------------------------------
-	   |
+	   | Line separator
 	   |--------------------------------------------------------------------------
 	   |
-	   |
+	   | Determine what the line separator should be for your application
 	   |
 	*/
-	LineSeparator: EnvOr("LINE_SEPARATOR", "\n"),
+	LineSeparator: str.EnvOr("LINE_SEPARATOR", "\n"),
 
 	/*
 	   |--------------------------------------------------------------------------
-	   | Base Path
+	   | Base AppPath
 	   |--------------------------------------------------------------------------
 	   |
 	   | The base path is the fully qualified path to the project root.
 	   |
 	*/
-	BasePath: getBasePath(),
+	BasePath: entity.NewBasePath(),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -115,7 +113,7 @@ var App = struct {
 	   | ahead and set this to a sensible default for you out of the box.
 	   |
 	*/
-	Timezone: "UTC",
+	Timezone: time.UTC,
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -127,7 +125,7 @@ var App = struct {
 	   | to any of the locales which will be supported by the application.
 	   |
 	*/
-	Locale: "en",
+	Locale: language.AmericanEnglish,
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -139,7 +137,7 @@ var App = struct {
 	   | the language folders that are provided through your application.
 	   |
 	*/
-	FallbackLocale: "en",
+	FallbackLocale: language.AmericanEnglish,
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -151,7 +149,7 @@ var App = struct {
 	   | localized telephone numbers, street address information and more.
 	   |
 	*/
-	FakerLocale: "en_US",
+	FakerLocale: language.AmericanEnglish,
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -163,7 +161,7 @@ var App = struct {
 	   | will not be safe. Please do this before deploying an application!
 	   |
 	*/
-	Key: Env("APP_KEY"),
+	Key: str.Env("APP_KEY"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -177,42 +175,4 @@ var App = struct {
 	   |
 	*/
 	Cipher: "AES-256-CBC",
-
-	/*
-	   |--------------------------------------------------------------------------
-	   | Autoloaded Register Service Providers
-	   |--------------------------------------------------------------------------
-	   |
-	   | The service providers listed here will be automatically loaded on the
-	   | request to your application. Within the register method, you should only
-	   | bind things into the service container. You should never attempt to
-	   | register any event listeners, routes, or any other piece of functionality
-	   | within the register method. Otherwise, you may accidentally use a service
-	   | that is provided by a service provider which has not loaded yet.
-	   |
-	*/
-	RegisterProviders: []decorator.RegisterServiceProvider{},
-
-	/*
-	   |--------------------------------------------------------------------------
-	   | Autoloaded Boot Service Providers
-	   |--------------------------------------------------------------------------
-	   |
-	   | This method is called after all other service providers have been
-	   | registered, meaning you have access to all other services that have been
-	   | registered by the framework. Feel free to add your own services to this
-	   | slice to grant expanded functionality to your applications.
-	   |
-	   | You can have a service provider with a register and a boot method. Than
-	   | you have to add this service to RegisterProviders and BootProviders
-	   |
-	*/
-	BootProviders: []decorator.BootServiceProvider{
-		providers.RouteServiceProvider{},
-	},
-}
-
-func getBasePath() string {
-	_, filename, _, _ := runtime.Caller(0)
-	return filepath.Dir(filepath.Dir(filename))
 }

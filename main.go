@@ -1,10 +1,10 @@
 package main
 
 import (
-	foundation "lanvard/foundation/http"
-	appHttp "lanvard/http"
-	httpInterface "lanvard/interface/http"
-	"lanvard/src/bootstrap"
+	httpInterface "github.com/lanvard/contract/http"
+	foundation "github.com/lanvard/foundation/http"
+	appHttp "github.com/lanvard/http"
+	"lanvard/bootstrap"
 	"log"
 	net "net/http"
 )
@@ -63,8 +63,6 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	kernel := app.Make((*httpInterface.Kernel)(nil)).(foundation.Kernel)
 	appResponse := kernel.Handle(appHttp.NewRequest(app, *request))
 
-	println("appResponse")
-	println(appResponse.Content())
-
+	response.Write([]byte(appResponse.Content()))
 	// todo convert custom 'buffer' response to default go response
 }

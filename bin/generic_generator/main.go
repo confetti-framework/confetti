@@ -4,10 +4,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/lanvard/support"
 	"io/ioutil"
 	"lanvard/config"
 	"lanvard/config/generics"
-	"lanvard/support"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -17,7 +17,7 @@ import (
 func main() {
 	for _, generic := range generics.Generics {
 
-		file := generic.Struct.Path()
+		file := generic.Struct.AppPath()
 		content := contentByPath(file)
 
 		content = replaceDocs(content, file)
