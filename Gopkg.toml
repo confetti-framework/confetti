@@ -1,19 +1,4 @@
 [[constraint]]
-  name = "github.com/stretchr/testify"
-  version = "^1.4.0"
-
-[[constraint]]
-  name = "github.com/gorilla/mux"
-  version = "^1.7.0"
-
-[[constraint]]
-  name = "golang.org/x/text"
-  version = "^0.3.0"
-
-[[constraint]]
-  name = "github.com/lanvard/support"
-
-[[constraint]]
   name = "github.com/lanvard/contract"
 
 [[constraint]]
@@ -24,3 +9,14 @@
 
 [[constraint]]
   name = "github.com/lanvard/pipeline"
+
+[[constraint]]
+  name = "github.com/lanvard/support"
+
+[[constraint]]
+  name = "github.com/stretchr/testify"
+  version = "^1.4.0"
+
+[[constraint]]
+  name = "golang.org/x/text"
+  version = "^0.3.0"
