@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/lanvard/http"
-	"lanvard/routing"
+	"github.com/lanvard/routing"
 )
 
 var User = struct {
