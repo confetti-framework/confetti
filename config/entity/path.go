@@ -12,7 +12,7 @@ type BasePath string
 
 func NewBasePath() BasePath {
 	_, filename, _, _ := runtime.Caller(0)
-	return BasePath(filepath.Dir(filepath.Dir(filename)))
+	return BasePath(filepath.Dir(filepath.Dir(filepath.Dir(filename))))
 }
 
 // Get the path to the application "app" directory.
@@ -63,4 +63,9 @@ func (basePath BasePath) ResourcePath() string {
 // Get the path to the environment file.
 func (basePath BasePath) EnvironmentFile() string {
 	return string(basePath) + pathSeparator + ".env"
+}
+
+// Check if basePath has been set.
+func (basePath BasePath) IsEmpty() bool {
+	return len(basePath) > 0
 }

@@ -11,7 +11,6 @@ import (
 type Vars map[string]interface{}
 
 type GenericAble interface {
-	AppPath() string
 }
 
 type Generic struct {
@@ -33,7 +32,7 @@ type Generic struct {
 var Generics = []Generic{
 	{
 		Struct: pipeline.Pipeline{},
-		SaveTo: config.App.BasePath + "/src/app/http/middleware/pipeline.go",
+		SaveTo: string(config.App.BasePath) + "/app/http/middleware/pipeline.go",
 		Vars: Vars{
 			"Passable": (*http.Request)(nil),
 			"Result":   (*http.Response)(nil),

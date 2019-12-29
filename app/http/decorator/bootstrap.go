@@ -8,7 +8,6 @@ import (
 )
 
 var bootstraps = []contract.Bootstrap{
-	bootstrap.BasePathProvider{},
 	bootstrap.LoadEnvironmentVariables{},
 	RegisterProviders{},
 	BootProviders{},
