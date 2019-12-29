@@ -34,7 +34,7 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: str.EnvOr("APP_NAME", "Lanvard"),
+	Name: str.EnvOr("APP_NAME", "LanvardDefault123"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -98,7 +98,8 @@ var App = struct {
 	   | Base AppPath
 	   |--------------------------------------------------------------------------
 	   |
-	   | The base path is the fully qualified path to the project root.
+	   | The base path is the fully qualified path to the project root. Feel free
+	   | to adjust this so that it fits to your needs.
 	   |
 	*/
 	BasePath: entity.NewBasePath(),

@@ -65,6 +65,11 @@ func (basePath BasePath) EnvironmentFile() string {
 	return string(basePath) + pathSeparator + ".env"
 }
 
+// Get the path to the environment file for environment testing.
+func (basePath BasePath) EnvironmentTestingFile() string {
+	return string(basePath) + pathSeparator + ".env.testing"
+}
+
 // Check if basePath has been set.
 func (basePath BasePath) IsEmpty() bool {
 	return len(basePath) > 0

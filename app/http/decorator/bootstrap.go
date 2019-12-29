@@ -3,12 +3,10 @@ package decorator
 import (
 	contract "github.com/lanvard/contract/decorator"
 	"github.com/lanvard/foundation"
-	"github.com/lanvard/foundation/bootstrap"
 	"github.com/lanvard/foundation/decorator"
 )
 
 var bootstraps = []contract.Bootstrap{
-	bootstrap.LoadEnvironmentVariables{},
 	RegisterProviders{},
 	BootProviders{},
 }
