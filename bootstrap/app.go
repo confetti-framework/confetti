@@ -18,8 +18,8 @@ func init() {
 		| Create The Application
 		|--------------------------------------------------------------------------
 		|
-		| The first thing we will do is create a new Laravel application instance
-		| which serves as the "glue" for all the components of Laravel, and is
+		| The first thing we will do is create a new Lanvard application instance
+		| which serves as the "glue" for all the components of Lanvard, and is
 		| the IoC container for the system binding all of the various parts.
 		|
 	*/
@@ -28,10 +28,10 @@ func init() {
 
 	bootApp.BindPathsInContainer()
 
-	bootApp = http.NewKernel(bootApp).Bootstrap()
+	bootApp = *http.NewKernel(&bootApp).Bootstrap()
 }
 
-func NewApp() foundation.Application {
+func NewApp() *foundation.Application {
 
 	app := foundation.Application{
 		Container: bootApp.Container.Copy(),
@@ -39,18 +39,18 @@ func NewApp() foundation.Application {
 
 	app.Container.Singleton(
 		(*interfaceHttp.Kernel)(nil),
-		http.NewKernel(app),
+		http.NewKernel(&app),
 	)
 
 	app.Container.Singleton(
 		(*consoleInterface.Kernel)(nil),
-		console.NewKernel(app),
+		console.NewKernel(&app),
 	)
 
 	app.Container.Singleton(
 		(*exceptionInterface.Handler)(nil),
-		exception.NewHandler(app),
+		exception.NewHandler(&app),
 	)
 
-	return app
+	return &app
 }

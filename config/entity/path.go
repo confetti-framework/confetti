@@ -20,7 +20,7 @@ func (basePath BasePath) AppPath() string {
 	return string(basePath) + pathSeparator + "app"
 }
 
-// Get the base path of the Laravel installation.
+// Get the base path of the Lanvard installation.
 func (basePath BasePath) BasePath() string {
 	return string(basePath)
 }
@@ -68,9 +68,4 @@ func (basePath BasePath) EnvironmentFile() string {
 // Get the path to the environment file for environment testing.
 func (basePath BasePath) EnvironmentTestingFile() string {
 	return string(basePath) + pathSeparator + ".env.testing"
-}
-
-// Check if basePath has been set.
-func (basePath BasePath) IsEmpty() bool {
-	return len(basePath) > 0
 }

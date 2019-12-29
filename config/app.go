@@ -34,7 +34,7 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: str.EnvOr("APP_NAME", "LanvardDefault123"),
+	Name: str.EnvOr("APP_NAME", "Lanvard"),
 
 	/*
 	   |--------------------------------------------------------------------------

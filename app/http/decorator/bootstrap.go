@@ -11,7 +11,7 @@ var bootstraps = []contract.Bootstrap{
 	BootProviders{},
 }
 
-func Bootstrap(app foundation.Application) foundation.Application {
+func Bootstrap(app *foundation.Application) *foundation.Application {
 	dec := decorator.BootstrapDecorator{Bootstraps: bootstraps}
 
 	return dec.BootstrapWith(app)
