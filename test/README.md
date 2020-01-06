@@ -1,0 +1,1 @@
+Because the lanvard/lanvard repository actually only contains configuration, the logic is mainly in the vendor modules. Are you looking for the right test, then search in the other respositories. Tests are also referred to in the documentation.

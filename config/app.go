@@ -1,8 +1,7 @@
 package config
 
 import (
-	"github.com/lanvard/support/environment/boo"
-	"github.com/lanvard/support/environment/str"
+	"github.com/lanvard/support/environment"
 	"golang.org/x/text/language"
 	"lanvard/config/entity"
 	"time"
@@ -34,11 +33,11 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: str.EnvOr("APP_NAME", "Lanvard"),
+	Name: environment.StrEnvOr("APP_NAME", "Lanvard"),
 
 	/*
 	   |--------------------------------------------------------------------------
-	   | Application Environment
+	   | Application IsEnvironment
 	   |--------------------------------------------------------------------------
 	   |
 	   | This value determines the "environment" your application is currently
@@ -46,7 +45,7 @@ var App = struct {
 	   | services the application utilizes. Set this in your ".env" file.
 	   |
 	*/
-	Env: str.EnvOr("APP_ENV", "production"),
+	Env: environment.StrEnvOr("APP_ENV", "production"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -58,7 +57,7 @@ var App = struct {
 	   | application. If disabled, a simple generic error page is shown.
 	   |
 	*/
-	Debug: boo.EnvOr("APP_DEBUG", false),
+	Debug: environment.BoolEnvOr("APP_DEBUG", false),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -70,7 +69,7 @@ var App = struct {
 	   | your application so that it is used when running Artisan tasks.
 	   |
 	*/
-	Url: str.EnvOr("APP_URL", "http://localhost"),
+	Url: environment.StrEnvOr("APP_URL", "http://localhost"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -81,7 +80,7 @@ var App = struct {
 	   | assets on an external service like Amazon S3.
 	   |
 	*/
-	AssetUrl: str.EnvOr("ASSET_URL", "http://asset.localhost"),
+	AssetUrl: environment.StrEnvOr("ASSET_URL", "http://asset.localhost"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -91,7 +90,7 @@ var App = struct {
 	   | Determine what the line separator should be for your application
 	   |
 	*/
-	LineSeparator: str.EnvOr("LINE_SEPARATOR", "\n"),
+	LineSeparator: environment.StrEnvOr("LINE_SEPARATOR", "\n"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -157,12 +156,12 @@ var App = struct {
 	   | Encryption Key
 	   |--------------------------------------------------------------------------
 	   |
-	   | This key is used by the Illuminate encrypter service and should be set
+	   | This key is used by the Lanvard encrypter service and should be set
 	   | to a random, 32 character string, otherwise these encrypted strings
 	   | will not be safe. Please do this before deploying an application!
 	   |
 	*/
-	Key: str.Env("APP_KEY"),
+	Key: environment.StrEnv("APP_KEY"),
 
 	/*
 	   |--------------------------------------------------------------------------
