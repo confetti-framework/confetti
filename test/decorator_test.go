@@ -9,7 +9,6 @@ import (
 )
 
 func Test_bootstrap_environments(t *testing.T) {
-
 	_ = decorator.Bootstrap(bootstrap.NewApp())
 
 	assert.NotZero(t, os.Getenv("APP_ENV"))

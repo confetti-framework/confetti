@@ -61,7 +61,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   |
 	*/
 	kernel := app.Make((*httpInterface.Kernel)(nil)).(foundation.Kernel)
-	appResponse := kernel.Handle(appHttp.NewRequest(app, *request))
+	appResponse := kernel.Handle(appHttp.NewRequest(&app, *request))
 
 	response.Write([]byte(appResponse.Content()))
 	// todo convert custom 'buffer' response to default go response

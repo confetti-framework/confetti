@@ -7,7 +7,7 @@ import (
 type AppServiceProvider struct{}
 
 // Register any application services.
-func (a AppServiceProvider) Register(app foundation.Application) foundation.Application {
+func (a AppServiceProvider) Register(app *foundation.Application) *foundation.Application {
 
 	//
 
@@ -15,7 +15,7 @@ func (a AppServiceProvider) Register(app foundation.Application) foundation.Appl
 }
 
 // Bootstrap any application services.
-func (a AppServiceProvider) Boot(app foundation.Application) foundation.Application {
+func (a AppServiceProvider) Boot(app *foundation.Application) *foundation.Application {
 
 	//
 

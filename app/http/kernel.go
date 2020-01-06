@@ -7,7 +7,7 @@ import (
 	"lanvard/app/http/middleware"
 )
 
-func NewKernel(app foundation.Application) http.Kernel {
+func NewKernel(app *foundation.Application) http.Kernel {
 	return http.Kernel{
 		App:        app,
 		Middleware: pipes(),
@@ -16,7 +16,7 @@ func NewKernel(app foundation.Application) http.Kernel {
 
 func pipes() []middleware.PipeInterface {
 	return []middleware.PipeInterface{
-		// todo push app
+		// todo remove or use ValidatePostSize
 		foundationMiddleware.ValidatePostSize{},
 	}
 }

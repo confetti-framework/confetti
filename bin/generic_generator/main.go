@@ -17,7 +17,7 @@ import (
 func main() {
 	for _, generic := range generics.Generics {
 
-		file := generic.Struct.AppPath()
+		file := config.App.BasePath.AppPath()
 		content := contentByPath(file)
 
 		content = replaceDocs(content, file)
@@ -57,7 +57,7 @@ func contentByPath(file string) string {
 }
 
 func replaceDocs(content string, originalFile string) string {
-	originalRelative := strings.Replace(originalFile, config.App.BasePath, "", 1)
+	originalRelative := strings.Replace(originalFile, string(config.App.BasePath), "", 1)
 
 	regexOriginal := regexp.MustCompile("This is the original file")
 	content = regexOriginal.ReplaceAllString(content, "Original file: "+originalRelative)

@@ -12,7 +12,7 @@ type BasePath string
 
 func NewBasePath() BasePath {
 	_, filename, _, _ := runtime.Caller(0)
-	return BasePath(filepath.Dir(filepath.Dir(filename)))
+	return BasePath(filepath.Dir(filepath.Dir(filepath.Dir(filename))))
 }
 
 // Get the path to the application "app" directory.
@@ -20,7 +20,7 @@ func (basePath BasePath) AppPath() string {
 	return string(basePath) + pathSeparator + "app"
 }
 
-// Get the base path of the Laravel installation.
+// Get the base path of the Lanvard installation.
 func (basePath BasePath) BasePath() string {
 	return string(basePath)
 }
@@ -63,4 +63,9 @@ func (basePath BasePath) ResourcePath() string {
 // Get the path to the environment file.
 func (basePath BasePath) EnvironmentFile() string {
 	return string(basePath) + pathSeparator + ".env"
+}
+
+// Get the path to the environment file for environment testing.
+func (basePath BasePath) EnvironmentTestingFile() string {
+	return string(basePath) + pathSeparator + ".env.testing"
 }

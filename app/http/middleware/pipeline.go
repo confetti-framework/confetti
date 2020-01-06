@@ -19,7 +19,7 @@ type PipeInterface interface {
 
 // noinspection GoNameStartsWithPackageName
 type Pipeline struct {
-	App foundation.Application
+	App *foundation.Application
 
 	// The object being passed through the contract.
 	Passable Passable
@@ -28,7 +28,7 @@ type Pipeline struct {
 	Pipes []PipeInterface
 }
 
-func NewPipeline(app foundation.Application) Pipeline {
+func NewPipeline(app *foundation.Application) Pipeline {
 	return Pipeline{App: app}
 }
 
