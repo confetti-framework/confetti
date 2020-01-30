@@ -33,8 +33,9 @@ func init() {
 
 func NewApp() *foundation.Application {
 
+	newContainer := bootApp.Container.Copy()
 	app := foundation.Application{
-		Container: bootApp.Container.Copy(),
+		Container: newContainer,
 	}
 
 	app.Container.Singleton(
