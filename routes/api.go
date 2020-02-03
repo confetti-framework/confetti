@@ -16,9 +16,9 @@ import (
 |
 */
 var Api = []RouteCollection{
-	Get("/users", controllers.User.Index),
-	Get("/users/{ids}", controllers.User.Show),
+	Get("/users/{user_ids?}", controllers.User.Index),
+	Get("/user/{user_id}", controllers.User.Show),
 	Post("/users", controllers.User.Store),
-	Delete("/users/{ids}", controllers.User.Destroy),
+	Delete("/users/{user_ids}", controllers.User.Destroy),
 	Match([]string{"GET", "POST"}, "/", controllers.User.Store),
 }

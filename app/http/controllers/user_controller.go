@@ -6,10 +6,10 @@ import (
 )
 
 var User = struct {
-	Index   routing.ControllerMethod
-	Store   routing.ControllerMethod
-	Destroy routing.ControllerMethod
-	Show    routing.ControllerMethod
+	Index   routing.Controller
+	Store   routing.Controller
+	Destroy routing.Controller
+	Show    routing.Controller
 }{
 	Index: func(request http.Request) http.Response {
 
