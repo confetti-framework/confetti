@@ -1,9 +1,7 @@
 package bootstrap
 
 import (
-	consoleInterface "github.com/lanvard/contract/console"
-	exceptionInterface "github.com/lanvard/contract/exception"
-	interfaceHttp "github.com/lanvard/contract/http"
+	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation"
 	"lanvard/app/console"
 	"lanvard/app/exception"
@@ -33,22 +31,23 @@ func init() {
 
 func NewApp() *foundation.Application {
 
+	newContainer := bootApp.Container.Copy()
 	app := foundation.Application{
-		Container: bootApp.Container.Copy(),
+		Container: newContainer,
 	}
 
 	app.Container.Singleton(
-		(*interfaceHttp.Kernel)(nil),
+		(*inter.HttpKernel)(nil),
 		http.NewKernel(&app),
 	)
 
 	app.Container.Singleton(
-		(*consoleInterface.Kernel)(nil),
+		(*inter.ConsoleKernel)(nil),
 		console.NewKernel(&app),
 	)
 
 	app.Container.Singleton(
-		(*exceptionInterface.Handler)(nil),
+		(*inter.ExceptionHandler)(nil),
 		exception.NewHandler(&app),
 	)
 

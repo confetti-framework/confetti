@@ -1,9 +1,9 @@
 package config
 
 import (
+	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/support/environment"
 	"golang.org/x/text/language"
-	"lanvard/config/entity"
 	"time"
 )
 
@@ -14,7 +14,7 @@ var App = struct {
 	Url            string
 	AssetUrl       string
 	LineSeparator  string
-	BasePath       entity.BasePath
+	BasePath       inter.BasePath
 	Timezone       *time.Location
 	Locale         language.Tag
 	FallbackLocale language.Tag
@@ -101,7 +101,7 @@ var App = struct {
 	   | to adjust this so that it fits to your needs.
 	   |
 	*/
-	BasePath: entity.NewBasePath(),
+	BasePath: NewPath(),
 
 	/*
 	   |--------------------------------------------------------------------------
