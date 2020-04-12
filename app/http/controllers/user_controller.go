@@ -1,30 +1,30 @@
 package controllers
 
 import (
-	"github.com/lanvard/http"
+	"github.com/lanvard/foundation/http/lanvard"
 	"github.com/lanvard/routing"
 )
 
 var User = struct {
-	Index   routing.Controller
-	Store   routing.Controller
-	Destroy routing.Controller
-	Show    routing.Controller
+	Index   routing.ControllerMethod
+	Store   routing.ControllerMethod
+	Destroy routing.ControllerMethod
+	Show    routing.ControllerMethod
 }{
-	Index: func(request http.Request) http.Response {
+	Index: func(request lanvard.Request) lanvard.Response {
 
-		return http.Json("{\"test all users\"}")
+		return lanvard.Json("{\"test all users\"}")
 	},
 
-	Show: func(request http.Request) http.Response {
-		return http.Json("{\"test show one user\"}")
+	Show: func(request lanvard.Request) lanvard.Response {
+		return lanvard.Json("{\"test show one user\"}")
 	},
 
-	Store: func(request http.Request) http.Response {
-		return http.Json("{\"test store use\"}")
+	Store: func(request lanvard.Request) lanvard.Response {
+		return lanvard.Json("{\"test store use\"}")
 	},
 
-	Destroy: func(request http.Request) http.Response {
-		return http.Json("{\"test remove use\"}")
+	Destroy: func(request lanvard.Request) lanvard.Response {
+		return lanvard.Json("{\"test remove use\"}")
 	},
 }

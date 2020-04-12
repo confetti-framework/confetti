@@ -5,12 +5,12 @@ package middleware
 
 import (
 	"github.com/lanvard/foundation"
-	"github.com/lanvard/http"
+	"github.com/lanvard/foundation/http/lanvard"
 	"github.com/lanvard/support/caller"
 )
 
-type Passable = http.Request
-type Result = http.Response
+type Passable = lanvard.Request
+type Result = lanvard.Response
 
 type Destination func(data Passable) Result
 type PipeInterface interface {

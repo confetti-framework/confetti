@@ -6,6 +6,7 @@ import (
 	"lanvard/app/console"
 	"lanvard/app/exception"
 	"lanvard/app/http"
+	"lanvard/config"
 )
 
 var bootApp foundation.Application
@@ -22,9 +23,10 @@ func init() {
 		|
 	*/
 
-	bootApp = foundation.Application{Container: foundation.NewContainer()}
+	bootApp = foundation.Application{}
+	bootApp.SetContainer(foundation.NewContainer())
 
-	bootApp.BindPathsInContainer()
+	bootApp.BindPathsInContainer(config.App.BasePath)
 
 	bootApp = *http.NewKernel(&bootApp).Bootstrap()
 }

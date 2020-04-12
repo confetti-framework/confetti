@@ -20,5 +20,5 @@ var Api = []RouteCollection{
 	Get("/user/{user_id}", controllers.User.Show),
 	Post("/users", controllers.User.Store),
 	Delete("/users/{user_ids}", controllers.User.Destroy),
-	Match([]string{"GET", "POST"}, "/", controllers.User.Store),
+	// Match([]string{"GET", "POST"}, "/", controllers.User.Store),
 }
