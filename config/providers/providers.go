@@ -1,13 +1,13 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/decorator"
+	"github.com/lanvard/contract/inter"
 	"lanvard/app/providers"
 )
 
 var Providers = struct {
-	RegisterProviders []decorator.RegisterServiceProvider
-	BootProviders     []decorator.BootServiceProvider
+	RegisterProviders []inter.RegisterServiceProvider
+	BootProviders     []inter.BootServiceProvider
 }{
 	/*
 	   |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ var Providers = struct {
 	   | that is provided by a service provider which has not loaded yet.
 	   |
 	*/
-	RegisterProviders: []decorator.RegisterServiceProvider{
+	RegisterProviders: []inter.RegisterServiceProvider{
 		providers.AppServiceProvider{},
 	},
 
@@ -40,7 +40,7 @@ var Providers = struct {
 	   | you have to add this service to RegisterProviders and BootProviders
 	   |
 	*/
-	BootProviders: []decorator.BootServiceProvider{
+	BootProviders: []inter.BootServiceProvider{
 		providers.AppServiceProvider{},
 		providers.RouteServiceProvider{},
 	},

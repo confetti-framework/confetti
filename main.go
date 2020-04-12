@@ -1,7 +1,7 @@
 package main
 
 import (
-	httpInterface "github.com/lanvard/contract/http"
+	"github.com/lanvard/contract/inter"
 	foundation "github.com/lanvard/foundation/http"
 	"github.com/lanvard/http"
 	"lanvard/bootstrap"
@@ -60,7 +60,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | and wonderful application we have prepared for them.
 	   |
 	*/
-	kernel := app.Make((*httpInterface.Kernel)(nil)).(foundation.Kernel)
+	kernel := app.Make((*inter.HttpKernel)(nil)).(foundation.Kernel)
 	appResponse := kernel.Handle(http.NewRequest(&app, *request))
 
 	response.Write([]byte(appResponse.Content()))

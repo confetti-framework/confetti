@@ -2,7 +2,7 @@ package parameters
 
 import (
 	"fmt"
-	"github.com/lanvard/contract/rules"
+	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation"
 	"lanvard/app/model"
 	"net/url"
@@ -24,7 +24,7 @@ func NewParameters(app *foundation.Application, vars map[string]string, queryPar
 	return Params{app: app, urlParams: urlParams, queryParams: queryParams}
 }
 
-func (p Params) GetUser(rules ...rules.Rule) (model.User, []error) {
+func (p Params) GetUser(rules ...inter.Rule) (model.User, []error) {
 	userId := p.urlParams.Get("user_id")
 	fmt.Println(userId)
 
