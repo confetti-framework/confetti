@@ -12,13 +12,13 @@ import (
 )
 
 func Test_get_config(t *testing.T) {
-	_ = bootstrap.NewApp()
+	_ = bootstrap.NewAppFromBootApp()
 
 	assert.IsType(t, reflect.String, support.Type(config.App.Name))
 }
 
 func Test_get_environments_for_testing(t *testing.T) {
-	_ = decorator.Bootstrap(bootstrap.NewApp())
+	_ = decorator.Bootstrap(bootstrap.NewAppFromBootApp())
 
 	assert.Equal(t, "TestLanvard", os.Getenv("APP_NAME"))
 	assert.Equal(t, "TestLanvard", config.App.Name)

@@ -33,7 +33,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | the responses back to the browser and delight our users.
 	   |
 	*/
-	app := bootstrap.NewApp()
+	app := bootstrap.NewAppFromBootApp()
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | the response writer if you need it anyway
 	   |
 	*/
-	app.Container.Singleton(
+	app.container.Singleton(
 		(*net.ResponseWriter)(nil),
 		response,
 	)

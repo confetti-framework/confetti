@@ -27,28 +27,29 @@ func init() {
 	bootApp.SetContainer(foundation.NewContainer())
 
 	bootApp.BindPathsInContainer(config.App.BasePath)
+	(*bootApp.Container()).Instance("env", config.App.Env)
 
 	bootApp = *http.NewKernel(&bootApp).Bootstrap()
 }
 
-func NewApp() *foundation.Application {
+func NewAppFromBootApp() *foundation.Application {
 
-	newContainer := bootApp.Container.Copy()
+	newContainer := bootApp.container.Copy()
 	app := foundation.Application{
-		Container: newContainer,
+		container: newContainer,
 	}
 
-	app.Container.Singleton(
+	app.container.Singleton(
 		(*inter.HttpKernel)(nil),
 		http.NewKernel(&app),
 	)
 
-	app.Container.Singleton(
+	app.container.Singleton(
 		(*inter.ConsoleKernel)(nil),
 		console.NewKernel(&app),
 	)
 
-	app.Container.Singleton(
+	app.container.Singleton(
 		(*inter.ExceptionHandler)(nil),
 		exception.NewHandler(&app),
 	)

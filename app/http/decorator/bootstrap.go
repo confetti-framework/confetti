@@ -1,12 +1,12 @@
 package decorator
 
 import (
+	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation"
-	"github.com/lanvard/foundation/contract"
 	"github.com/lanvard/foundation/decorator"
 )
 
-var bootstraps = []contract.Bootstrap{
+var bootstraps = []inter.Bootstrap{
 	RegisterProviders{},
 	BootProviders{},
 }

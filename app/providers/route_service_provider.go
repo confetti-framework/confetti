@@ -15,7 +15,7 @@ func (p RouteServiceProvider) Boot(app *foundation.Application) *foundation.Appl
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
 
-	app.Container().Singleton("routes", collection)
+	app.container().Singleton("routes", collection)
 
 	return app
 }
