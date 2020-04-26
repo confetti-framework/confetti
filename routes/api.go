@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"github.com/lanvard/contract/inter"
 	. "github.com/lanvard/routing"
 	"lanvard/app/http/controllers"
 )
@@ -15,7 +16,8 @@ import (
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-var Api = []RouteCollection{
+var Api = []inter.RouteCollection{
+	Get("/users", controllers.User.Index),
 	Get("/users/{user_ids?}", controllers.User.Index),
 	Get("/user/{user_id}", controllers.User.Show),
 	Post("/users", controllers.User.Store),

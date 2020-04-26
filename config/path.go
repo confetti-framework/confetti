@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/support/environment"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -12,15 +11,9 @@ const pathSeparator = string(os.PathSeparator)
 
 type basePath string
 
-// Bootstrap the environment files as quickly as possible
-// because the framework needs it immediately.
-func init() {
-	environment.BootstrapEnvironment(NewPath())
-}
-
 func NewPath() inter.BasePath {
 	_, filename, _, _ := runtime.Caller(0)
-	return basePath(filepath.Dir(filepath.Dir(filepath.Dir(filename))))
+	return basePath(filepath.Dir(filepath.Dir(filename)))
 }
 
 // Get the path to the application "app" directory.

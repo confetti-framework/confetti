@@ -2,15 +2,14 @@ package main
 
 import (
 	"github.com/lanvard/contract/inter"
-	foundation "github.com/lanvard/foundation/http"
-	"github.com/lanvard/foundation/http/lanvard"
+	"github.com/lanvard/foundation/http"
 	"lanvard/bootstrap"
 	"log"
 	net "net/http"
 )
 
 func main() {
-	net.HandleFunc("/", handleKernel)
+	net.HandleFunc("/", HandleKernel)
 
 	log.Println("Server is ready to handle requests")
 	if err := net.ListenAndServe(":80", nil); err != nil && err != net.ErrServerClosed {
@@ -20,7 +19,7 @@ func main() {
 	log.Println("Server stopped")
 }
 
-func handleKernel(response net.ResponseWriter, request *net.Request) {
+func HandleKernel(response net.ResponseWriter, request *net.Request) {
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -33,7 +32,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | the responses back to the browser and delight our users.
 	   |
 	*/
-	app := bootstrap.NewAppFromBootApp()
+	app := bootstrap.NewAppFromBoot()
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -44,7 +43,7 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | the response writer if you need it anyway
 	   |
 	*/
-	app.container.Singleton(
+	app.Singleton(
 		(*net.ResponseWriter)(nil),
 		response,
 	)
@@ -60,8 +59,8 @@ func handleKernel(response net.ResponseWriter, request *net.Request) {
 	   | and wonderful application we have prepared for them.
 	   |
 	*/
-	kernel := app.Make((*inter.HttpKernel)(nil)).(foundation.Kernel)
-	appResponse := kernel.Handle(lanvard.NewRequest(&app, *request))
+	kernel := app.Make((*inter.HttpKernel)(nil)).(http.Kernel)
+	appResponse := kernel.Handle(http.NewRequest(http.Options{App: app, Source: *request}))
 
 	response.Write([]byte(appResponse.Content()))
 	// todo convert custom 'buffer' response to default go response

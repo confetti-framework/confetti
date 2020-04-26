@@ -3,7 +3,8 @@
 package generics
 
 import (
-	"github.com/lanvard/foundation/http/lanvard"
+	"github.com/lanvard/foundation/http"
+	"github.com/lanvard/foundation/http/outcome"
 	"github.com/lanvard/pipeline"
 	"lanvard/config"
 )
@@ -34,8 +35,8 @@ var Generics = []Generic{
 		Struct: pipeline.Pipeline{},
 		SaveTo: string(config.App.Path()) + "/app/http/middleware/pipeline.go",
 		Vars: Vars{
-			"Passable": (*lanvard.Request)(nil),
-			"Result":   (*lanvard.Response)(nil),
+			"Passable": (*http.Request)(nil),
+			"Result":   (*outcome.Response)(nil),
 		},
 	},
 }

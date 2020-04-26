@@ -6,10 +6,11 @@ import (
 	"lanvard/app/console"
 	"lanvard/app/exception"
 	"lanvard/app/http"
+	"lanvard/app/http/decorator"
 	"lanvard/config"
 )
 
-var bootApp foundation.Application
+var bootApp inter.App
 
 func init() {
 	/*
@@ -23,33 +24,34 @@ func init() {
 		|
 	*/
 
-	bootApp = foundation.Application{}
+	bootApp = &foundation.Application{}
 	bootApp.SetContainer(foundation.NewContainer())
 
 	bootApp.BindPathsInContainer(config.App.BasePath)
-	(*bootApp.Container()).Instance("env", config.App.Env)
+	bootApp.Instance("env", config.App.Env)
 
-	bootApp = *http.NewKernel(&bootApp).Bootstrap()
+	bootApp = decorator.Bootstrap(bootApp)
 }
 
-func NewAppFromBootApp() *foundation.Application {
+func NewAppFromBoot() *foundation.Application {
 
-	newContainer := bootApp.container.Copy()
-	app := foundation.Application{
-		container: newContainer,
-	}
+	container := *bootApp.Container()
+	newContainer := container.Copy()
+	app := foundation.Application{}
 
-	app.container.Singleton(
+	app.SetContainer(newContainer)
+
+	app.Singleton(
 		(*inter.HttpKernel)(nil),
 		http.NewKernel(&app),
 	)
 
-	app.container.Singleton(
+	app.Singleton(
 		(*inter.ConsoleKernel)(nil),
 		console.NewKernel(&app),
 	)
 
-	app.container.Singleton(
+	app.Singleton(
 		(*inter.ExceptionHandler)(nil),
 		exception.NewHandler(&app),
 	)

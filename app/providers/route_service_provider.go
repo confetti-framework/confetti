@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"github.com/lanvard/foundation"
+	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/routing"
 	"lanvard/routes"
 )
@@ -9,13 +9,13 @@ import (
 type RouteServiceProvider struct{}
 
 // Define your router model bindings, pattern filters, etc.
-func (p RouteServiceProvider) Boot(app *foundation.Application) *foundation.Application {
+func (p RouteServiceProvider) Boot(app inter.App) inter.App {
 	collection := routing.NewRouteCollection()
 
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
 
-	app.container().Singleton("routes", collection)
+	app.Singleton("routes", collection)
 
 	return app
 }

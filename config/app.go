@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var _ = environment.Bootstrap(NewPath())
+
 var App = struct {
 	Name           string
 	Env            string

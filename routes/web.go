@@ -1,7 +1,7 @@
 package routes
 
 import (
-	. "github.com/lanvard/routing"
+	"github.com/lanvard/contract/inter"
 )
 
 /*
@@ -14,4 +14,4 @@ import (
 | is assigned the "web" middleware group. Enjoy building your website!
 |
 */
-var Web = []RouteCollection{}
+var Web = []inter.RouteCollection{}

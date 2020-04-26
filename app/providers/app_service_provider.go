@@ -1,13 +1,13 @@
 package providers
 
 import (
-	"github.com/lanvard/foundation"
+	"github.com/lanvard/contract/inter"
 )
 
 type AppServiceProvider struct{}
 
 // Register any application services.
-func (a AppServiceProvider) Register(app *foundation.Application) *foundation.Application {
+func (a AppServiceProvider) Register(app inter.App) inter.App {
 
 	//
 
@@ -15,7 +15,7 @@ func (a AppServiceProvider) Register(app *foundation.Application) *foundation.Ap
 }
 
 // Bootstrap any application services.
-func (a AppServiceProvider) Boot(app *foundation.Application) *foundation.Application {
+func (a AppServiceProvider) Boot(app inter.App) inter.App {
 
 	//
 
