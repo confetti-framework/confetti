@@ -3,7 +3,7 @@ package routes
 import (
 	"github.com/lanvard/contract/inter"
 	. "github.com/lanvard/routing"
-	"lanvard/app/http/controllers"
+	"lanvard/src/controllers"
 )
 
 /*

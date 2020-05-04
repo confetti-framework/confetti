@@ -1,11 +1,13 @@
 package exception
 
-import "github.com/lanvard/foundation"
+import (
+	"github.com/lanvard/contract/inter"
+)
 
 type Handler struct {
-	app *foundation.Application
+	app inter.App
 }
 
-func NewHandler(app *foundation.Application) Handler {
+func NewHandler(app inter.App) Handler {
 	return Handler{app}
 }

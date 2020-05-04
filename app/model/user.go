@@ -1,14 +1,25 @@
 package model
 
 type User struct {
-	id int32
+	id       int
+	fullName string
 }
 
-func (u User) Id() int32 {
+func NewUser(id int, fullName string) User {
+	return User{id: id, fullName: fullName}
+}
+
+func (u User) ToMap() map[string]interface{} {
+	return map[string]interface{}{
+		"id":        u.id,
+		"full_name": u.FullName(),
+	}
+}
+
+func (u User) Id() int {
 	return u.id
 }
 
-// Todo move to one Abstract Query builder
-func Query() User {
-	return User{id: 123}
+func (u User) FullName() interface{} {
+	return u.fullName
 }

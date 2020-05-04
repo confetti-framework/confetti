@@ -3,7 +3,6 @@ module lanvard
 go 1.14
 
 require (
-	github.com/gorilla/mux v1.7.4 // indirect
 	github.com/lanvard/contract v0.0.0
 	github.com/lanvard/foundation v0.2.2
 	github.com/lanvard/routing v0.0.0

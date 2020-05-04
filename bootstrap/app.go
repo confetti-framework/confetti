@@ -13,6 +13,12 @@ import (
 var bootApp inter.App
 
 func init() {
+	// @todo find a way to boot app in init. App has to be the same (in each container instance (before boot and after))
+}
+
+func NewAppFromBoot() inter.App {
+
+	// START BOOT
 	/*
 		|--------------------------------------------------------------------------
 		| Create The Application
@@ -29,32 +35,32 @@ func init() {
 
 	bootApp.BindPathsInContainer(config.App.BasePath)
 	bootApp.Instance("env", config.App.Env)
+	// END BOOT
+
 
 	bootApp = decorator.Bootstrap(bootApp)
-}
+	app := bootApp
 
-func NewAppFromBoot() *foundation.Application {
-
-	container := *bootApp.Container()
-	newContainer := container.Copy()
-	app := foundation.Application{}
-
-	app.SetContainer(newContainer)
+	// @todo when we boot in init, we want to copy booted app
+	// container := *bootApp.Container()
+	// newContainer := container.Copy()
+	// app := foundation.Application{}
+	// app.SetContainer(newContainer)
 
 	app.Singleton(
 		(*inter.HttpKernel)(nil),
-		http.NewKernel(&app),
+		http.NewKernel(app),
 	)
 
 	app.Singleton(
 		(*inter.ConsoleKernel)(nil),
-		console.NewKernel(&app),
+		console.NewKernel(app),
 	)
 
 	app.Singleton(
 		(*inter.ExceptionHandler)(nil),
-		exception.NewHandler(&app),
+		exception.NewHandler(app),
 	)
 
-	return &app
+	return app
 }

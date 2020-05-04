@@ -1,11 +1,13 @@
 package console
 
-import "github.com/lanvard/foundation"
+import (
+	"github.com/lanvard/contract/inter"
+)
 
 type Kernel struct {
-	App *foundation.Application
+	App inter.App
 }
 
-func NewKernel(app *foundation.Application) Kernel {
+func NewKernel(app inter.App) Kernel {
 	return Kernel{app}
 }

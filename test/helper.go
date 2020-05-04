@@ -9,7 +9,11 @@ import (
 )
 
 func ResponseByRequest(request inter.Request) inter.Response {
-	app := bootstrap.NewAppFromBoot()
+
+	app := request.App()
+	if nil == request.App() {
+		app = bootstrap.NewAppFromBoot()
+	}
 
 	response := httptest.ResponseRecorder{}
 
@@ -17,10 +21,9 @@ func ResponseByRequest(request inter.Request) inter.Response {
 		(*net.ResponseWriter)(nil),
 		response,
 	)
+	request = request.SetApp(app)
 
 	kernel := app.Make((*inter.HttpKernel)(nil)).(foundation.Kernel)
-
-	request.SetApp(app)
 
 	return kernel.Handle(request)
 }
