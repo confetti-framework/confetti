@@ -1,4 +1,4 @@
-package providers
+package config
 
 import (
 	"github.com/lanvard/contract/inter"
