@@ -8,8 +8,7 @@ import (
 )
 
 func Test_get_all_users(t *testing.T) {
-
-	request := http.NewTestRequest(http.Options{
+	request := http.NewRequest(http.Options{
 		Method: method.Get,
 		Url:    "/users",
 	})
@@ -21,13 +20,12 @@ func Test_get_all_users(t *testing.T) {
 }
 
 func Test_get_user_by_id(t *testing.T) {
-
-	request := http.NewTestRequest(http.Options{
+	request := http.NewRequest(http.Options{
 		Method: method.Get,
 		Url:    "/user/64564",
 	})
 
 	result := ResponseByRequest(request)
 
-	assert.Equal(t, "{\"full_name\":\"Reindert Vetter\",\"id\":64564}", result.Content())
+	assert.Equal(t, "{\"email\":\"test@lanvard.com\",\"id\":64564}", result.Content())
 }

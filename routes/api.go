@@ -17,6 +17,7 @@ import (
 |
 */
 var Api = []inter.RouteCollection{
+	// @todo allow /users/
 	Get("/users", controllers.User.Index),
 	Get("/users/{user_ids?}", controllers.User.Index),
 	Get("/user/{user_id}", controllers.User.Show),

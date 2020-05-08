@@ -1,18 +1,18 @@
 package model
 
 type User struct {
-	id       int
-	fullName string
+	id    int
+	email string
 }
 
 func NewUser(id int, fullName string) User {
-	return User{id: id, fullName: fullName}
+	return User{id: id, email: fullName}
 }
 
 func (u User) ToMap() map[string]interface{} {
 	return map[string]interface{}{
-		"id":        u.id,
-		"full_name": u.FullName(),
+		"id":    u.id,
+		"email": u.Email(),
 	}
 }
 
@@ -20,6 +20,6 @@ func (u User) Id() int {
 	return u.id
 }
 
-func (u User) FullName() interface{} {
-	return u.fullName
+func (u User) Email() interface{} {
+	return u.email
 }

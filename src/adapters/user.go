@@ -15,16 +15,16 @@ var User = struct {
 
 		var users []contract.User
 
-		users = append(users, model.NewUser(5435, "Reindert Vetter"))
+		users = append(users, model.NewUser(5435, "test@lanvard.com"))
 
 		return users, err
 	},
 
 	OneByRequest: func(request inter.Request) (contract.User, error) {
 		var err error
-		userId := request.UrlValues().GetInt("user_id")
+		userId := request.UrlValues().Number("user_id")
 
-		user := model.NewUser(userId, "Reindert Vetter")
+		user := model.NewUser(userId, "test@lanvard.com")
 		return user, err
 	},
 }
