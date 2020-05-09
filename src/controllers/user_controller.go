@@ -7,7 +7,7 @@ import (
 )
 
 var User = struct {
-	Index, Create, Store, Show, Edit, Update, Destroy inter.ControllerMethod
+	Index, Create, Store, Show, Edit, Update, Destroy inter.Controller
 }{
 	Index: func(request inter.Request) inter.Response {
 		users, err := adapters.User.AllByRequest(request)
