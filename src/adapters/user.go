@@ -22,7 +22,7 @@ var User = struct {
 
 	OneByRequest: func(request inter.Request) (contract.User, error) {
 		var err error
-		userId := request.UrlValues().Number("user_id")
+		userId := request.UrlValues().Number("user")
 
 		user := model.NewUser(userId, "test@lanvard.com")
 		return user, err

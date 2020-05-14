@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/lanvard/contract/inter"
 	. "github.com/lanvard/routing"
 	"lanvard/src/controllers"
 )
@@ -11,17 +10,18 @@ import (
 | API MapMethodRoutes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
+| Here is where you can register API routes for your application. By
+| default this is loaded in a group and is assigned to the "api" middleware
+| group. By default, API group is placed with "/api" prefix. Feel free to
+| remove the prefix if you are using a subdomain for your api. Enjoy
+| building your API!
 |
 */
-var Api = []inter.RouteCollection{
-	// @todo allow /users/
+var Api = Group(
 	Get("/users", controllers.User.Index),
-	Get("/users/{user_ids?}", controllers.User.Index),
-	Get("/user/{user_id}", controllers.User.Show),
+	Get("/users/{users?}", controllers.User.Index),
+	Get("/user/{user}", controllers.User.Show),
 	Post("/users", controllers.User.Store),
-	Delete("/users/{user_ids}", controllers.User.Destroy),
-	// Match([]string{"GET", "POST"}, "/", controllers.User.Store),
-}
+	Delete("/users/{users}", controllers.User.Destroy),
+).Prefix("/api")
+
