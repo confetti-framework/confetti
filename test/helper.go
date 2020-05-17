@@ -21,6 +21,7 @@ func ResponseByRequest(request inter.Request) inter.Response {
 		(*net.ResponseWriter)(nil),
 		response,
 	)
+
 	request = request.SetApp(app)
 
 	kernel := app.Make((*inter.HttpKernel)(nil)).(foundation.Kernel)
