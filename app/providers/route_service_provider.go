@@ -16,6 +16,12 @@ func (p RouteServiceProvider) Boot(app inter.App) inter.App {
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
 
+	// collection.WhereMulti(map[string]string{
+	// 	"id": "[0-9]+",
+	// })
+
+	routing.DecorateRoutes(collection)
+
 	app.Singleton("routes", collection)
 
 	return app

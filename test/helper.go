@@ -11,7 +11,7 @@ import (
 func ResponseByRequest(request inter.Request) inter.Response {
 
 	app := request.App()
-	if nil == request.App() {
+	if request.App() == nil {
 		app = bootstrap.NewAppFromBoot()
 	}
 
