@@ -6,13 +6,18 @@ import (
 	"lanvard/bootstrap"
 	"log"
 	net "net/http"
+	"time"
 )
 
 func main() {
-	net.HandleFunc("/", HandleKernel)
-
 	log.Println("Server is ready to handle requests")
-	if err := net.ListenAndServe(":80", nil); err != nil && err != net.ErrServerClosed {
+	server := &net.Server{
+		Addr: ":80",
+		Handler: net.HandlerFunc(HandleKernel),
+		WriteTimeout: 30 * time.Second,
+		ReadTimeout:  30 * time.Second,
+	}
+	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
 		log.Fatal("Could not listen", err)
 	}
 
