@@ -4,8 +4,8 @@ package generics
 
 import (
 	"github.com/lanvard/foundation/http"
-	"github.com/lanvard/foundation/http/outcome"
 	"github.com/lanvard/pipeline"
+	"github.com/lanvard/routing/outcome"
 	"lanvard/config"
 )
 

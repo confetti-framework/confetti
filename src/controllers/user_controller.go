@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/http/outcome"
+	"github.com/lanvard/routing/outcome"
 	"lanvard/src/adapters"
 )
 
