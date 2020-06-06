@@ -13,8 +13,8 @@ func NewKernel(app inter.App) http.Kernel {
 	}
 }
 
-func pipes() []inter.Pipe {
-	return []inter.Pipe{
+func pipes() []inter.HttpMiddleware {
+	return []inter.HttpMiddleware{
 		// todo remove or use ValidatePostSize
 		middleware.ValidatePostSize{},
 	}

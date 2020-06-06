@@ -12,7 +12,6 @@ var User = struct {
 }{
 	AllByRequest: func(request inter.Request) ([]contract.User, error) {
 		var err error
-
 		var users []contract.User
 
 		users = append(users, model.NewUser(5435, "test@lanvard.com"))

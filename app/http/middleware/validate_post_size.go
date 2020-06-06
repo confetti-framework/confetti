@@ -1,13 +1,8 @@
 package middleware
 
-import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation"
-)
+import "github.com/lanvard/contract/inter"
 
-type ValidatePostSize struct {
-	App foundation.Application
-}
+type ValidatePostSize struct{}
 
 func (v ValidatePostSize) Handle(request inter.Request, next inter.MiddlewareDestination) inter.Response {
 	// todo validate
