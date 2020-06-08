@@ -5,8 +5,12 @@ type User struct {
 	email string
 }
 
-func NewUser(id int, fullName string) User {
-	return User{id: id, email: fullName}
+func (u User) Find() User {
+	return User{id: 1, email: "fake@test.nl"}
+}
+
+func NewUser(id int, email string) User {
+	return User{id: id, email: email}
 }
 
 func (u User) ToMap() map[string]interface{} {

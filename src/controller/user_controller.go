@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
 	"github.com/lanvard/contract/inter"
@@ -10,7 +10,7 @@ var User = struct {
 	Index, Create, Store, Show, Edit, Update, Destroy inter.Controller
 }{
 	Index: func(request inter.Request) inter.Response {
-		users, err := adapters.User.AllByRequest(request)
+		users, err := adapters.User{request}.AllE()
 		if err != nil {
 			return outcome.Error(err)
 		}
@@ -19,7 +19,8 @@ var User = struct {
 	},
 
 	Show: func(request inter.Request) inter.Response {
-		user, err := adapters.User.OneByRequest(request)
+		user := adapters.User{request}.Find()
+		user, err := adapters.User{request}.FindE()
 		if err != nil {
 			return outcome.Error(err)
 		}

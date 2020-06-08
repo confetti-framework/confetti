@@ -2,26 +2,25 @@ package routes
 
 import (
 	. "github.com/lanvard/routing"
-	"lanvard/src/controllers"
+	"lanvard/app/http/middleware"
+	"lanvard/src/controller"
 )
 
 /*
-|--------------------------------------------------------------------------
-| API MapMethodRoutes
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
+| API routes
+|---------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. By
-| default this is loaded in a group and is assigned to the "api" middleware
-| group. By default, API group is placed with "/api" prefix. Feel free to
-| remove the prefix if you are using a subdomain for your api. Enjoy
-| building your API!
+| Here is where you can register API routes for your application. By default
+| this is loaded in a group. The group is assigned to the "Api" middleware
+| and is placed with "/api" prefix. Feel free to remove the prefix if you
+| are using a subdomain for your API. Enjoy building your API!
 |
 */
-var Api = Group(
-	Get("/users", controllers.User.Index),
-	Get("/users/{users?}", controllers.User.Index),
-	Get("/user/{user}", controllers.User.Show),
-	Post("/users", controllers.User.Store),
-	Delete("/users/{users}", controllers.User.Destroy),
-).Prefix("/api")
 
+var Api = Group(
+	Get("/users", controller.User.Index),
+	Get("/user/{user}", controller.User.Show),
+	Post("/users", controller.User.Store),
+	Delete("/users/{users}", controller.User.Destroy),
+).Prefix("/api").Middleware(middleware.Api{})

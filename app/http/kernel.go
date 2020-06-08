@@ -17,5 +17,6 @@ func pipes() []inter.HttpMiddleware {
 	return []inter.HttpMiddleware{
 		// todo remove or use ValidatePostSize
 		middleware.ValidatePostSize{},
+		middleware.RouteModelBinding{},
 	}
 }

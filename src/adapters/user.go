@@ -6,24 +6,42 @@ import (
 	"lanvard/src/contract"
 )
 
-var User = struct {
-	AllByRequest func(inter.Request) ([]contract.User, error)
-	OneByRequest func(inter.Request) (contract.User, error)
-}{
-	AllByRequest: func(request inter.Request) ([]contract.User, error) {
-		var err error
-		var users []contract.User
+type User struct {
+	Request inter.Request
+}
 
-		users = append(users, model.NewUser(5435, "test@lanvard.com"))
+func (adapter User) All() []contract.User {
+	users, err := adapter.AllE()
+	if err != nil {
+		panic(err)
+	}
 
-		return users, err
-	},
+	return users
+}
 
-	OneByRequest: func(request inter.Request) (contract.User, error) {
-		var err error
-		userId := request.UrlValue("user").Number()
+func (adapter User) AllE() ([]contract.User, error) {
+	var err error
+	var users []contract.User
 
-		user := model.NewUser(userId, "test@lanvard.com")
-		return user, err
-	},
+	users = append(users, model.NewUser(5435, "test@lanvard.com"))
+
+	return users, err
+}
+
+func (adapter User) Find() contract.User {
+	user, err := adapter.FindE()
+	if err != nil {
+		panic(err)
+	}
+
+	return user
+}
+
+func (adapter User) FindE() (contract.User, error) {
+	userId, err := adapter.Request.UrlValue("user").NumberE()
+	if err != nil {
+		return _, err
+	}
+
+	return model.NewUser(userId, "test@lanvard.com")
 }

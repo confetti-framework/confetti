@@ -16,6 +16,7 @@ func (p RouteServiceProvider) Boot(app inter.App) inter.App {
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
 
+	// Here you can make your adjustments that apply to all routes:
 	// collection.WhereMulti(map[string]string{
 	// 	"id": "[0-9]+",
 	// })
