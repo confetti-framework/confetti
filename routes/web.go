@@ -17,4 +17,4 @@ import (
 */
 var Web = Group(
 	//
-).Middleware(middleware.Web{})
+).Middleware(middleware.Web...)

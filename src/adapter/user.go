@@ -1,4 +1,4 @@
-package adapters
+package adapter
 
 import (
 	"github.com/lanvard/contract/inter"

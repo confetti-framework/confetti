@@ -6,17 +6,16 @@ import (
 	"lanvard/app/http/middleware"
 )
 
+var middlewares = []inter.HttpMiddleware {
+	// todo remove or use ValidatePostSize
+	middleware.ValidatePostSize{},
+	middleware.RouteModelBinding{},
+}
+
 func NewKernel(app inter.App) http.Kernel {
 	return http.Kernel{
 		App:        &app,
-		Middleware: pipes(),
+		Middleware: middlewares,
 	}
 }
 
-func pipes() []inter.HttpMiddleware {
-	return []inter.HttpMiddleware{
-		// todo remove or use ValidatePostSize
-		middleware.ValidatePostSize{},
-		middleware.RouteModelBinding{},
-	}
-}

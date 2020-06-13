@@ -23,4 +23,4 @@ var Api = Group(
 	Get("/user/{user}", controller.User.Show),
 	Post("/users", controller.User.Store),
 	Delete("/users/{users}", controller.User.Destroy),
-).Prefix("/api").Middleware(middleware.Api{})
+).Prefix("/api").Middleware(middleware.Api...)
