@@ -38,7 +38,7 @@ func (adapter User) Find() contract.User {
 }
 
 func (adapter User) FindE() (contract.User, error) {
-	userId, err := adapter.Request.UrlValue("user").NumberE()
+	userId, err := adapter.Request.Value("user").NumberE()
 	if err != nil {
 		return _, err
 	}

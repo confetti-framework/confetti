@@ -19,7 +19,6 @@ var User = struct {
 	},
 
 	Show: func(request inter.Request) inter.Response {
-		user := adapter.User{request}.Find()
 		user, err := adapter.User{request}.FindE()
 		if err != nil {
 			return outcome.Error(err)

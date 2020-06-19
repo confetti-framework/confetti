@@ -170,7 +170,7 @@ var App = struct {
 	   | Cipher type
 	   |--------------------------------------------------------------------------
 	   |
-	   | All encrypted values are encrypted using OpenSSL and this
+	   | Source encrypted values are encrypted using OpenSSL and this
 	   | cipher. Furthermore, all encrypted values are signed with a message
 	   | authentication code (MAC) to detect any modifications to the encrypted
 	   | string.
