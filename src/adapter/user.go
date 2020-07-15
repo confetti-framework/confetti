@@ -38,10 +38,10 @@ func (adapter User) Find() contract.User {
 }
 
 func (adapter User) FindE() (contract.User, error) {
-	userId, err := adapter.Request.Value("user").NumberE()
+	userId, err := adapter.Request.Parameter("user").NumberE()
 	if err != nil {
-		return _, err
+		return nil, err
 	}
 
-	return model.NewUser(userId, "test@lanvard.com")
+	return model.NewUser(userId, "test@lanvard.com"), nil
 }
