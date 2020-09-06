@@ -22,7 +22,7 @@ func ResponseByRequest(request inter.Request) inter.Response {
 		response,
 	)
 
-	request = request.SetApp(app)
+	request.SetApp(app)
 
 	kernel := app.Make((*inter.HttpKernel)(nil)).(foundation.Kernel)
 
