@@ -3,6 +3,7 @@ package test
 import (
 	"github.com/lanvard/foundation/http"
 	"github.com/lanvard/foundation/http/method"
+	"github.com/lanvard/routing/outcome"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -13,10 +14,9 @@ func Test_get_all_users(t *testing.T) {
 		Uri:    "/api/users",
 	})
 
-	ResponseByRequest(request)
+	response := ResponseByRequest(request)
 
-	// @todo implement response
-	// assert.Equal(t, outcome.Json("{\"test all users\"}"), result.Content())
+	assert.Equal(t, outcome.Json("{\"test all users\"}"), response.Content())
 }
 
 func Test_get_user_by_id(t *testing.T) {
