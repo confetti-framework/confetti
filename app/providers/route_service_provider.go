@@ -9,9 +9,9 @@ import (
 type RouteServiceProvider struct{}
 
 // Define your router model bindings, pattern filters, etc.
-func (p RouteServiceProvider) Boot(app inter.App) inter.App {
+func (p RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	collection := routing.NewRouteCollection()
-	collection.SetApp(app)
+	collection.SetContainer(container)
 
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
@@ -23,7 +23,7 @@ func (p RouteServiceProvider) Boot(app inter.App) inter.App {
 
 	routing.DecorateRoutes(collection)
 
-	app.Singleton("routes", collection)
+	container.Singleton("routes", collection)
 
-	return app
+	return container
 }

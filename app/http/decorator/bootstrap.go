@@ -2,6 +2,7 @@ package decorator
 
 import (
 	"github.com/lanvard/contract/inter"
+	"github.com/lanvard/foundation"
 	"github.com/lanvard/foundation/decorator"
 )
 
@@ -10,8 +11,8 @@ var bootstraps = []inter.Bootstrap{
 	BootProviders{},
 }
 
-func Bootstrap(app inter.App) inter.App {
+func Bootstrap(container *foundation.Container) inter.Container {
 	bootstrapDecorator := decorator.BootstrapDecorator{Bootstraps: bootstraps}
 
-	return bootstrapDecorator.BootstrapWith(app)
+	return bootstrapDecorator.BootstrapWith(container)
 }

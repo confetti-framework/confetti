@@ -6,18 +6,18 @@ import (
 
 type AppServiceProvider struct{}
 
-// Register any application services.
-func (a AppServiceProvider) Register(app inter.App) inter.App {
+// Register any container services.
+func (a AppServiceProvider) Register(container inter.Container) inter.Container {
 
 	//
 
-	return app
+	return container
 }
 
-// Bootstrap any application services.
-func (a AppServiceProvider) Boot(app inter.App) inter.App {
+// Bootstrap any container services.
+func (a AppServiceProvider) Boot(container inter.Container) inter.Container {
 
 	//
 
-	return app
+	return container
 }

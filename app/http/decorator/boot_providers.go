@@ -8,10 +8,10 @@ import (
 type BootProviders struct{}
 
 // Providers are located in config/providers/providers.go
-func (r BootProviders) Bootstrap(app inter.App) inter.App {
+func (r BootProviders) Bootstrap(container inter.Container) inter.Container {
 	for _, bootstrapper := range config.Providers.BootProviders {
-		app = bootstrapper.Boot(app)
+		container = bootstrapper.Boot(container)
 	}
 
-	return app
+	return container
 }
