@@ -25,8 +25,6 @@ func init() {
 	*/
 
 	bootContainer = decorator.Bootstrap(foundation.NewContainer())
-	// bootContainer.BindPathsInContainer(config.App.BasePath)
-	// bootContainer.Instance("env", config.App.Env)
 }
 
 func NewAppFromBoot() inter.App {

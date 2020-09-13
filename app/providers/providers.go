@@ -1,8 +1,7 @@
-package config
+package providers
 
 import (
 	"github.com/lanvard/contract/inter"
-	"lanvard/app/providers"
 )
 
 var Providers = struct {
@@ -23,7 +22,9 @@ var Providers = struct {
 	   |
 	*/
 	RegisterProviders: []inter.RegisterServiceProvider{
-		providers.AppServiceProvider{},
+		AppServiceProvider{},
+		EnvServiceProvider{},
+		PathServiceProvider{},
 	},
 
 	/*
@@ -41,7 +42,7 @@ var Providers = struct {
 	   |
 	*/
 	BootProviders: []inter.BootServiceProvider{
-		providers.AppServiceProvider{},
-		providers.RouteServiceProvider{},
+		AppServiceProvider{},
+		RouteServiceProvider{},
 	},
 }
