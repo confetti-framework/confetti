@@ -12,7 +12,7 @@ var User = struct {
 	Index: func(request inter.Request) inter.Response {
 		users, err := adapter.User{request}.AllE()
 		if err != nil {
-			return outcome.Error(err)
+			return outcome.Json(err)
 		}
 
 		return outcome.Json(users)
@@ -21,7 +21,7 @@ var User = struct {
 	Show: func(request inter.Request) inter.Response {
 		user, err := adapter.User{request}.FindE()
 		if err != nil {
-			return outcome.Error(err)
+			return outcome.Json(err)
 		}
 
 		return outcome.Json(user)
