@@ -7,7 +7,7 @@ import (
 	"lanvard/app/http/middleware"
 )
 
-var middlewares = []inter.HttpMiddleware {
+var middlewares = []inter.HttpMiddleware{
 	// todo remove or use ValidatePostSize
 	foundation.RequestBodyDecoder{},
 	middleware.ValidatePostSize{},
@@ -20,4 +20,3 @@ func NewKernel(app inter.App) http.Kernel {
 		Middleware: middlewares,
 	}
 }
-
