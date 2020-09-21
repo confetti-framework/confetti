@@ -3,6 +3,7 @@ package routes
 import (
 	. "github.com/lanvard/routing"
 	"lanvard/app/http/middleware"
+	"lanvard/src/controller"
 )
 
 /*
@@ -16,5 +17,6 @@ import (
 |
 */
 var Web = Group(
-	//
+	Get("/", controller.Homepage),
+	Post("/", controller.Homepage),
 ).Middleware(middleware.Web...)

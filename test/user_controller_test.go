@@ -11,7 +11,7 @@ import (
 func Test_get_all_users(t *testing.T) {
 	request := http.NewRequest(http.Options{
 		Method: method.Get,
-		Uri:    "/api/users",
+		Url:    "/api/users",
 	})
 
 	response := ResponseByRequest(request)
@@ -22,7 +22,7 @@ func Test_get_all_users(t *testing.T) {
 func Test_get_user_by_id(t *testing.T) {
 	request := http.NewRequest(http.Options{
 		Method: method.Get,
-		Uri:    "/api/user/64564",
+		Url:    "/api/user/64564",
 	})
 
 	result := ResponseByRequest(request)

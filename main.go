@@ -12,13 +12,13 @@ import (
 func main() {
 	log.Println("Server is ready to handle requests")
 	server := &net.Server{
-		Addr: ":80",
-		Handler: net.HandlerFunc(HandleKernel),
+		Addr:         ":80",
+		Handler:      net.HandlerFunc(HandleKernel),
 		WriteTimeout: 30 * time.Second,
 		ReadTimeout:  30 * time.Second,
 	}
 	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
-		log.Fatal("Could not listen", err)
+		log.Fatal("Could not listen. Run `sudo -S pkill -SIGINT ___go_bui` to kill build process", err)
 	}
 
 	log.Println("Server stopped")
