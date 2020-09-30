@@ -2,6 +2,8 @@ package providers
 
 import (
 	"github.com/lanvard/contract/inter"
+	"github.com/lanvard/foundation/providers"
+	"lanvard/config"
 )
 
 var Providers = struct {
@@ -25,6 +27,7 @@ var Providers = struct {
 		AppServiceProvider{},
 		EnvServiceProvider{},
 		PathServiceProvider{},
+		providers.ConfigServiceProvider{Index: config.Index},
 	},
 
 	/*
