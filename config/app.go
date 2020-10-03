@@ -1,13 +1,12 @@
 package config
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/support/environment"
+	"github.com/lanvard/support/env"
 	"golang.org/x/text/language"
 	"time"
 )
 
-var _ = environment.Bootstrap(NewPath())
+var _ = env.Bootstrap(Path.EnvironmentFile, Path.EnvironmentTestingFile)
 
 var App = struct {
 	Name,
@@ -18,7 +17,6 @@ var App = struct {
 	Env,
 	Cipher string
 	Debug    bool
-	BasePath inter.BasePath
 	Timezone *time.Location
 	Locale,
 	FallbackLocale,
@@ -35,7 +33,7 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: environment.StrEnvOr("APP_NAME", "Lanvard"),
+	Name: env.StringOr("APP_NAME", "Lanvard"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -47,7 +45,7 @@ var App = struct {
 		| your application so that it is used when running Artisan tasks.
 		|
 	*/
-	Url: environment.StrEnvOr("APP_URL", "http://localhost"),
+	Url: env.StringOr("APP_URL", "http://localhost"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -58,7 +56,7 @@ var App = struct {
 		| assets on an external service like Amazon S3.
 		|
 	*/
-	AssetUrl: environment.StrEnvOr("ASSET_URL", "http://asset.localhost"),
+	AssetUrl: env.StringOr("ASSET_URL", "http://asset.localhost"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -68,7 +66,7 @@ var App = struct {
 		| Determine what the line separator should be for your application
 		|
 	*/
-	LineSeparator: environment.StrEnvOr("LINE_SEPARATOR", "\n"),
+	LineSeparator: env.StringOr("LINE_SEPARATOR", "\n"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -80,7 +78,7 @@ var App = struct {
 		| will not be safe. Please do this before deploying an application!
 		|
 	*/
-	Key: environment.StrEnv("APP_KEY"),
+	Key: env.Str("APP_KEY"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -105,7 +103,7 @@ var App = struct {
 	   | services the application utilizes. Set this in your ".env" file.
 	   |
 	*/
-	Env: environment.StrEnvOr("APP_ENV", "production"),
+	Env: env.StringOr("APP_ENV", "production"),
 
 	/*
 	   |--------------------------------------------------------------------------
@@ -117,18 +115,7 @@ var App = struct {
 	   | application. If disabled, a simple generic error page is shown.
 	   |
 	*/
-	Debug: environment.BoolEnvOr("APP_DEBUG", false),
-
-	/*
-		|--------------------------------------------------------------------------
-		| Base AppPath
-		|--------------------------------------------------------------------------
-		|
-		| The base path is the fully qualified path to the project root. Feel free
-		| to adjust this so that it fits to your needs.
-		|
-	*/
-	BasePath: NewPath(),
+	Debug: env.BoolOr("APP_DEBUG", false),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -152,7 +139,7 @@ var App = struct {
 		| to any of the locales which will be supported by the application.
 		|
 	*/
-	Locale: language.AmericanEnglish,
+	Locale: env.LangOr("LOCALE", language.AmericanEnglish),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -164,7 +151,7 @@ var App = struct {
 		| the language folders that are provided through your application.
 		|
 	*/
-	FallbackLocale: language.AmericanEnglish,
+	FallbackLocale: env.LangOr("FALLBACK_LOCALE", language.AmericanEnglish),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -176,5 +163,5 @@ var App = struct {
 		| localized telephone numbers, street address information and more.
 		|
 	*/
-	FakerLocale: language.AmericanEnglish,
+	FakerLocale: env.LangOr("FAKE_LOCALE", language.AmericanEnglish),
 }

@@ -26,7 +26,6 @@ var Providers = struct {
 	RegisterProviders: []inter.RegisterServiceProvider{
 		AppServiceProvider{},
 		EnvServiceProvider{},
-		PathServiceProvider{},
 		providers.ConfigServiceProvider{Index: config.Index},
 	},
 
