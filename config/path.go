@@ -12,8 +12,8 @@ import (
 	| Base Path
 	|--------------------------------------------------------------------------
 	|
-	| The base path is the fully qualified path to the project root. Feel free
-	| to adjust this so that it fits to your needs.
+	| The base path is the fully qualified path to the root of your project.
+	| Feel free to adjust this so that it fits to your needs.
 	|
 */
 var Path = struct {
