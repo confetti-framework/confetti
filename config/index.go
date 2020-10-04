@@ -10,6 +10,7 @@ package config
 	|
 */
 var Index = map[string]interface{}{
-	"App":  App,
-	"Path": Path,
+	"App":     App,
+	"Path":    Path,
+	"Logging": Logging,
 }
