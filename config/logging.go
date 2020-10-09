@@ -40,8 +40,8 @@ var Logging = struct {
 		},
 
 		"single": loggers.Syslog{
-			Path:     Path.Storage + "/logs/lanvard.log",
-			MinLevel: syslog.INFO,
+			Path:  Path.Storage + "/logs/lanvard.log",
+			Level: syslog.INFO,
 		},
 
 		// "daily": loggers.Syslog{
