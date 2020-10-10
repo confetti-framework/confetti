@@ -42,12 +42,14 @@ var Logging = struct {
 		"single": loggers.Syslog{
 			Path:     Path.Storage + "/logs/lanvard.log",
 			MinLevel: syslog.INFO,
+			AppName:  App.Name,
 		},
 
 		"daily": loggers.Syslog{
 			Path:     Path.Storage + "/logs/{yyyy-mm-dd}_lanvard.log",
 			MinLevel: syslog.INFO,
-			// MaxFiles: 14,
+			AppName:  App.Name,
+			MaxFiles: 14,
 		},
 
 		// "slack": loggers.Slack{

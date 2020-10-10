@@ -1,11 +1,12 @@
 package config
 
 import (
-	"github.com/lanvard/support/env"
 	"os"
 	"path/filepath"
 	"runtime"
 )
+
+var separator = string(os.PathSeparator)
 
 /*
 	|--------------------------------------------------------------------------
@@ -20,25 +21,21 @@ var Path = struct {
 	Separator, Base, App, Bootstrap, Config, Database, Public, Storage,
 	Resource, Lang, EnvironmentFile, EnvironmentTestingFile string
 }{
-	Separator:              pathSeparator(),
+	Separator:              separator,
 	Base:                   basePath(),
-	App:                    basePath() + pathSeparator() + "app",
-	Bootstrap:              basePath() + pathSeparator() + "bootstrap",
-	Config:                 basePath() + pathSeparator() + "app",
-	Database:               basePath() + pathSeparator() + "database",
-	Public:                 basePath() + pathSeparator() + "public",
-	Storage:                basePath() + pathSeparator() + "storage",
-	Resource:               basePath() + pathSeparator() + "resources",
-	Lang:                   basePath() + pathSeparator() + "resources" + pathSeparator() + "lang",
-	EnvironmentFile:        basePath() + pathSeparator() + ".env",
-	EnvironmentTestingFile: basePath() + pathSeparator() + ".env.testing",
+	App:                    basePath() + separator + "app",
+	Bootstrap:              basePath() + separator + "bootstrap",
+	Config:                 basePath() + separator + "app",
+	Database:               basePath() + separator + "database",
+	Public:                 basePath() + separator + "public",
+	Storage:                basePath() + separator + "storage",
+	Resource:               basePath() + separator + "resources",
+	Lang:                   basePath() + separator + "resources" + separator + "lang",
+	EnvironmentFile:        basePath() + separator + ".env",
+	EnvironmentTestingFile: basePath() + separator + ".env.testing",
 }
 
 func basePath() string {
 	_, filename, _, _ := runtime.Caller(0)
 	return filepath.Dir(filepath.Dir(filename))
-}
-
-func pathSeparator() string {
-	return env.StringOr("PATH_SEPARATOR", string(os.PathSeparator))
 }
