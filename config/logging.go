@@ -31,7 +31,7 @@ var Logging = struct {
 	   | the box, Laravel uses the lanvard/logrus logging library. This gives
 	   | you a variety of powerful log handlers / formatters to utilize.
 	   |
-	   | Available Drivers: "single", "daily", "slack", "stack", "custom"
+	   | The given key is for reference only. Feel free to compose your own logger.
 	   |
 	*/
 	Loggers: map[string]inter.Logger{
