@@ -4,6 +4,7 @@ import (
 	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation/loggers"
 	"github.com/lanvard/syslog"
+	"os"
 )
 
 var Logging = struct {
@@ -41,13 +42,13 @@ var Logging = struct {
 
 		"single": loggers.Syslog{
 			Path:     Path.Storage + "/logs/lanvard.log",
-			MinLevel: syslog.INFO,
+			MinLevel: syslog.DEBUG,
 			AppName:  App.Name,
 		},
 
 		"daily": loggers.Syslog{
 			Path:     Path.Storage + "/logs/{yyyy-mm-dd}_lanvard.log",
-			MinLevel: syslog.INFO,
+			MinLevel: syslog.DEBUG,
 			AppName:  App.Name,
 			MaxFiles: 14,
 		},
@@ -58,5 +59,11 @@ var Logging = struct {
 		// 	Emoji:    ":boom:",
 		// 	Level:    logrus.ErrorLevel,
 		// },
+
+		"stderr": loggers.Syslog{
+			MinLevel: syslog.DEBUG,
+			AppName:  App.Name,
+			Writer:   os.Stderr,
+		},
 	},
 }
