@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation/loggers"
+	"github.com/lanvard/support/env"
 	"github.com/lanvard/syslog"
 	"os"
 )
@@ -53,12 +54,10 @@ var Logging = struct {
 			MaxFiles: 14,
 		},
 
-		// "slack": loggers.Slack{
-		// 	Url:      env.StringOr("LOG_SLACK_WEBHOOK_URL", ""),
-		// 	Username: "Lanvard log",
-		// 	Emoji:    ":boom:",
-		// 	Level:    logrus.ErrorLevel,
-		// },
+		"slack": loggers.Slack{
+			WebhookUrl: env.StringOr("LOG_SLACK_WEBHOOK_URL", ""),
+			MinLevel:   syslog.ERR,
+		},
 
 		"stderr": loggers.Syslog{
 			MinLevel: syslog.DEBUG,
