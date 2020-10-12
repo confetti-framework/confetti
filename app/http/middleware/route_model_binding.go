@@ -7,7 +7,7 @@ import (
 type RouteModelBinding struct{}
 
 func (b RouteModelBinding) Handle(request inter.Request, next inter.Next) inter.Response {
-	// request.App().Instance("user", func() model.User {
+	// request.App().Bind("user", func() model.User {
 	// 	return model.User.Find(request.Parameter("user"))
 	// })
 
