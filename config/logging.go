@@ -26,10 +26,10 @@ var Logging = struct {
 
 	/*
 	   |--------------------------------------------------------------------------
-	   | Log Loggers
+	   | Loggers
 	   |--------------------------------------------------------------------------
 	   |
-	   | Here you may configure the log loggers for your application. Out of
+	   | Here you may configure the loggers for your application. Out of
 	   | the box, Laravel uses the lanvard/logrus logging library. This gives
 	   | you a variety of powerful log handlers / formatters to utilize.
 	   |
@@ -38,7 +38,7 @@ var Logging = struct {
 	*/
 	Loggers: map[string]inter.Logger{
 		"stack": loggers.Stack{
-			Loggers: []string{"daily"},
+			Loggers: []string{"daily", "stderr"},
 		},
 
 		"single": loggers.Syslog{
