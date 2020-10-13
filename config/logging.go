@@ -38,7 +38,7 @@ var Logging = struct {
 	*/
 	Loggers: map[string]inter.Logger{
 		"stack": loggers.Stack{
-			Loggers: []string{"daily", "stderr"},
+			Loggers: []string{"daily"},
 		},
 
 		"single": loggers.Syslog{
