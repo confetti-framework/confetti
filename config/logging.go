@@ -9,48 +9,47 @@ import (
 )
 
 var Logging = struct {
-	Default string
-	Loggers map[string]inter.Logger
+	Default  string
+	Channels map[string]inter.Logger
 }{
 	/*
 	   |--------------------------------------------------------------------------
-	   | Default Logger
+	   | Default Log Channel
 	   |--------------------------------------------------------------------------
 	   |
-	   | This option defines the default logger that gets used when writing
+	   | This option defines the default log channel that gets used when writing
 	   | messages to the logs. The name specified in this option should match
-	   | one of the loggers defined in the "Loggers" configuration.
+	   | one of the channels defined in the "Channels" configuration slice.
 	   |
 	*/
 	Default: "stack",
 
 	/*
 	   |--------------------------------------------------------------------------
-	   | Loggers
+	   | Log Channels
 	   |--------------------------------------------------------------------------
 	   |
-	   | Here you may configure the loggers for your application. Out of
-	   | the box, Laravel uses the lanvard/logrus logging library. This gives
+	   | Here you may configure the log channels for your application. Out of
+	   | the box, Laravel uses the lanvard/syslog logging library. This gives
 	   | you a variety of powerful log handlers / formatters to utilize.
 	   |
-	   | The given key is for reference only. Feel free to compose your own logger.
+	   | The name provided is for reference only, so you can log specifically to
+	   | that channel. Feel free to compose your own channel.
 	   |
 	*/
-	Loggers: map[string]inter.Logger{
+	Channels: map[string]inter.Logger{
 		"stack": loggers.Stack{
 			Loggers: []string{"daily"},
 		},
 
 		"single": loggers.Syslog{
-			Path:     Path.Storage + "/logs/lanvard.log",
+			Path:     Path.Storage + "/logs/default.log",
 			MinLevel: syslog.DEBUG,
-			AppName:  App.Name,
 		},
 
 		"daily": loggers.Syslog{
-			Path:     Path.Storage + "/logs/{yyyy-mm-dd}_lanvard.log",
+			Path:     Path.Storage + "/logs/{yyyy-mm-dd}_default.log",
 			MinLevel: syslog.DEBUG,
-			AppName:  App.Name,
 			MaxFiles: 14,
 		},
 
@@ -60,8 +59,7 @@ var Logging = struct {
 		},
 
 		"stderr": loggers.Syslog{
-			MinLevel: syslog.DEBUG,
-			AppName:  App.Name,
+			MinLevel: syslog.ERR,
 			Writer:   os.Stderr,
 		},
 	},
