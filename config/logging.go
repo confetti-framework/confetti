@@ -39,7 +39,7 @@ var Logging = struct {
 	*/
 	Channels: map[string]inter.Logger{
 		"stack": loggers.Stack{
-			Loggers: []string{"daily"},
+			Channels: []string{"daily"},
 		},
 
 		"single": loggers.Syslog{
@@ -55,7 +55,7 @@ var Logging = struct {
 
 		"slack": loggers.Slack{
 			WebhookUrl: env.StringOr("LOG_SLACK_WEBHOOK_URL", ""),
-			MinLevel:   syslog.ERR,
+			MinLevel:   syslog.CRIT,
 		},
 
 		"stderr": loggers.Syslog{
