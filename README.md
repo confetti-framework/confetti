@@ -10,7 +10,7 @@ Lanvard is a web application framework with expressive, elegant syntax. We belie
 
 ## Learning Lanvard
 
-Lanvard has extensive and thorough [documentation](https://github.com/lanvard/docs), making it a breeze to get started 
+Lanvard has extensive and thorough [documentation](https://github.com/lanvard/docs/blob/master/requests.md), making it a breeze to get started
 with the framework.
 
 ## License
