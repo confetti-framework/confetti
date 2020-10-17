@@ -9,7 +9,6 @@ import (
 
 var middlewares = []inter.HttpMiddleware{
 	foundation.RequestBodyDecoder{},
-	foundation.PanicToResponse{},
 	middleware.ValidatePostSize{}, // todo remove or use ValidatePostSize
 	middleware.RouteModelBinding{},
 }
