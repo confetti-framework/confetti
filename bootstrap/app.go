@@ -4,7 +4,6 @@ import (
 	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation"
 	"lanvard/app/console"
-	"lanvard/app/exception"
 	"lanvard/app/http"
 	"lanvard/app/http/decorator"
 )
@@ -52,11 +51,6 @@ func NewAppFromBoot() inter.App {
 	app.Singleton(
 		(*inter.ConsoleKernel)(nil),
 		console.NewKernel(app),
-	)
-
-	app.Singleton(
-		(*inter.ExceptionHandler)(nil),
-		exception.NewHandler(app),
 	)
 
 	return app

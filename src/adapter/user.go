@@ -2,8 +2,8 @@ package adapter
 
 import (
 	"github.com/lanvard/contract/inter"
-	"lanvard/app/model"
 	"lanvard/src/contract"
+	"lanvard/src/model"
 )
 
 type User struct {
