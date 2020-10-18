@@ -8,6 +8,7 @@ import (
 )
 
 var middlewares = []inter.HttpMiddleware{
+	foundation.DecorateResponse{},
 	foundation.RequestBodyDecoder{},
 	middleware.ValidatePostSize{}, // todo remove or use ValidatePostSize
 	middleware.RouteModelBinding{},
