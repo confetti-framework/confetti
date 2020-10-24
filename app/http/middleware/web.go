@@ -7,5 +7,5 @@ import (
 )
 
 var Web = []inter.HttpMiddleware{
-	middleware.ResponseEncoder{Encoder: outcome.Html},
+	middleware.DefaultResponseEncoder{Encoder: outcome.Html},
 }
