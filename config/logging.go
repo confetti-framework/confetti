@@ -4,7 +4,7 @@ import (
 	"github.com/lanvard/contract/inter"
 	"github.com/lanvard/foundation/loggers"
 	"github.com/lanvard/support/env"
-	"github.com/lanvard/syslog/level"
+	"github.com/lanvard/syslog/log_level"
 	"os"
 )
 
@@ -44,22 +44,22 @@ var Logging = struct {
 
 		"single": loggers.Syslog{
 			Path:     Path.Storage + "/logs/default.log",
-			MinLevel: level.DEBUG,
+			MinLevel: log_level.DEBUG,
 		},
 
 		"daily": loggers.Syslog{
 			Path:     Path.Storage + "/logs/{yyyy-mm-dd}_default.log",
-			MinLevel: level.DEBUG,
+			MinLevel: log_level.DEBUG,
 			MaxFiles: 14,
 		},
 
 		"slack": loggers.Slack{
 			WebhookUrl: env.StringOr("LOG_SLACK_WEBHOOK_URL", ""),
-			MinLevel:   level.CRITICAL,
+			MinLevel:   log_level.CRITICAL,
 		},
 
 		"stderr": loggers.Syslog{
-			MinLevel: level.ERROR,
+			MinLevel: log_level.ERROR,
 			Writer:   os.Stderr,
 		},
 	},
