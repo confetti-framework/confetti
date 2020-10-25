@@ -8,7 +8,7 @@ require (
 	github.com/lanvard/routing v0.2.0
 	github.com/lanvard/support v0.1.0
 	github.com/lanvard/syslog v0.0.0
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.1
 	golang.org/x/text v0.3.2
 )
 
