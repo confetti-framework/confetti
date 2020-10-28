@@ -68,6 +68,9 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	appResponse := kernel.Handle(http.NewRequest(http.Options{App: app, Source: *request}))
 
 	response.WriteHeader(appResponse.GetStatus())
-	response.Write([]byte(appResponse.Body()))
+	_, err := response.Write([]byte(appResponse.GetBody()))
+	if err != nil {
+		panic(err)
+	}
 	// todo convert custom 'buffer' response headers to default go response
 }

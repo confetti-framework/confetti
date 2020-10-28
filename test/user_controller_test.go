@@ -16,7 +16,7 @@ func Test_get_all_users(t *testing.T) {
 
 	response := ResponseByRequest(request)
 
-	assert.Equal(t, outcome.Json("{\"test all users\"}"), response.Body())
+	assert.Equal(t, outcome.Json("{\"test all users\"}"), response.GetBody())
 }
 
 func Test_get_user_by_id(t *testing.T) {
@@ -27,5 +27,5 @@ func Test_get_user_by_id(t *testing.T) {
 
 	result := ResponseByRequest(request)
 
-	assert.Equal(t, "{\"email\":\"test@lanvard.com\",\"id\":64564}", result.Body())
+	assert.Equal(t, "{\"email\":\"test@lanvard.com\",\"id\":64564}", result.GetBody())
 }
