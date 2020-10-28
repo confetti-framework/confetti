@@ -24,10 +24,10 @@ var Providers = struct {
 	   |
 	*/
 	RegisterProviders: []inter.RegisterServiceProvider{
-		AppServiceProvider{},
 		EnvServiceProvider{},
 		providers.ConfigServiceProvider{Index: config.Index},
-		providers.ResponseServiceProvider{},
+		AppServiceProvider{},
+		ResponseServiceProvider{},
 	},
 
 	/*
