@@ -8,5 +8,5 @@ import (
 )
 
 func Homepage(request inter.Request) inter.Response {
-	return outcome.Html(errors.New("User not found").Status(net.StatusNotFound))
+	return outcome.Html(errors.New("Page not found").Status(net.StatusNotFound))
 }
