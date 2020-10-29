@@ -18,8 +18,8 @@ var separator = string(os.PathSeparator)
 	|
 */
 var Path = struct {
-	Separator, Base, App, Bootstrap, Config, Database, Public, Storage, Views,
-	Resource, Lang, EnvironmentFile, EnvironmentTestingFile string
+	Separator, Base, App, Bootstrap, Config, Database, Public, Storage,
+	Resource, Lang, Views, EnvironmentFile, EnvironmentTestingFile string
 }{
 	Separator:              separator,
 	Base:                   basePath(),
@@ -29,9 +29,9 @@ var Path = struct {
 	Database:               basePath() + separator + "database",
 	Public:                 basePath() + separator + "public",
 	Storage:                basePath() + separator + "storage",
-	Views:                  basePath() + separator + "storage" + separator + "framework" + separator + "views",
 	Resource:               basePath() + separator + "resources",
 	Lang:                   basePath() + separator + "resources" + separator + "lang",
+	Views:                  basePath() + separator + "resources" + separator + "views",
 	EnvironmentFile:        basePath() + separator + ".env",
 	EnvironmentTestingFile: basePath() + separator + ".env.testing",
 }

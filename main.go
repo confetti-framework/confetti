@@ -18,7 +18,7 @@ func main() {
 		ReadTimeout:  30 * time.Second,
 	}
 	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
-		log.Fatal("Could not listen. Run `sudo -S pkill -SIGINT ___go_bui` to kill build process", err)
+		log.Fatal("Could not listen. You may want to kill build process by `sudo -S pkill -SIGINT ___go_bui`", err)
 	}
 
 	log.Println("Server stopped")
