@@ -22,7 +22,7 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	// to a string. One encoder will be used.
 	container.Bind("outcome_html_encoders", append(
 		outcome.HtmlEncoders,
-		encoder.ErrorToHtml{TemplatePath: config.Path.Views + "/error.gohtml"},
+		encoder.ErrorToHtml{TemplateFile: config.Path.Views + "/error.gohtml"},
 		// add your custom HTML encoders here
 	))
 	container.Bind("outcome_json_encoders", append(
