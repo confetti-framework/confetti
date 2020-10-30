@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-var _ = env.Bootstrap(Path.EnvironmentFile, Path.EnvironmentTestingFile)
-
 var App = struct {
 	Name,
 	Url,

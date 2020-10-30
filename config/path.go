@@ -2,8 +2,6 @@ package config
 
 import (
 	"os"
-	"path/filepath"
-	"runtime"
 )
 
 var separator = string(os.PathSeparator)
@@ -19,24 +17,22 @@ var separator = string(os.PathSeparator)
 */
 var Path = struct {
 	Separator, Base, App, Bootstrap, Config, Database, Public, Storage,
-	Resource, Lang, Views, EnvironmentFile, EnvironmentTestingFile string
+	Resource, Lang, Views string
 }{
-	Separator:              separator,
-	Base:                   basePath(),
-	App:                    basePath() + separator + "app",
-	Bootstrap:              basePath() + separator + "bootstrap",
-	Config:                 basePath() + separator + "app",
-	Database:               basePath() + separator + "database",
-	Public:                 basePath() + separator + "public",
-	Storage:                basePath() + separator + "storage",
-	Resource:               basePath() + separator + "resources",
-	Lang:                   basePath() + separator + "resources" + separator + "lang",
-	Views:                  basePath() + separator + "resources" + separator + "views",
-	EnvironmentFile:        basePath() + separator + ".env",
-	EnvironmentTestingFile: basePath() + separator + ".env.testing",
+	Separator: separator,
+	Base:      basePath(),
+	App:       basePath() + separator + "app",
+	Bootstrap: basePath() + separator + "bootstrap",
+	Config:    basePath() + separator + "app",
+	Database:  basePath() + separator + "database",
+	Public:    basePath() + separator + "public",
+	Storage:   basePath() + separator + "storage",
+	Resource:  basePath() + separator + "resources",
+	Lang:      basePath() + separator + "resources" + separator + "lang",
+	Views:     basePath() + separator + "resources" + separator + "views",
 }
 
 func basePath() string {
-	_, filename, _, _ := runtime.Caller(0)
-	return filepath.Dir(filepath.Dir(filename))
+	root, _ := os.Getwd()
+	return root
 }

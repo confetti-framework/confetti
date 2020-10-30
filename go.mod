@@ -19,4 +19,5 @@ replace (
 	github.com/lanvard/routing v0.2.0 => ../github.com/lanvard/routing
 	github.com/lanvard/support v0.1.0 => ../github.com/lanvard/support
 	github.com/lanvard/syslog v0.0.0 => ../github.com/lanvard/syslog
+	github.com/lanvard/errors v0.10.0 => ../github.com/lanvard/errors
 )

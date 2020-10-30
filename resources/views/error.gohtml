@@ -90,6 +90,10 @@
             min-height: 100vh
         }
 
+        .min-h-half-screen {
+            min-height: 91.5vh
+        }
+
         .relative {
             position: relative
         }
@@ -148,8 +152,9 @@
         }
     </style>
 </head>
-<body class="antialiased">
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+<body class="antialiased bg-gray-100 dark:bg-gray-900 ">
+<div class="relative flex items-top justify-center min-h-half-screen sm:items-center
+sm:pt-0">
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm ">
@@ -160,6 +165,13 @@
         </div>
     </div>
 </div>
+{{if .StackTrace}}
+    <div class="relative flex items-top justify-center min-h-screen sm:pt-0">
+        <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+            <p>{{.StackTrace}}</p>
+        </div>
+    </div>
+{{end}}
 </body>
 </html>
 
