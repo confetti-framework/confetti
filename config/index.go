@@ -12,5 +12,6 @@ package config
 var Index = map[string]interface{}{
 	"App":     App,
 	"Path":    Path,
+	"Errors":  Errors,
 	"Logging": Logging,
 }

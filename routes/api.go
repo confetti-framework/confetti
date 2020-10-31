@@ -20,8 +20,5 @@ import (
 */
 
 var Api = Group(
-	Get("/users", controller.User.Index),
-	Get("/user/{user}", controller.User.Show),
-	Post("/users", controller.User.Store),
-	Delete("/users/{users}", controller.User.Destroy),
+	Get("/ping", controller.Ping),
 ).Prefix("/api").Middleware(middleware.Api...)
