@@ -2,9 +2,16 @@ package providers
 
 import (
 	"github.com/lanvard/contract/inter"
+	foundationMiddleware "github.com/lanvard/foundation/http/middleware"
 	"github.com/lanvard/routing"
+	"lanvard/app/http/middleware"
 	"lanvard/routes"
 )
+
+var globalMiddlewares = []inter.HttpMiddleware{
+	foundationMiddleware.RequestBodyDecoder{},
+	middleware.RouteModelBinding{},
+}
 
 type RouteServiceProvider struct{}
 
@@ -21,8 +28,10 @@ func (p RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	// 	"id": "[0-9]+",
 	// })
 
-	routing.DecorateRoutes(collection)
+	// These middlewares should be executed on all routes
+	collection.Middleware(globalMiddlewares...)
 
+	routing.DecorateRoutes(collection)
 	container.Singleton("routes", collection)
 
 	return container
