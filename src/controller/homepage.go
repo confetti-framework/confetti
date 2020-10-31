@@ -2,10 +2,11 @@ package controller
 
 import (
 	"github.com/lanvard/contract/inter"
+	"github.com/lanvard/errors"
 	"github.com/lanvard/routing/outcome"
-	"lanvard/app/report"
+	net "net/http"
 )
 
 func Homepage(request inter.Request) inter.Response {
-	return outcome.Html(report.PageNotFoundError)
+	return outcome.Html(errors.New("ok").Status(net.StatusOK))
 }

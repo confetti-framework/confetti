@@ -14,7 +14,7 @@ import (
 var UserError = errors.New("").Status(net.StatusBadRequest).Level(log_level.INFO)
 var ValidationError = UserError.Status(net.StatusNotFound)
 var NotFoundError = UserError.Status(net.StatusNotFound)
-var PageNotFoundError = UserError.Wrap("page not found")
+var PageNotFoundError = NotFoundError.Wrap("page not found")
 
 /**
  * This list contains errors that indicate that the system is not working
