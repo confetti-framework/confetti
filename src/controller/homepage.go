@@ -7,5 +7,5 @@ import (
 )
 
 func Homepage(request inter.Request) inter.Response {
-	return outcome.Html(report.PageNotFound)
+	return outcome.Html(report.PageNotFoundError)
 }

@@ -1,11 +1,13 @@
 package config
 
-import "lanvard/app/report"
+import (
+	"github.com/lanvard/routing"
+	"lanvard/app/report"
+)
 
 var Errors = struct {
 	NoLogging []error
 }{
-
 	/*
 	   |--------------------------------------------------------------------------
 	   | No Logging
@@ -15,6 +17,9 @@ var Errors = struct {
 	   |
 	*/
 	NoLogging: []error{
-		report.UserError,
+		routing.MethodNotAllowedError,
+		routing.RouteNotFoundError,
+		report.ValidationError,
+		report.NotFoundError,
 	},
 }
