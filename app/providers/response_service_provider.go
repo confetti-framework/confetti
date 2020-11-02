@@ -5,7 +5,7 @@ import (
 	"github.com/lanvard/foundation/decorator/response_decorator"
 	"github.com/lanvard/foundation/encoder"
 	"github.com/lanvard/routing/outcome"
-	"lanvard/config"
+	"lanvard/resources/views"
 )
 
 type ResponseServiceProvider struct{}
@@ -22,7 +22,7 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	// to a string. One encoder will be used.
 	container.Bind("outcome_html_encoders", append(
 		outcome.HtmlEncoders,
-		encoder.ErrorToHtml{TemplateFile: config.Path.Views + "/error.gohtml"},
+		encoder.ErrorToHtml{View: views.Error},
 		// add your custom HTML encoders here
 	))
 	container.Bind("outcome_json_encoders", append(

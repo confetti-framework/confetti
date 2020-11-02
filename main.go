@@ -61,7 +61,7 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	   | Once we have the application, we can handle the incoming request
 	   | through the kernel, and send the associated response back to
 	   | the client allowing them to enjoy the creative
-	   | and wonderful application we have prepared for them.
+	   | and awesome application we have prepared for them.
 	   |
 	*/
 	kernel := app.Make((*inter.HttpKernel)(nil)).(http.Kernel)
