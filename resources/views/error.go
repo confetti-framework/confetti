@@ -9,7 +9,6 @@ import (
 )
 
 type errorView struct {
-	inter.View
 	Message    string
 	StackTrace string
 	Status     int
