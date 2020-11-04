@@ -1,11 +1,24 @@
 package views
 
-type book struct {
-	Title string `json:"title"`
+import (
+	"github.com/lanvard/contract/inter"
+	"lanvard/config"
+)
+
+func Homepage(app inter.App, title string, description string) *HomepageView {
+	return &HomepageView{
+		Title:       title,
+		Description: description,
+		Locale:      Locale(app),
+	}
 }
 
-func Book(title string) *book {
-	return &book{
-		Title: title,
-	}
+type HomepageView struct {
+	Title       string
+	Description string
+	Locale      string
+}
+
+func (h HomepageView) Template() string {
+	return config.Path.Views + "/homepage.gohtml"
 }

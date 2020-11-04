@@ -8,19 +8,10 @@ import (
 	"lanvard/config"
 )
 
-type errorView struct {
-	Message    string
-	StackTrace string
-	Status     int
-	AppName    string
-	Locale     string
-	template   string
-}
-
 func Error(app inter.App, err error) inter.View {
 	status, _ := errors.FindStatus(err)
 
-	return &errorView{
+	return &ErrorView{
 		Message:    str.UpperFirst(fmt.Sprintf("%v", err)),
 		StackTrace: StackTrace(app, err),
 		Status:     status,
@@ -30,6 +21,15 @@ func Error(app inter.App, err error) inter.View {
 	}
 }
 
-func (e errorView) Template() string {
+type ErrorView struct {
+	Message    string
+	StackTrace string
+	Status     int
+	AppName    string
+	Locale     string
+	template   string
+}
+
+func (e ErrorView) Template() string {
 	return e.template
 }

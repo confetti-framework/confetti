@@ -6,6 +6,6 @@ import (
 	"lanvard/resources/views"
 )
 
-func Book(request inter.Request) inter.Response {
-	return outcome.Json(views.Book("James"))
+func Homepage(request inter.Request) inter.Response {
+	return outcome.Html(views.Homepage(request.App(), "Lanvard", "Let's be creative!"))
 }
