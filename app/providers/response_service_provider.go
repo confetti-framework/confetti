@@ -24,18 +24,19 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	// to a string. One encoder will be used.
 	container.Bind("outcome_html_encoders", []inter.Encoder{
 		// add your custom HTML encoders here
+		encoder.ViewToHtml{},
+		encoder.ErrorToHtml{View: views.Error},
 		encoder.StringerToHtml{},
 		encoder.RawToHtml{},
 		encoder.InterfaceToHtml{},
-		encoder.ErrorToHtml{View: views.Error},
 	})
 
 	container.Bind("outcome_json_encoders", []inter.Encoder{
 		// add your custom JSON encoders here
 		encoder.JsonReaderToJson{},
+		encoder.ErrorToJson{},
 		encoder.RawToJson{},
 		encoder.JsonToJson{},
-		encoder.ErrorToJson{},
 		encoder.InterfaceToJson{},
 	})
 
