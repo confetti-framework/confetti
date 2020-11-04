@@ -2,11 +2,10 @@ package controller
 
 import (
 	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/errors"
 	"github.com/lanvard/routing/outcome"
-	net "net/http"
+	"lanvard/resources/views"
 )
 
-func Homepage(request inter.Request) inter.Response {
-	return outcome.Html(errors.New("ok").Status(net.StatusOK))
+func Book(request inter.Request) inter.Response {
+	return outcome.Json(views.Book("James"))
 }

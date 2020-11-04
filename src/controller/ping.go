@@ -7,6 +7,6 @@ import (
 	net "net/http"
 )
 
-func Ping(request inter.Request) inter.Response {
+func Ping(_ inter.Request) inter.Response {
 	return outcome.Html(errors.New("pong").Status(net.StatusOK))
 }
