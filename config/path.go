@@ -2,9 +2,8 @@ package config
 
 import (
 	"os"
+	. "path/filepath"
 )
-
-var separator = string(os.PathSeparator)
 
 /*
 	|--------------------------------------------------------------------------
@@ -19,17 +18,17 @@ var Path = struct {
 	Separator, Base, App, Bootstrap, Config, Database, Public, Storage,
 	Resource, Lang, Views string
 }{
-	Separator: separator,
+	Separator: string(os.PathSeparator),
 	Base:      basePath(),
-	App:       basePath() + separator + "app",
-	Bootstrap: basePath() + separator + "bootstrap",
-	Config:    basePath() + separator + "app",
-	Database:  basePath() + separator + "database",
-	Public:    basePath() + separator + "public",
-	Storage:   basePath() + separator + "storage",
-	Resource:  basePath() + separator + "resources",
-	Lang:      basePath() + separator + "resources" + separator + "lang",
-	Views:     basePath() + separator + "resources" + separator + "views",
+	App:       Join(basePath(), "app"),
+	Bootstrap: Join(basePath(), "bootstrap"),
+	Config:    Join(basePath(), "app"),
+	Database:  Join(basePath(), "database"),
+	Public:    Join(basePath(), "public"),
+	Storage:   Join(basePath(), "storage"),
+	Resource:  Join(basePath(), "resources"),
+	Lang:      Join(basePath(), "resources", "lang"),
+	Views:     Join(basePath(), "resources", "views"),
 }
 
 func basePath() string {
