@@ -27,6 +27,7 @@ var Providers = struct {
 		EnvServiceProvider{},
 		providers.ConfigServiceProvider{Index: config.Index},
 		AppServiceProvider{},
+		ViewServiceProvider{},
 		ResponseServiceProvider{},
 	},
 
