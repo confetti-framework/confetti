@@ -39,7 +39,10 @@ var Logging = struct {
 	*/
 	Channels: map[string]inter.Logger{
 		"stack": loggers.Stack{
-			Channels: []string{"daily"},
+			Channels: []string{
+				"daily",
+				"stdout",
+			},
 		},
 
 		"single": loggers.Syslog{
@@ -61,6 +64,11 @@ var Logging = struct {
 		"stderr": loggers.Syslog{
 			MinLevel: log_level.ERROR,
 			Writer:   os.Stderr,
+		},
+
+		"stdout": loggers.Syslog{
+			MinLevel: log_level.ERROR,
+			Writer:   os.Stdout,
 		},
 	},
 }
