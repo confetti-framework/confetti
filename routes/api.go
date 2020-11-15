@@ -2,8 +2,8 @@ package routes
 
 import (
 	. "github.com/lanvard/routing"
+	"lanvard/app/http/controllers"
 	"lanvard/app/http/middleware"
-	"lanvard/src/controller"
 )
 
 /*
@@ -20,5 +20,5 @@ import (
 */
 
 var Api = Group(
-	Get("/ping", controller.Ping),
+	Get("/ping", controllers.Ping),
 ).Prefix("/api").Middleware(middleware.Api...)
