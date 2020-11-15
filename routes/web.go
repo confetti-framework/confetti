@@ -18,5 +18,4 @@ import (
 */
 var Web = Group(
 	Get("/", controller.Homepage),
-	Post("/", controller.Homepage),
 ).Middleware(middleware.Web...)

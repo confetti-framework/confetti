@@ -40,5 +40,10 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 		encoder.InterfaceToJson{},
 	})
 
+	container.Bind("outcome_content_encoders", []inter.Encoder{
+		// add your custom Content encoders here
+		encoder.StringToString{},
+	})
+
 	return container
 }

@@ -7,5 +7,5 @@ import (
 )
 
 var Api = []inter.HttpMiddleware{
-	middleware.DefaultResponseEncoder{Encoder: outcome.Json},
+	middleware.DefaultResponseOutcome{Outcome: outcome.Json},
 }

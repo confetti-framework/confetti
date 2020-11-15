@@ -6,6 +6,7 @@ import (
 	"lanvard/bootstrap"
 	"log"
 	net "net/http"
+	"strings"
 	"time"
 )
 
@@ -67,10 +68,17 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	kernel := app.Make((*inter.HttpKernel)(nil)).(http.Kernel)
 	appResponse := kernel.Handle(http.NewRequest(http.Options{App: app, Source: *request}))
 
+	// Add HTTP headers
+	for key, values := range appResponse.GetHeaders() {
+		response.Header().Add(key, strings.Join(values, "; "))
+	}
+
+	// Add HTTP status
 	response.WriteHeader(appResponse.GetStatus())
+
+	// Add HTTP body
 	_, err := response.Write([]byte(appResponse.GetBody()))
 	if err != nil {
 		panic(err)
 	}
-	// todo convert custom 'buffer' response headers to default go response
 }
