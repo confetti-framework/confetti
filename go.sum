@@ -14,6 +14,8 @@ github.com/lanvard/errors v0.10.0/go.mod h1:HOT6xhrGp/4ju9DhWceogz5kOmQOyEujQD62
 github.com/lanvard/syslog v0.0.0-20201006215111-98d4d91dbaa8 h1:UNQVQUBzWHftviJ5fZi+QQs4NS3Jbwfe+GoYP8U3oCw=
 github.com/lanvard/syslog v0.0.0-20201006215111-98d4d91dbaa8/go.mod h1:8a4fckuv2otec6e5QrkR0xwJ82e5PA84ot7wjDWhXQQ=
 github.com/lanvard/syslog v0.0.0-20201116213126-66df7a6162c3/go.mod h1:6sHzIViIX9PeXYI+gBvfsU2svTGQhy5F51SFPxnxSZs=
+github.com/lanvard/validation v0.0.0-20201116205703-8aad92bf4d9a h1:IARnrMQYOBmvA6lUAdgxhZC/Kjm8MPH4yUv8rp4EieA=
+github.com/lanvard/validation v0.0.0-20201116205703-8aad92bf4d9a/go.mod h1:OyIBuiQMHRVwe64ICcgAq+UpIvwLcq3yhmPEEqwTST4=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
