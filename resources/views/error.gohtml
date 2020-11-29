@@ -165,10 +165,15 @@ sm:pt-0">
         </div>
     </div>
 </div>
-{{if .StackTrace}}
+{{if .StackTraces}}
     <div class="relative flex items-top justify-center min-h-screen sm:pt-0">
         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-            <p>{{.StackTrace}}</p>
+            <p>
+                {{ range $key, $value := .StackTraces }}
+                    {{$value}}
+                    <br/>
+                {{ end }}
+            </p>
         </div>
     </div>
 {{end}}
