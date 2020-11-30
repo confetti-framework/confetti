@@ -12,7 +12,7 @@ import (
  * usually errors with http status 499 and lower.
  */
 var UserError = errors.New("").Status(net.StatusBadRequest).Level(log_level.INFO)
-var ValidationError = UserError.Status(net.StatusNotFound)
+var ValidationError = UserError.Status(net.StatusUnprocessableEntity)
 var NotFoundError = UserError.Status(net.StatusNotFound)
 var PageNotFoundError = NotFoundError.Wrap("page not found")
 
