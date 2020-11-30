@@ -25,7 +25,7 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	container.Bind("outcome_html_encoders", []inter.Encoder{
 		// add your custom HTML encoders here
 		encoder.ViewToHtml{},
-		encoder.ErrorToHtml{View: views.Error},
+		encoder.ErrorsToHtml{View: views.Error},
 		encoder.StringerToHtml{},
 		encoder.RawToHtml{},
 		encoder.InterfaceToHtml{},
@@ -34,7 +34,7 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	container.Bind("outcome_json_encoders", []inter.Encoder{
 		// add your custom JSON encoders here
 		encoder.JsonReaderToJson{},
-		encoder.ErrorToJson{},
+		encoder.ErrorSToJson{},
 		encoder.RawToJson{},
 		encoder.JsonToJson{},
 		encoder.InterfaceToJson{},
