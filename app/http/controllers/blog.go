@@ -8,18 +8,18 @@ import (
 	"lanvard/resources/views"
 )
 
-func BlogCreate(request inter.Request) inter.Response {
-	return outcome.Html(views.BlogCreate(request.App()))
+func UserCreate(request inter.Request) inter.Response {
+	return outcome.Html(views.UserCreate(request.App()))
 }
 
-func BlogStore(request inter.Request) inter.Response {
+func UserStore(request inter.Request) inter.Response {
 	failures := val.Validate(request.Content(),
-		val.Verify("title", rule.Required{}, rule.Max{Max: 255}),
-		val.Verify("description", rule.Required{}),
+		val.Verify("name", rule.Required{}, rule.Max{Max: 255}),
+		val.Verify("email", rule.Required{}),
 	)
 	if len(failures) > 0 {
 		return outcome.Html(failures)
 	}
 
-	return outcome.Html(views.BlogCreate(request.App()))
+	return outcome.Html(views.UserCreate(request.App()))
 }
