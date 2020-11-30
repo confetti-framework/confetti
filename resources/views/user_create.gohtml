@@ -1,11 +1,11 @@
-{{- /*gotype: lanvard/resources/views.HomepageView*/ -}}
+{{- /*gotype: lanvard/resources/views.UserCreateView*/ -}}
 <!DOCTYPE html>
 <html lang="{{ .Locale }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ .Title }}</title>
+    <title>Create user</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -400,10 +400,10 @@
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <form method="post">
             <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
-                <h1>Title: <input name="title" value="{{ .Title }}"/></h1>
+                <h1>Name: <input name="name" value="{{ .Name }}"/></h1>
             </div>
             <div class="pt-8 sm:justify-start sm:pt-0 dark:text-white">
-                <p>Description: <input name="description" value="{{ .Description }}"/></p>
+                <p>Email: <input name="email" value="{{ .Email }}"/></p>
             </div>
             <input type="submit" value="Submit">
         </form>

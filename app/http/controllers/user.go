@@ -9,17 +9,21 @@ import (
 )
 
 func UserCreate(request inter.Request) inter.Response {
-	return outcome.Html(views.UserCreate(request.App()))
+	return outcome.Html(views.UserCreate(request.App(), "", ""))
 }
 
 func UserStore(request inter.Request) inter.Response {
-	failures := val.Validate(request.Content(),
-		val.Verify("name", rule.Required{}, rule.Max{Max: 255}),
-		val.Verify("email", rule.Required{}),
+	content := request.Content()
+	failures := val.Validate(content,
+		val.Verify("name", rule.Required{}, rule.StringAble{}, rule.Max{Max: 255}),
+		val.Verify("email", rule.Required{}, rule.StringAble{}),
 	)
 	if len(failures) > 0 {
 		return outcome.Html(failures)
 	}
 
-	return outcome.Html(views.UserCreate(request.App()))
+	return outcome.Html(views.UserCreate(request.App(),
+		content.Get("name").String(),
+		content.Get("email").String(),
+	))
 }
