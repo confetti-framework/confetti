@@ -5,16 +5,18 @@ import (
 	"lanvard/config"
 )
 
-func PostCreate(app inter.App) *PostCreateView {
+func BlogCreate(app inter.App) *PostCreateView {
 	return &PostCreateView{
 		Locale: Locale(app),
 	}
 }
 
 type PostCreateView struct {
-	Locale string
+	Locale      string
+	Title       string
+	Description string
 }
 
 func (h PostCreateView) Template() string {
-	return config.Path.Views + "/post_create.gohtml"
+	return config.Path.Views + "/blog_create.gohtml"
 }

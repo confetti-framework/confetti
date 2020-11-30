@@ -17,7 +17,7 @@ import (
 |
 */
 var Web = Group(
-	Get("post/create", controllers.PostCreate),
-	Post("post", controllers.PostStore),
+	Get("blog", controllers.BlogCreate),
+	Post("blog", controllers.BlogStore),
 	Get("/", controllers.Homepage),
 ).Middleware(middleware.Web...)
