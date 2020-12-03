@@ -399,6 +399,11 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <form method="post">
+            {{ if HasError .Failures "name" }}
+                <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
+                    <h1>Error title error</h1>
+                </div>
+            {{ end }}
             <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
                 <h1>Name: <input name="name" value="{{ .Name }}"/></h1>
             </div>

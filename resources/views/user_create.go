@@ -5,18 +5,20 @@ import (
 	"lanvard/config"
 )
 
-func UserCreate(app inter.App, name, email string) *UserCreateView {
+func UserCreate(app inter.App, failures []error, name, email string) *UserCreateView {
 	return &UserCreateView{
-		Locale: Locale(app),
-		Name:   name,
-		Email:  email,
+		Locale:   Locale(app),
+		Failures: failures,
+		Name:     name,
+		Email:    email,
 	}
 }
 
 type UserCreateView struct {
-	Locale string
-	Name   string
-	Email  string
+	Locale   string
+	Name     string
+	Email    string
+	Failures []error
 }
 
 func (h UserCreateView) Template() string {

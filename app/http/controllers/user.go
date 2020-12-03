@@ -9,7 +9,7 @@ import (
 )
 
 func UserCreate(request inter.Request) inter.Response {
-	return outcome.Html(views.UserCreate(request.App(), "", ""))
+	return outcome.Html(views.UserCreate(request.App(), nil, "", ""))
 }
 
 func UserStore(request inter.Request) inter.Response {
@@ -18,11 +18,9 @@ func UserStore(request inter.Request) inter.Response {
 		val.Verify("name", rule.Required{}, rule.StringAble{}, rule.MaxCharacters{Max: 255}),
 		val.Verify("email", rule.Required{}, rule.StringAble{}),
 	)
-	if len(failures) > 0 {
-		return outcome.Html(failures)
-	}
 
 	return outcome.Html(views.UserCreate(request.App(),
+		failures,
 		content.Get("name").String(),
 		content.Get("email").String(),
 	))

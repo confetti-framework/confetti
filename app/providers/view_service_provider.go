@@ -2,6 +2,7 @@ package providers
 
 import (
 	"github.com/lanvard/contract/inter"
+	"github.com/lanvard/validation/val_errors"
 	"html/template"
 	"lanvard/config"
 	"strings"
@@ -13,7 +14,6 @@ type ViewServiceProvider struct{}
 func (v ViewServiceProvider) Register(container inter.Container) inter.Container {
 	container.Singleton("template_builder", func(templateBuilder *template.Template) (*template.Template, error) {
 		templateBuilder = addFunctions(templateBuilder)
-
 		return addTemplates(templateBuilder)
 	})
 
@@ -25,7 +25,8 @@ func addFunctions(templateBuilder *template.Template) *template.Template {
 		"Replace": func(input, from, to string) string {
 			return strings.Replace(input, from, to, -1)
 		},
-		"Trim": strings.Trim,
+		"Trim":     strings.Trim,
+		"HasError": val_errors.HasField,
 	})
 }
 
