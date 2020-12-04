@@ -401,7 +401,7 @@
         <form method="post">
             {{ if HasError .Failures "name" }}
                 <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
-                    <h1>Error title error</h1>
+                    <h1>{{ FullError .Failures "name" }}</h1>
                 </div>
             {{ end }}
             <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">

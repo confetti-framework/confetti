@@ -25,8 +25,10 @@ func addFunctions(templateBuilder *template.Template) *template.Template {
 		"Replace": func(input, from, to string) string {
 			return strings.Replace(input, from, to, -1)
 		},
-		"Trim":     strings.Trim,
-		"HasError": val_errors.HasField,
+		"Trim":      strings.Trim,
+		"HasError":  val_errors.HasField,
+		"Error":     val_errors.FindError,
+		"FullError": val_errors.FindFullMessage,
 	})
 }
 
