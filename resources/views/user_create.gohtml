@@ -407,6 +407,11 @@
             <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
                 <h1>Name: <input name="name" value="{{ .Name }}"/></h1>
             </div>
+            {{ if HasError .Failures "email" }}
+                <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
+                    <h1>{{ FullError .Failures "email" }}</h1>
+                </div>
+            {{ end }}
             <div class="pt-8 sm:justify-start sm:pt-0 dark:text-white">
                 <p>Email: <input name="email" value="{{ .Email }}"/></p>
             </div>
