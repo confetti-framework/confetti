@@ -15,8 +15,8 @@ func UserCreate(request inter.Request) inter.Response {
 func UserStore(request inter.Request) inter.Response {
 	content := request.Content()
 	failures := val.Validate(content,
-		val.Verify("name", rule.Required{}, rule.StringAble{}, rule.MaxCharacters{Max: 255}),
-		val.Verify("email", rule.Required{}, rule.StringAble{}),
+		val.Verify("name", rule.Required{} /*, rule.StringAble{}, rule.MaxCharacters{Max: 255}*/),
+		val.Verify("email", rule.Required{} /*, rule.StringAble{}*/),
 	)
 
 	return outcome.Html(views.UserCreate(request.App(),

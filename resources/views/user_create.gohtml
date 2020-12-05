@@ -399,17 +399,17 @@
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <form method="post">
-            {{ if HasError .Failures "name" }}
+            {{ if Error .Failures "name" }}
                 <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
-                    <h1>{{ FullError .Failures "name" }}</h1>
+                    <h1>{{ Error .Failures "name" }}</h1>
                 </div>
             {{ end }}
             <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
                 <h1>Name: <input name="name" value="{{ .Name }}"/></h1>
             </div>
-            {{ if HasError .Failures "email" }}
+            {{ if Error .Failures "email" }}
                 <div class="justify-center pt-8 sm:justify-start sm:pt-0 dark:text-white">
-                    <h1>{{ FullError .Failures "email" }}</h1>
+                    <h1>{{ Error .Failures "email" }}</h1>
                 </div>
             {{ end }}
             <div class="pt-8 sm:justify-start sm:pt-0 dark:text-white">
