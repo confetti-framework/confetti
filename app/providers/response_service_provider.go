@@ -1,10 +1,10 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
-	decorator "github.com/lanvard/foundation/decorator/response_decorator"
-	"github.com/lanvard/foundation/encoder"
-	"lanvard/resources/views"
+	"github.com/confetti-framework/contract/inter"
+	decorator "github.com/confetti-framework/foundation/decorator/response_decorator"
+	"github.com/confetti-framework/foundation/encoder"
+	"confetti-framework/resources/views"
 	net "net/http"
 )
 

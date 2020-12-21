@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/http"
-	"lanvard/bootstrap"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/http"
+	"confetti-framework/bootstrap"
 	"log"
 	net "net/http"
 	"strings"
@@ -45,7 +45,7 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	   | Register the response writer
 	   |--------------------------------------------------------------------------
 	   |
-	   | Lanvard only uses the response writer here in main.go. But we register
+	   | Confetti only uses the response writer here in main.go. But we register
 	   | the response writer if you need it anyway
 	   |
 	*/

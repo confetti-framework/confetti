@@ -1,11 +1,11 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
-	foundationMiddleware "github.com/lanvard/foundation/http/middleware"
-	"github.com/lanvard/routing"
-	"lanvard/app/http/middleware"
-	"lanvard/routes"
+	"github.com/confetti-framework/contract/inter"
+	foundationMiddleware "github.com/confetti-framework/foundation/http/middleware"
+	"github.com/confetti-framework/routing"
+	"confetti-framework/app/http/middleware"
+	"confetti-framework/routes"
 )
 
 var globalMiddlewares = []inter.HttpMiddleware{

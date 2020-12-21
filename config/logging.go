@@ -1,10 +1,10 @@
 package config
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/loggers"
-	"github.com/lanvard/support/env"
-	"github.com/lanvard/syslog/log_level"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/loggers"
+	"github.com/confetti-framework/support/env"
+	"github.com/confetti-framework/syslog/log_level"
 	"os"
 )
 
@@ -30,7 +30,7 @@ var Logging = struct {
 	   |--------------------------------------------------------------------------
 	   |
 	   | Here you may configure the log channels for your application. Out of
-	   | the box, Laravel uses the lanvard/syslog logging library. This gives
+	   | the box, Laravel uses the confetti-framework/syslog logging library. This gives
 	   | you a variety of powerful log handlers / formatters to utilize.
 	   |
 	   | The name provided is for reference only, so you can log specifically to

@@ -1,8 +1,8 @@
 package decorator
 
 import (
-	"github.com/lanvard/contract/inter"
-	"lanvard/app/providers"
+	"github.com/confetti-framework/contract/inter"
+	"confetti-framework/app/providers"
 )
 
 type BootProviders struct{}

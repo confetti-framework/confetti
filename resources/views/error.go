@@ -2,10 +2,10 @@ package views
 
 import (
 	"fmt"
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/errors"
-	"github.com/lanvard/support/str"
-	"lanvard/config"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/support/str"
+	"confetti-framework/config"
 	"strings"
 )
 

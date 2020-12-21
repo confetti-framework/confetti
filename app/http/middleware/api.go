@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/http/middleware"
-	"github.com/lanvard/routing/outcome"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/http/middleware"
+	"github.com/confetti-framework/routing/outcome"
 )
 
 var Api = []inter.HttpMiddleware{

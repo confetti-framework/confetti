@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/lanvard/routing"
-	"lanvard/app/report"
+	"github.com/confetti-framework/routing"
+	"confetti-framework/app/report"
 )
 
 var Errors = struct {

@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
+	"github.com/confetti-framework/contract/inter"
 )
 
 type AppServiceProvider struct{}

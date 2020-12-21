@@ -1,8 +1,8 @@
 package report
 
 import (
-	"github.com/lanvard/errors"
-	"github.com/lanvard/syslog/log_level"
+	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/syslog/log_level"
 	net "net/http"
 )
 

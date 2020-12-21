@@ -1,10 +1,10 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/validation/val_errors"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/validation/val_errors"
 	"html/template"
-	"lanvard/config"
+	"confetti-framework/config"
 	"strings"
 )
 

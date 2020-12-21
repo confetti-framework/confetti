@@ -2,11 +2,13 @@
 
 This directory is intended for your own tests. So you can place your own tests in this directory.
 
-## Lanvard Tests
+## Confetti Tests
 
-This `lanvard/lanvard` repository actually only contains configuration. Larvard's tests are present in the repositories:
+This `confetti-framework/confetti` repository actually only contains configuration. Larvard's tests are present in the 
+repositories. For example:
 
-- [Foundation Tests](https://github.com/lanvard/foundation/tree/master/test)
-- [Routing Tests](https://github.com/lanvard/routing/tree/master/test)
-- [Support Tests](https://github.com/lanvard/support/tree/master/test)
-- [Errors Tests](https://github.com/lanvard/errors)
+- [Foundation Tests](https://github.com/confetti-framework/foundation/tree/master/test)
+- [Routing Tests](https://github.com/confetti-framework/routing/tree/master/test)
+- [Support Tests](https://github.com/confetti-framework/support/tree/master/test)
+- [Errors Tests](https://github.com/confetti-framework/errors)
+- [Validation](https://github.com/confetti-framework/validation)

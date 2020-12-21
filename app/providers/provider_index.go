@@ -1,9 +1,9 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/providers"
-	"lanvard/config"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/providers"
+	"confetti-framework/config"
 )
 
 var Providers = struct {

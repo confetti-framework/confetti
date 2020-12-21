@@ -1,9 +1,9 @@
 package routes
 
 import (
-	. "github.com/lanvard/routing"
-	"lanvard/app/http/controllers"
-	"lanvard/app/http/middleware"
+	. "github.com/confetti-framework/routing"
+	"confetti-framework/app/http/controllers"
+	"confetti-framework/app/http/middleware"
 )
 
 /*

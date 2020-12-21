@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"lanvard/config"
+	"github.com/confetti-framework/contract/inter"
+	"confetti-framework/config"
 )
 
 type EnvServiceProvider struct{}

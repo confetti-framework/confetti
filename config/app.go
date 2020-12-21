@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/lanvard/support/env"
+	"github.com/confetti-framework/support/env"
 	"golang.org/x/text/language"
 	"time"
 )
@@ -31,7 +31,7 @@ var App = struct {
 	   | any other location as required by the application or its packages.
 	   |
 	*/
-	Name: env.StringOr("APP_NAME", "Lanvard"),
+	Name: env.StringOr("APP_NAME", "Confetti"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -71,7 +71,7 @@ var App = struct {
 		| Encryption Key
 		|--------------------------------------------------------------------------
 		|
-		| This key is used by the Lanvard encrypter service and should be set
+		| This key is used by the Confetti encrypter service and should be set
 		| to a random, 32 character string, otherwise these encrypted strings
 		| will not be safe. Please do this before deploying an application!
 		|

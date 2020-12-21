@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/routing/outcome"
-	"github.com/lanvard/validation/rule"
-	"github.com/lanvard/validation/val"
-	"lanvard/resources/views"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/routing/outcome"
+	"github.com/confetti-framework/validation/rule"
+	"github.com/confetti-framework/validation/val"
+	"confetti-framework/resources/views"
 )
 
 func UserCreate(request inter.Request) inter.Response {

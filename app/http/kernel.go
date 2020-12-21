@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation/http"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/http"
 )
 
 func NewKernel(app inter.App) http.Kernel {

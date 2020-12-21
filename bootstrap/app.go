@@ -1,11 +1,11 @@
 package bootstrap
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/foundation"
-	"lanvard/app/console"
-	"lanvard/app/http"
-	"lanvard/app/http/decorator"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation"
+	"confetti-framework/app/console"
+	"confetti-framework/app/http"
+	"confetti-framework/app/http/decorator"
 )
 
 var bootContainer inter.Container
@@ -33,8 +33,8 @@ func NewAppFromBoot() inter.App {
 		| Create The Application
 		|--------------------------------------------------------------------------
 		|
-		| The second thing we will do is create a new Lanvard application instance
-		| which serves as the "glue" for all the components of Lanvard, and is
+		| The second thing we will do is create a new Confetti application instance
+		| which serves as the "glue" for all the components of Confetti, and is
 		| the IoC container for the request binding all of the various parts.
 		|
 	*/

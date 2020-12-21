@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/errors"
-	"github.com/lanvard/routing/outcome"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/routing/outcome"
 	net "net/http"
 )
 

@@ -1,8 +1,8 @@
 package views
 
 import (
-	"github.com/lanvard/contract/inter"
-	"lanvard/config"
+	"github.com/confetti-framework/contract/inter"
+	"confetti-framework/config"
 )
 
 func UserCreate(app inter.App, failures []error, name, email string) *UserCreateView {

@@ -1,11 +1,11 @@
 package controllers
 
 import (
-	"github.com/lanvard/contract/inter"
-	"github.com/lanvard/routing/outcome"
-	"lanvard/resources/views"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/routing/outcome"
+	"confetti-framework/resources/views"
 )
 
 func Homepage(request inter.Request) inter.Response {
-	return outcome.Html(views.Homepage(request.App(), "Lanvard", "Let's be creative!"))
+	return outcome.Html(views.Homepage(request.App(), "Confetti", "Let's be creative!"))
 }
