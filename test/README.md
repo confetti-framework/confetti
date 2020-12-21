@@ -4,7 +4,7 @@ This directory is intended for your own tests. So you can place your own tests i
 
 ## Confetti Tests
 
-This `confetti-framework/confetti` repository actually only contains configuration. Larvard's tests are present in the 
+This `confetti-framework/confetti` repository actually only contains configuration. Confetti's tests are present in the 
 repositories. For example:
 
 - [Foundation Tests](https://github.com/confetti-framework/foundation/tree/master/test)
