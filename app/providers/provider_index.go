@@ -42,7 +42,7 @@ var Providers = struct {
 	   | slice to grant expanded functionality to your applications.
 	   |
 	   | You can have a service provider with a register and a boot method. Than
-	   | you have to add this service to RegisterProviders and BootProviders
+	   | you have to add this provider to RegisterProviders and BootProviders
 	   |
 	*/
 	BootProviders: []inter.BootServiceProvider{

@@ -1,9 +1,9 @@
 package routes
 
 import (
-	. "github.com/confetti-framework/routing"
 	"confetti-framework/app/http/controllers"
 	"confetti-framework/app/http/middleware"
+	. "github.com/confetti-framework/routing"
 )
 
 /*
@@ -17,7 +17,5 @@ import (
 |
 */
 var Web = Group(
-	Get("user", controllers.UserCreate),
-	Post("user", controllers.UserStore),
 	Get("/", controllers.Homepage),
 ).Middleware(middleware.Web...)
