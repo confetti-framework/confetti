@@ -1,11 +1,13 @@
 package main
 
 import (
+	"confetti-framework/bootstrap"
+	"confetti-framework/config"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation/http"
-	"confetti-framework/bootstrap"
 	"log"
 	net "net/http"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -13,7 +15,7 @@ import (
 func main() {
 	log.Println("Server is ready to handle requests")
 	server := &net.Server{
-		Addr:         ":80",
+		Addr:         ":" + strconv.Itoa(config.App.Port),
 		Handler:      net.HandlerFunc(HandleKernel),
 		WriteTimeout: 30 * time.Second,
 		ReadTimeout:  30 * time.Second,

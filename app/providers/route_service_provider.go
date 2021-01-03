@@ -1,11 +1,11 @@
 package providers
 
 import (
+	"confetti-framework/app/http/middleware"
+	"confetti-framework/routes"
 	"github.com/confetti-framework/contract/inter"
 	foundationMiddleware "github.com/confetti-framework/foundation/http/middleware"
 	"github.com/confetti-framework/routing"
-	"confetti-framework/app/http/middleware"
-	"confetti-framework/routes"
 )
 
 var globalMiddlewares = []inter.HttpMiddleware{
@@ -16,7 +16,7 @@ var globalMiddlewares = []inter.HttpMiddleware{
 type RouteServiceProvider struct{}
 
 // Define your router model bindings, pattern filters, etc.
-func (p RouteServiceProvider) Boot(container inter.Container) inter.Container {
+func (r RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	collection := routing.NewRouteCollection()
 	collection.SetContainer(container)
 
