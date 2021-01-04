@@ -1,10 +1,10 @@
 package providers
 
 import (
+	"confetti-framework/resources/views"
 	"github.com/confetti-framework/contract/inter"
 	decorator "github.com/confetti-framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/foundation/encoder"
-	"confetti-framework/resources/views"
 	net "net/http"
 )
 
@@ -34,7 +34,7 @@ func (c ResponseServiceProvider) Register(container inter.Container) inter.Conta
 	container.Bind("outcome_json_encoders", []inter.Encoder{
 		// add your custom JSON encoders here
 		encoder.JsonReaderToJson{},
-		encoder.ErrorSToJson{},
+		encoder.ErrorsToJson{},
 		encoder.RawToJson{},
 		encoder.JsonToJson{},
 		encoder.InterfaceToJson{},
