@@ -10,7 +10,8 @@ func (b RouteModelBinding) Handle(request inter.Request, next inter.Next) inter.
 
 	// Feel free to bind your models here.
 	// request.App().Bind("user", func() model.User {
-	// 	return model.User.Find(request.Parameter("user"))
+	// 	userId := request.Parameter("user_id").Int()
+	// 	return model.FindUser(userId)
 	// })
 
 	return next(request)
