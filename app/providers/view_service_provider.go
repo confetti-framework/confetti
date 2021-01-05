@@ -1,10 +1,10 @@
 package providers
 
 import (
+	"confetti-framework/config"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/validation/val_errors"
 	"html/template"
-	"confetti-framework/config"
 	"strings"
 )
 
@@ -12,7 +12,7 @@ type ViewServiceProvider struct{}
 
 // Define your router model bindings, pattern filters, etc.
 func (v ViewServiceProvider) Register(container inter.Container) inter.Container {
-	container.Singleton("template_builder", func(templateBuilder *template.Template) (*template.Template, error) {
+	container.Bind("template_builder", func(templateBuilder *template.Template) (*template.Template, error) {
 		templateBuilder = addFunctions(templateBuilder)
 		return addTemplates(templateBuilder)
 	})
