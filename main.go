@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	log.Println("Server is ready to handle requests")
+	log.Println("Start " + config.App.Name + " to handle requests")
 	server := &net.Server{
 		Addr:         ":" + strconv.Itoa(config.App.Port),
 		Handler:      net.HandlerFunc(HandleKernel),
@@ -21,14 +21,13 @@ func main() {
 		ReadTimeout:  30 * time.Second,
 	}
 	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
-		log.Fatal("Could not listen. You may want to kill build process by `sudo -S pkill -SIGINT ___go_bui`", err)
+		log.Fatal("Could not ", err)
 	}
 
 	log.Println("Server stopped")
 }
 
 func HandleKernel(response net.ResponseWriter, request *net.Request) {
-
 	/*
 	   |--------------------------------------------------------------------------
 	   | Turn On The Lights
@@ -68,8 +67,20 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	   |
 	*/
 	kernel := app.Make((*inter.HttpKernel)(nil)).(http.Kernel)
-	appResponse := kernel.Handle(http.NewRequest(http.Options{App: app, Source: *request}))
 
+	appRequest := http.NewRequest(http.Options{App: app, Source: *request})
+
+	defer func() {
+		appResponse := kernel.RecoverFromMiddlewarePanic(recover())
+		exposeResponse(response, appResponse)
+	}()
+
+	appResponse := kernel.Handle(appRequest)
+
+	exposeResponse(response, appResponse)
+}
+
+func exposeResponse(response net.ResponseWriter, appResponse inter.Response) {
 	// Add HTTP headers
 	for key, values := range appResponse.GetHeaders() {
 		response.Header().Add(key, strings.Join(values, "; "))
