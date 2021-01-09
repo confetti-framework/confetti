@@ -71,8 +71,10 @@ func HandleKernel(response net.ResponseWriter, request *net.Request) {
 	appRequest := http.NewRequest(http.Options{App: app, Source: *request})
 
 	defer func() {
-		appResponse := kernel.RecoverFromMiddlewarePanic(recover())
-		exposeResponse(response, appResponse)
+		if rec := recover(); rec != nil {
+			appResponse := kernel.RecoverFromMiddlewarePanic(rec)
+			exposeResponse(response, appResponse)
+		}
 	}()
 
 	appResponse := kernel.Handle(appRequest)
