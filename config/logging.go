@@ -67,7 +67,7 @@ var Logging = struct {
 		},
 
 		"stdout": loggers.Syslog{
-			MinLevel: log_level.ERROR,
+			MinLevel: log_level.DEBUG,
 			Writer:   os.Stdout,
 		},
 	},
