@@ -111,7 +111,7 @@ var App = struct {
 	   |
 	   | Determines which port the application should listen to. For a development
 	   | environment this will be 80 and for an environment with a certificate
-	   | this will be 443. If you have a proxy server (such as NGINX or a
+	   | this will be 443. If you have a proxy server (such as Docker, NGINX or a
 	   | load balancer), you can forward the proxy server to a port number
 	   | specified here.
 	   |
