@@ -8,7 +8,7 @@ Confetti is a web application framework with an expressive, elegant syntax. We b
 and creative experience to be truly fulfilling. Confetti takes the pain out of development by easing common tasks used in
 many web projects. Confetti is accessible, powerful, and provides tools required for large, robust applications.
 
-> Confetti combines the elegance of [Laravel](https://laravel.com) and the strictness of Golang.
+> Confetti combines the elegance of Laravel and the strictness of Golang.
 
 ## Learning Confetti
 
