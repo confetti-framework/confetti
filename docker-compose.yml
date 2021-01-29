@@ -1,4 +1,4 @@
-# For more information: https://confetti-framework.github.io/docs/docs/packages/fly
+# For more information: https://confetti-framework.github.io/docs/docs/get-started/installation.html#docker
 version: '3'
 services:
     confetti.local:
@@ -7,7 +7,7 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP:-20}'
-        image: fly/app
+        image: confetti/app
         ports:
             - '${APP_PORT:-80}:8080'
         environment:
@@ -18,7 +18,7 @@ services:
         volumes:
             - '.:/var/www/html'
         networks:
-            - fly
+            - confetti
         depends_on:
             - mysql
             # - pgsql
@@ -29,7 +29,7 @@ services:
     #     volumes:
     #         - '/dev/shm:/dev/shm'
     #     networks:
-    #         - fly
+    #         - confetti
     mysql:
         image: 'mysql:8.0'
         ports:
@@ -41,9 +41,9 @@ services:
             MYSQL_PASSWORD: '${DB_PASSWORD}'
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
-            - 'flymysql:/var/lib/mysql'
+            - 'confetti_mysql:/var/lib/mysql'
         networks:
-            - fly
+            - confetti
         healthcheck:
           test: ["CMD", "mysqladmin", "ping"]
 #    pgsql:
@@ -56,9 +56,9 @@ services:
 #            POSTGRES_USER: '${DB_USERNAME}'
 #            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
 #        volumes:
-#            - 'flypostgresql:/var/lib/postgresql/data'
+#            - 'confetti_postgresql:/var/lib/postgresql/data'
 #        networks:
-#            - fly
+#            - confetti
 #        healthcheck:
 #          test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
     redis:
@@ -66,9 +66,9 @@ services:
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
         volumes:
-            - 'flyredis:/data'
+            - 'confetti_redis:/data'
         networks:
-            - fly
+            - confetti
         healthcheck:
           test: ["CMD", "redis-cli", "ping"]
     # memcached:
@@ -76,21 +76,21 @@ services:
     #     ports:
     #         - '11211:11211'
     #     networks:
-    #         - fly
+    #         - confetti
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
             - '${FORWARD_MAILHOG_PORT:-1025}:1025'
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
         networks:
-            - fly
+            - confetti
 networks:
-    fly:
+    confetti:
         driver: bridge
 volumes:
-    flymysql:
+    confetti_mysql:
         driver: local
-#    flypostgresql:
+#    confetti_postgresql:
 #        driver: local
-    flyredis:
+    confetti_redis:
         driver: local

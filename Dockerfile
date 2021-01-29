@@ -31,6 +31,7 @@ RUN apt-get install -y \
        libpng-dev \
        python2 \
        wget \
+       htop \
     && mkdir -p ~/.gnupg \
     && chmod 600 ~/.gnupg \
     && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
@@ -53,11 +54,11 @@ RUN cd /usr/local && wget --progress=bar:force:noscroll https://golang.org/dl/go
     tar -C /usr/local -xzf go$GOVERSION.linux-amd64.tar.gz
 ENV PATH PATH=$PATH:/usr/local/go/bin
 
-RUN groupadd --force -g $WWWGROUP fly
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 fly
+RUN groupadd --force -g $WWWGROUP confetti
+RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 1337 confetti
 RUN mkdir $GOCACHE $GOMODCACHE
-RUN chown -R fly:fly $GOCACHE $GOMODCACHE
-USER fly
+RUN chown -R confetti:confetti $GOCACHE $GOMODCACHE
+USER confetti
 
 RUN go get github.com/cespare/reflex
 CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run -race main.go"
