@@ -15,6 +15,8 @@ github.com/confetti-framework/routing v0.5.1 h1:N2J1FdzNJvDnEXK8K4UOjRCCGACN1Gs2
 github.com/confetti-framework/routing v0.5.1/go.mod h1:Qo2uCL3L1fBZ783AzYg5TcSB2+fvjSiH19TXqaVIANo=
 github.com/confetti-framework/support v0.2.0-rc.1 h1:LSF3NDIVqPpRJEEj4r+4N1PoJfAvGxe0Hdr2sNHwJ60=
 github.com/confetti-framework/support v0.2.0-rc.1/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
+github.com/confetti-framework/support v0.2.0-rc.2 h1:8VT+f4BFI7HrquqRjrYIdq+79NoNt7pCbGLf3t+XCI0=
+github.com/confetti-framework/support v0.2.0-rc.2/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
 github.com/confetti-framework/syslog v0.1.0-rc h1:BqzyW2p9uSxYOL1MQFrMGAcsix7X5nW8bgHlf7SuZkM=
 github.com/confetti-framework/syslog v0.1.0-rc/go.mod h1:O6eT3y5cYDGQSVT6lrhScB5NKdylG0R304PmGiChm7Y=
 github.com/confetti-framework/validation v0.1.0-rc.1 h1:FAWrTYiyurHnO1oBeIcTH2mmdfN+aJCskDkWvMawt6A=

@@ -3,7 +3,7 @@ version: '3'
 services:
     confetti.local:
         build:
-            context: runtimes
+            context: ./
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP:-20}'

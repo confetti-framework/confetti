@@ -60,4 +60,4 @@ RUN chown -R fly:fly $GOCACHE $GOMODCACHE
 USER fly
 
 RUN go get github.com/cespare/reflex
-CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run main.go"
+CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run -race main.go"
