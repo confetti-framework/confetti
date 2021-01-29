@@ -18,7 +18,6 @@ type RouteServiceProvider struct{}
 // Define your router model bindings, pattern filters, etc.
 func (r RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	collection := routing.NewRouteCollection()
-	collection.SetContainer(container)
 
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
