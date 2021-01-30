@@ -1,4 +1,6 @@
-<p align="center"><img src="https://avatars1.githubusercontent.com/u/57274804?s=400&u=058242df13e206950c08efd68a540445ce4da17f&v=4" width="100"></p>
+<p align="center">
+  <img src="https://avatars1.githubusercontent.com/u/57274804?s=400&u=058242df13e206950c08efd68a540445ce4da17f&v=4" width="100">
+</p>
 
 _Confetti is under development. View all [milestones](https://github.com/confetti-framework/confetti/milestones)._
 
@@ -14,7 +16,6 @@ many web projects. Confetti is accessible, powerful, and provides tools required
 
 Confetti has extensive and thorough [documentation](https://confetti-framework.github.io/docs/), making it a breeze to get started
 with the framework.
-
 ## License
 
-The Confetti framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Confetti is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
