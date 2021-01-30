@@ -16,7 +16,6 @@ many web projects. Confetti is accessible, powerful, and provides tools required
 
 Confetti has extensive and thorough [documentation](https://confetti-framework.github.io/docs/), making it a breeze to get started
 with the framework.
-
 ## License
 
-The Confetti framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Confetti is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
