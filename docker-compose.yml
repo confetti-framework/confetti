@@ -1,4 +1,4 @@
-# For more information: https://confetti-framework.github.io/docs/docs/get-started/installation.html#docker
+# For more information: https://confetti-framework.com/docs/get-started/installation.html#docker
 version: '3'
 services:
     confetti.local:
