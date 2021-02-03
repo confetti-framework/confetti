@@ -8,7 +8,6 @@ This `confetti-framework/confetti` repository actually only contains configurati
 repositories. For example:
 
 - [Foundation Tests](https://github.com/confetti-framework/foundation/tree/master/test)
-- [Routing Tests](https://github.com/confetti-framework/routing/tree/master/test)
 - [Support Tests](https://github.com/confetti-framework/support/tree/master/test)
 - [Errors Tests](https://github.com/confetti-framework/errors)
-- [Validation](https://github.com/confetti-framework/validation)
+- [Validation Tests](https://github.com/confetti-framework/validation)

@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/routing/outcome"
+	"github.com/confetti-framework/foundation/http/outcome"
 	net "net/http"
 )
 

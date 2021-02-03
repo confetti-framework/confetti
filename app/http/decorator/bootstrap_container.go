@@ -3,7 +3,7 @@ package decorator
 import (
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation"
-	"github.com/confetti-framework/foundation/decorator"
+	"github.com/confetti-framework/foundation/decorator/container_decorator"
 )
 
 var bootstraps = []inter.Bootstrap{
@@ -12,7 +12,7 @@ var bootstraps = []inter.Bootstrap{
 }
 
 func Bootstrap(container *foundation.Container) inter.Container {
-	bootstrapDecorator := decorator.BootstrapDecorator{Bootstraps: bootstraps}
+	handler := container_decorator.Handler{Bootstraps: bootstraps}
 
-	return bootstrapDecorator.BootstrapWith(container)
+	return handler.BootstrapWith(container)
 }

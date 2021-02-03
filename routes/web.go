@@ -3,7 +3,7 @@ package routes
 import (
 	"confetti-framework/app/http/controllers"
 	"confetti-framework/app/http/middleware"
-	. "github.com/confetti-framework/routing"
+	"github.com/confetti-framework/foundation/http/routing"
 )
 
 /*
@@ -16,6 +16,6 @@ import (
 | middleware. Enjoy building your website!
 |
 */
-var Web = Group(
-	Get("/", controllers.Homepage),
+var Web = routing.Group(
+	routing.Get("/", controllers.Homepage),
 ).Middleware(middleware.Web...)
