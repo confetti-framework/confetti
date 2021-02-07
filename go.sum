@@ -15,6 +15,8 @@ github.com/confetti-framework/foundation v0.3.2 h1:RwDFC00EUP2xXwq5EG6ZdZXAYehGX
 github.com/confetti-framework/foundation v0.3.2/go.mod h1:dnT6l0DPJKJWrYfDP9T+Ik6b/+bUHq7xA7IKmbPtsAk=
 github.com/confetti-framework/foundation v0.3.3 h1:fuLFz0F0T5wsBA8Dc5taY3u72NaLYtSyLea4AOfaxgg=
 github.com/confetti-framework/foundation v0.3.3/go.mod h1:c8n/bUj2RzO8uknE4ohzwSGv8awBYUOl3VzbiF//9z0=
+github.com/confetti-framework/foundation v0.4.0 h1:f7ouXQ5lObbfBX85m9fnGqWLAx9zjeZKN/K9lk8DTU8=
+github.com/confetti-framework/foundation v0.4.0/go.mod h1:c8n/bUj2RzO8uknE4ohzwSGv8awBYUOl3VzbiF//9z0=
 github.com/confetti-framework/routing v0.5.0-rc.2/go.mod h1:OaxFjhc1hwj1ela8C6A8MutRjlDNmRbxQrtKncJ5DHM=
 github.com/confetti-framework/routing v0.5.0-rc.7/go.mod h1:y1Ckjt7364ZdL9PhQdTT1HVfuTOI3+ynnkvNxLdM9n0=
 github.com/confetti-framework/support v0.2.0-rc.1 h1:LSF3NDIVqPpRJEEj4r+4N1PoJfAvGxe0Hdr2sNHwJ60=
