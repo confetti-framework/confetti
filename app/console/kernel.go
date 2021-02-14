@@ -2,12 +2,16 @@ package console
 
 import (
 	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/console"
 )
 
-type Kernel struct {
-	App inter.App
-}
-
-func NewKernel(app inter.App) Kernel {
-	return Kernel{app}
+func NewKernel(app inter.App) console.Kernel {
+	return console.Kernel{
+		App: app,
+		Commands: []inter.Command{
+			console.AppServe{},
+			console.LogClean{},
+			YourFirstCommand{},
+		},
+	}
 }

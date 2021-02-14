@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/confetti-framework/support/env"
 	"golang.org/x/text/language"
+	"os"
 	"time"
 )
 
@@ -13,6 +14,7 @@ var App = struct {
 	LineSeparator,
 	Key,
 	Env string
+	OsArgs   []string
 	Port     int
 	Cipher   string
 	Debug    bool
@@ -117,6 +119,16 @@ var App = struct {
 	   |
 	*/
 	Port: env.Int("APP_PORT"),
+
+	/*
+	   |--------------------------------------------------------------------------
+	   | Application Command-line Arguments
+	   |--------------------------------------------------------------------------
+	   |
+	   | Args hold the command-line arguments, starting with the program name.
+	   |
+	*/
+	OsArgs: os.Args,
 
 	/*
 	   |--------------------------------------------------------------------------
