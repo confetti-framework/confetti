@@ -16,3 +16,9 @@ require (
 	golang.org/x/text v0.3.5
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 )
+
+replace (
+	github.com/confetti-framework/foundation v0.4.0 => ../foundation
+	github.com/confetti-framework/contract v0.1.2 => ../contract
+	github.com/confetti-framework/support v0.2.0 => ../support
+)

@@ -7,7 +7,7 @@ import (
 )
 
 type YourFirstCommand struct {
-	YourFirstFlag string `flag:"first"`
+	YourFirstFlag string `short:"f" flag:"first" description:"Configure your flag"`
 }
 
 func (t YourFirstCommand) Name() string {
