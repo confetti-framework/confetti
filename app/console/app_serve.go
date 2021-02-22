@@ -1,7 +1,6 @@
 ﻿package console
 
 import (
-	"confetti-framework/config"
 	"fmt"
 	"github.com/confetti-framework/contract/inter"
 	"io"
@@ -25,9 +24,8 @@ func (s AppServe) Description() string {
 func (s AppServe) Handle(app inter.App, output io.Writer) inter.ExitCode {
 	name := app.Make("config.App.Name").(string)
 	handler := app.Make((*net.HandlerFunc)(nil)).(func(net.ResponseWriter, *net.Request))
-	url := config.App.Url + s.getPortAddr(app)
 
-	_, _ = fmt.Fprintln(output, "Start "+name+" to handle requests on "+url)
+	_, _ = fmt.Fprintln(output, "Start "+name+" to handle requests")
 	server := &net.Server{
 		Addr:         s.getPortAddr(app),
 		Handler:      net.HandlerFunc(handler),
