@@ -1,4 +1,4 @@
-{package flag_type
+package flag_type
 
 import (
 	"fmt"
