@@ -11,7 +11,7 @@ import (
 )
 
 type AppServe struct {
-	Port int `short:"p" flag:"--port"`
+	Port int `short:"p" flag:"port"`
 }
 
 func (s AppServe) Name() string {
