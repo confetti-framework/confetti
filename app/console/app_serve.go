@@ -1,4 +1,4 @@
-﻿package console
+package console
 
 import (
 	"fmt"
@@ -21,11 +21,11 @@ func (s AppServe) Description() string {
 	return "Start the http server to handle requests."
 }
 
-func (s AppServe) Handle(app inter.App, output io.Writer) inter.ExitCode {
+func (s AppServe) Handle(app inter.App, writer io.Writer) inter.ExitCode {
 	name := app.Make("config.App.Name").(string)
 	handler := app.Make((*net.HandlerFunc)(nil)).(func(net.ResponseWriter, *net.Request))
 
-	_, _ = fmt.Fprintln(output, "Start "+name+" to handle requests")
+	_, _ = fmt.Fprintln(writer, "Start "+name+" to handle requests")
 	server := &net.Server{
 		Addr:         s.getPortAddr(app),
 		Handler:      net.HandlerFunc(handler),
@@ -33,11 +33,11 @@ func (s AppServe) Handle(app inter.App, output io.Writer) inter.ExitCode {
 		ReadTimeout:  30 * time.Second,
 	}
 	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
-		_, _ = fmt.Fprintln(output, "Could not ", err)
+		_, _ = fmt.Fprintln(writer, "Could not ", err)
 		return inter.Failure
 	}
 
-	_, _ = fmt.Fprintln(output, "Server stopped")
+	_, _ = fmt.Fprintln(writer, "Server stopped")
 
 	return inter.Success
 }

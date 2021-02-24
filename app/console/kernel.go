@@ -20,7 +20,6 @@ func NewKernel(app inter.App) console.Kernel {
 		Commands: []inter.Command{
 			AppServe{},
 			YourFirstCommand{},
-			console.LogClear{},
 		},
 		FlagProviders: []func() []flag.Getter{flagGetters},
 	}

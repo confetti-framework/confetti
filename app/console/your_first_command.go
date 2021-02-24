@@ -18,8 +18,9 @@ func (t YourFirstCommand) Description() string {
 	return "You can adjust this command to your wishes."
 }
 
-func (t YourFirstCommand) Handle(app inter.App, writer io.Writer) inter.ExitCode {
-	_, _ = fmt.Fprint(writer, "Value in first flag: "+t.YourFirstFlag)
+func (t YourFirstCommand) Handle(app inter.App, output io.Writer) inter.ExitCode {
+	_, _ = fmt.Fprintln(output, "Value in first flag: "+t.YourFirstFlag)
 
+	_, _ = fmt.Fprintln(output, "Done")
 	return inter.Success
 }

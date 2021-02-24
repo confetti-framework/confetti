@@ -1,8 +1,8 @@
 package main
 
 import (
-	"confetti-framework/app/console"
 	"confetti-framework/bootstrap"
+	"github.com/confetti-framework/contract/inter"
 	"os"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	   | through the kernel.
 	   |
 	*/
-	kernel := console.NewKernel(app)
+	kernel := app.Make((*inter.ConsoleKernel)(nil)).(inter.ConsoleKernel)
 	code := kernel.Handle()
 	os.Exit(int(code))
 }
