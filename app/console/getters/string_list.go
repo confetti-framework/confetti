@@ -1,4 +1,4 @@
-package flag_type
+package getters
 
 import (
 	"fmt"
@@ -21,4 +21,3 @@ func (s *StringList) Set(value string) error {
 func (s *StringList) Get() interface{} {
 	return []string(*s)
 }
-

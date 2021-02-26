@@ -1,4 +1,4 @@
-package flag_type
+package getters
 
 import (
 	"fmt"

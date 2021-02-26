@@ -1,7 +1,8 @@
 package console
 
 import (
-	"confetti-framework/app/console/flag_type"
+	"confetti-framework/app/console/commands"
+	"confetti-framework/app/console/getters"
 	"flag"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation/console"
@@ -9,8 +10,8 @@ import (
 
 var flagGetters = func() []flag.Getter {
 	return []flag.Getter{
-		new(flag_type.StringList),
-		new(flag_type.IntList),
+		new(getters.StringList),
+		new(getters.IntList),
 	}
 }
 
@@ -18,8 +19,8 @@ func NewKernel(app inter.App) console.Kernel {
 	return console.Kernel{
 		App: app,
 		Commands: []inter.Command{
-			AppServe{},
-			YourFirstCommand{},
+			commands.AppServe{},
+			commands.ExampleCommand{},
 		},
 		FlagProviders: []func() []flag.Getter{flagGetters},
 	}
