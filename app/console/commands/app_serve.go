@@ -1,9 +1,7 @@
 package commands
 
 import (
-	"fmt"
 	"github.com/confetti-framework/contract/inter"
-	"io"
 	net "net/http"
 	"strconv"
 	"time"
@@ -21,23 +19,23 @@ func (s AppServe) Description() string {
 	return "Start the http server to handle requests."
 }
 
-func (s AppServe) Handle(app inter.App, writer io.Writer) inter.ExitCode {
-	name := app.Make("config.App.Name").(string)
-	handler := app.Make((*net.HandlerFunc)(nil)).(func(net.ResponseWriter, *net.Request))
+func (s AppServe) Handle(c inter.Cli) inter.ExitCode {
+	name := c.App().Make("config.App.Name").(string)
+	handler := c.App().Make((*net.HandlerFunc)(nil)).(func(net.ResponseWriter, *net.Request))
 
-	_, _ = fmt.Fprintln(writer, "Start "+name+" to handle requests")
+	c.Info("Start %s to handle requests", name)
 	server := &net.Server{
-		Addr:         s.getPortAddr(app),
+		Addr:         s.getPortAddr(c.App()),
 		Handler:      net.HandlerFunc(handler),
 		WriteTimeout: 30 * time.Second,
 		ReadTimeout:  30 * time.Second,
 	}
 	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
-		_, _ = fmt.Fprintln(writer, "Could not ", err)
+		c.Error("Could not %s", err)
 		return inter.Failure
 	}
 
-	_, _ = fmt.Fprintln(writer, "Server stopped")
+	c.Info("Server stopped")
 
 	return inter.Success
 }
