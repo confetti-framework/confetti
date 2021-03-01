@@ -14,8 +14,8 @@ github.com/confetti-framework/errors v0.11.0-rc.1 h1:Docd/3JG4DwVAiz/KSXnO31fS4w
 github.com/confetti-framework/errors v0.11.0-rc.1/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
 github.com/confetti-framework/errors v0.11.0 h1:rIOBgIpw5zGb25q5Pfg2cIk4vMCQb+Gs/kdaEze7BHY=
 github.com/confetti-framework/errors v0.11.0/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
-github.com/confetti-framework/foundation v0.5.4 h1:5RxL4nKepde+I49A/ixR3hRCupy8QKtfRnb2vbCDPig=
-github.com/confetti-framework/foundation v0.5.4/go.mod h1:ET3fgrUBhQpFwinK92uNWuESXjYnd3zQ4SdSAfKQ3tw=
+github.com/confetti-framework/foundation v0.5.5 h1:aOKyl4Sa0jY6xZCxoPkseE1kHGKtWsXrAEcJktm0ME0=
+github.com/confetti-framework/foundation v0.5.5/go.mod h1:ET3fgrUBhQpFwinK92uNWuESXjYnd3zQ4SdSAfKQ3tw=
 github.com/confetti-framework/support v0.2.0-rc.1 h1:LSF3NDIVqPpRJEEj4r+4N1PoJfAvGxe0Hdr2sNHwJ60=
 github.com/confetti-framework/support v0.2.0-rc.1/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
 github.com/confetti-framework/support v0.2.3 h1:AOzZVtPeJlZBExW2SjYY3R3973ytve2FvmZoETqluN8=
