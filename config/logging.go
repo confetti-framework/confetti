@@ -30,7 +30,7 @@ var Logging = struct {
 	   |--------------------------------------------------------------------------
 	   |
 	   | Here you may configure the log channels for your application. Out of
-	   | the box, Laravel uses the confetti-framework/syslog logging library. This gives
+	   | the box, Confetti uses the confetti-framework/syslog logging library. This gives
 	   | you a variety of powerful log handlers / formatters to utilize.
 	   |
 	   | The name provided is for reference only, so you can log specifically to

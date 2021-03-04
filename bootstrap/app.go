@@ -1,11 +1,12 @@
 package bootstrap
 
 import (
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation"
 	"confetti-framework/app/console"
 	"confetti-framework/app/http"
 	"confetti-framework/app/http/decorator"
+	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation"
+	net "net/http"
 )
 
 var bootContainer inter.Container
@@ -51,6 +52,11 @@ func NewAppFromBoot() inter.App {
 	app.Singleton(
 		(*inter.ConsoleKernel)(nil),
 		console.NewKernel(app),
+	)
+
+	app.Bind(
+		(*net.HandlerFunc)(nil),
+		HandleHttpKernel,
 	)
 
 	return app
