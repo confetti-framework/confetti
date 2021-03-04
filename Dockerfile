@@ -61,4 +61,4 @@ RUN chown -R confetti:confetti $GOCACHE $GOMODCACHE
 USER confetti
 
 RUN go get github.com/cespare/reflex
-CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run -race main.go"
+CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run -race main.go app:serve"

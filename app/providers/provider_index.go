@@ -1,9 +1,9 @@
 package providers
 
 import (
+	"confetti-framework/config"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation/providers"
-	"confetti-framework/config"
 )
 
 var Providers = struct {
@@ -12,7 +12,7 @@ var Providers = struct {
 }{
 	/*
 	   |--------------------------------------------------------------------------
-	   | Autoloaded Register Service Providers
+	   | Register Service Providers
 	   |--------------------------------------------------------------------------
 	   |
 	   | The service providers listed here will be automatically loaded on the
