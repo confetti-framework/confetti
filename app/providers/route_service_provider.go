@@ -1,11 +1,11 @@
 package providers
 
 import (
-	"confetti-framework/app/http/middleware"
-	"confetti-framework/routes"
 	"github.com/confetti-framework/contract/inter"
 	foundationMiddleware "github.com/confetti-framework/foundation/http/middleware"
-	routing2 "github.com/confetti-framework/foundation/http/routing"
+	"github.com/confetti-framework/foundation/http/routing"
+	"src/app/http/middleware"
+	"src/routes"
 )
 
 var globalMiddlewares = []inter.HttpMiddleware{
@@ -17,7 +17,7 @@ type RouteServiceProvider struct{}
 
 // Define your router model bindings, pattern filters, etc.
 func (r RouteServiceProvider) Boot(container inter.Container) inter.Container {
-	collection := routing2.NewRouteCollection()
+	collection := routing.NewRouteCollection()
 
 	collection.Merge(routes.Api)
 	collection.Merge(routes.Web)
@@ -30,7 +30,7 @@ func (r RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	// These middlewares should be executed on all routes
 	collection.Middleware(globalMiddlewares...)
 
-	routing2.DecorateRoutes(collection)
+	routing.DecorateRoutes(collection)
 	container.Singleton("routes", collection)
 
 	return container

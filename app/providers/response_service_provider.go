@@ -1,11 +1,11 @@
 package providers
 
 import (
-	"confetti-framework/resources/views"
 	"github.com/confetti-framework/contract/inter"
 	decorator "github.com/confetti-framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/foundation/encoder"
 	net "net/http"
+	"src/resources/views"
 )
 
 type ResponseServiceProvider struct{}

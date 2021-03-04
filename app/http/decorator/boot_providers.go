@@ -2,7 +2,7 @@ package decorator
 
 import (
 	"github.com/confetti-framework/contract/inter"
-	"confetti-framework/app/providers"
+	"src/app/providers"
 )
 
 type BootProviders struct{}

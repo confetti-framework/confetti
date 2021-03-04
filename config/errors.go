@@ -1,8 +1,8 @@
 package config
 
 import (
-	"confetti-framework/app/report"
-	routing2 "github.com/confetti-framework/foundation/http/routing"
+	"github.com/confetti-framework/foundation/http/routing"
+	"src/app/report"
 )
 
 var Errors = struct {
@@ -17,8 +17,8 @@ var Errors = struct {
 	   |
 	*/
 	NoLogging: []error{
-		routing2.MethodNotAllowedError,
-		routing2.RouteNotFoundError,
+		routing.MethodNotAllowedError,
+		routing.RouteNotFoundError,
 		report.ValidationError,
 		report.NotFoundError,
 	},

@@ -1,11 +1,11 @@
 package console
 
 import (
-	"confetti-framework/app/console/commands"
-	"confetti-framework/app/console/getters"
 	"flag"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation/console"
+	"src/app/console/commands"
+	"src/app/console/getters"
 )
 
 var flagGetters = func() []flag.Getter {

@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"confetti-framework/app/http/controllers"
-	"confetti-framework/app/http/middleware"
 	. "github.com/confetti-framework/foundation/http/routing"
+	"src/app/http/controllers"
+	"src/app/http/middleware"
 )
 
 /*

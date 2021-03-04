@@ -1,8 +1,8 @@
 package decorator
 
 import (
-	"confetti-framework/app/providers"
 	"github.com/confetti-framework/contract/inter"
+	"src/app/providers"
 )
 
 type RegisterProviders struct{}

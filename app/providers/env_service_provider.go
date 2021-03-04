@@ -2,7 +2,7 @@ package providers
 
 import (
 	"github.com/confetti-framework/contract/inter"
-	"confetti-framework/config"
+	"src/config"
 )
 
 type EnvServiceProvider struct{}

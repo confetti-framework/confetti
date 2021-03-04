@@ -1,12 +1,12 @@
 package bootstrap
 
 import (
-	"confetti-framework/app/console"
-	"confetti-framework/app/http"
-	"confetti-framework/app/http/decorator"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation"
 	net "net/http"
+	"src/app/console"
+	"src/app/http"
+	"src/app/http/decorator"
 )
 
 var bootContainer inter.Container

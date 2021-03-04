@@ -2,7 +2,7 @@ package views
 
 import (
 	"github.com/confetti-framework/contract/inter"
-	"confetti-framework/config"
+	"src/config"
 )
 
 func Homepage(app inter.App, title string, description string) *HomepageView {

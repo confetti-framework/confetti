@@ -1,9 +1,9 @@
 package main
 
 import (
-	"confetti-framework/bootstrap"
 	"github.com/confetti-framework/contract/inter"
 	"os"
+	"src/bootstrap"
 )
 
 func main() {
