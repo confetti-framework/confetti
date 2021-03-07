@@ -4,9 +4,7 @@
 
 ## About Confetti
 
-<p align="center">
 [![codecov](https://codecov.io/gh/confetti-framework/foundation/branch/main/graph/badge.svg?token=S8S1H6D2SA)](https://github.com/confetti-framework/confetti/blob/main/test/README.md)
-  </p>
 
 Confetti is a web application framework with an expressive, elegant syntax. We believe development must be an enjoyable
 and creative experience to be truly fulfilling. Confetti takes the pain out of development by easing common tasks used in
