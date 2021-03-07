@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/confetti-framework/foundation/branch/main/graph/badge.svg?token=S8S1H6D2SA)](https://github.com/confetti-framework/confetti/blob/main/test/README.md)
+
 <p align="center">
   <img src="https://avatars1.githubusercontent.com/u/57274804?s=400&u=058242df13e206950c08efd68a540445ce4da17f&v=4" width="100">
 </p>
