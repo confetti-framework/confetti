@@ -2,7 +2,7 @@
 
 ## Confetti Tests
 
-This `confetti-framework/confetti` repository actually only contains configuration. Confetti's tests are present in the following repositories:
+The `confetti-framework/confetti` repository actually only contains configuration. Confetti's tests are present in the following repositories:
 
 | Repo     |  |
 | ---      | ---       |
