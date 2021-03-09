@@ -5,9 +5,10 @@ import (
 	"src/config"
 )
 
+// EnvServiceProvider is responsible for binding all environments, in case you would need them later.
 type EnvServiceProvider struct{}
 
-// Register any container services.
+// Register is responsible for binding all environments, in case you would need them later.
 func (a EnvServiceProvider) Register(container inter.Container) inter.Container {
 	container.Bind("env", config.App.Env)
 

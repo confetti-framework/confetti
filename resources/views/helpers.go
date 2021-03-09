@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+// AppName returns the name of the application
 func AppName(app inter.App) string {
 	name, err := app.MakeE("config.App.Name")
 	if err != nil {
@@ -16,6 +17,7 @@ func AppName(app inter.App) string {
 	return name.(string)
 }
 
+// Locale returns the locale of the application
 func Locale(app inter.App) string {
 	lang, err := app.MakeE("config.App.Locale")
 	if err != nil {
@@ -24,6 +26,7 @@ func Locale(app inter.App) string {
 	return lang.(language.Tag).String()
 }
 
+// StackTrace returns the stack trace of an error
 func StackTrace(app inter.App, err error) string {
 	if !app.Make("config.App.Debug").(bool) {
 		return ""

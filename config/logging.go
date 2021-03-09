@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// Logging is responsible for all configuration related to logging
 var Logging = struct {
 	Default  string
 	Channels map[string]inter.Logger

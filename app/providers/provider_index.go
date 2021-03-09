@@ -6,6 +6,7 @@ import (
 	"src/config"
 )
 
+// Providers contains all service providers
 var Providers = struct {
 	RegisterProviders []inter.RegisterServiceProvider
 	BootProviders     []inter.BootServiceProvider

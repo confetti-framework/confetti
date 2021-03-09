@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// Error provide an error view
 func Error(app inter.App, err error) inter.View {
 	status, _ := errors.FindStatus(err)
 
@@ -22,6 +23,7 @@ func Error(app inter.App, err error) inter.View {
 	}
 }
 
+// ErrorView contains the view options
 type ErrorView struct {
 	Message     string
 	StackTraces []string
@@ -31,6 +33,7 @@ type ErrorView struct {
 	template    string
 }
 
+// Template returns the template path
 func (e ErrorView) Template() string {
 	return e.template
 }

@@ -4,6 +4,7 @@ import (
 	"github.com/confetti-framework/contract/inter"
 )
 
+// AppServiceProvider contains all providers
 type AppServiceProvider struct{}
 
 // Register any container services.
@@ -14,7 +15,7 @@ func (a AppServiceProvider) Register(container inter.Container) inter.Container 
 	return container
 }
 
-// Bootstrap any container services.
+// Boot any container services.
 func (a AppServiceProvider) Boot(container inter.Container) inter.Container {
 
 	//

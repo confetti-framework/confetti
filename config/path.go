@@ -5,20 +5,21 @@ import (
 	. "path/filepath"
 )
 
-/*
-	|--------------------------------------------------------------------------
-	| Base Path
-	|--------------------------------------------------------------------------
-	|
-	| The base path is the fully qualified path to the root of your project.
-	| Feel free to adjust this so that it fits to your needs.
-	|
-*/
+// Path contains a list of all paths you can use in your application.
 var Path = struct {
 	Separator, Base, App, Bootstrap, Config, Database, Public, Storage,
 	Resource, Lang, Views string
 }{
 	Separator: string(os.PathSeparator),
+	/*
+		|--------------------------------------------------------------------------
+		| Base Path
+		|--------------------------------------------------------------------------
+		|
+		| The base path is the fully qualified path to the root of your project.
+		| Feel free to adjust this so that it fits to your needs.
+		|
+	*/
 	Base:      basePath(),
 	App:       Join(basePath(), "app"),
 	Bootstrap: Join(basePath(), "bootstrap"),

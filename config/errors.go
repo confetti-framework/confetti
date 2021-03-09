@@ -5,6 +5,7 @@ import (
 	"src/app/report"
 )
 
+// Errors contains the configuration to handle the errors correctly
 var Errors = struct {
 	NoLogging []error
 }{

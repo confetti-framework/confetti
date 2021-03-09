@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// App contains all the configuration for your application.
 var App = struct {
 	Name,
 	Url,

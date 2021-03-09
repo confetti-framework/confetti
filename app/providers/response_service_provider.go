@@ -8,8 +8,10 @@ import (
 	"src/resources/views"
 )
 
+// ResponseServiceProvider is responsible for generate the correct response.
 type ResponseServiceProvider struct{}
 
+// Register is responsible for returning the correct response.
 func (c ResponseServiceProvider) Register(container inter.Container) inter.Container {
 	// Response decorators are responsible for modifying the response object.
 	// All these decorators will be used.

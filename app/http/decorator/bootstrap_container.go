@@ -7,10 +7,11 @@ import (
 )
 
 var bootstraps = []inter.Bootstrap{
-	RegisterProviders{},
-	BootProviders{},
+	registerProviders{},
+	bootProviders{},
 }
 
+// Bootstrap ensures that the application is started
 func Bootstrap(container *foundation.Container) inter.Container {
 	handler := container_decorator.Handler{Bootstraps: bootstraps}
 

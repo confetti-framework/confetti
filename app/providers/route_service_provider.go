@@ -13,9 +13,10 @@ var globalMiddlewares = []inter.HttpMiddleware{
 	middleware.RouteModelBinding{},
 }
 
+// RouteServiceProvider is responsible for generate the routes
 type RouteServiceProvider struct{}
 
-// Define your router model bindings, pattern filters, etc.
+// Boot defined your router model bindings, pattern filters, etc.
 func (r RouteServiceProvider) Boot(container inter.Container) inter.Container {
 	collection := routing.NewRouteCollection()
 

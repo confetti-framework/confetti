@@ -5,9 +5,10 @@ import (
 	"src/app/providers"
 )
 
-type RegisterProviders struct{}
+type registerProviders struct{}
 
-func (r RegisterProviders) Bootstrap(container inter.Container) inter.Container {
+// Bootstrap handles all registerProviders. Providers are located in config/providers/providers.go
+func (r registerProviders) Bootstrap(container inter.Container) inter.Container {
 	for _, bootstrapper := range providers.Providers.RegisterProviders {
 		container = bootstrapper.Register(container)
 	}

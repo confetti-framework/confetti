@@ -8,6 +8,8 @@ import (
 	"src/app/console/getters"
 )
 
+// flagGetters contains a list with custom flag.Getters, you can create custom
+// types to cast the flags to a value.
 var flagGetters = func() []flag.Getter {
 	return []flag.Getter{
 		new(getters.StringList),
@@ -15,6 +17,8 @@ var flagGetters = func() []flag.Getter {
 	}
 }
 
+// NewKernel ensures that the kernel receives all existing commands and that the
+// correct flag.Getters are used.
 func NewKernel(app inter.App) console.Kernel {
 	return console.Kernel{
 		App: app,

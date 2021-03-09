@@ -27,6 +27,8 @@ func init() {
 	bootContainer = decorator.Bootstrap(foundation.NewContainer())
 }
 
+// NewAppFromBoot We create a new inter.App for every new process. We use the
+// bootContainer where one-time instances are registered and booted.
 func NewAppFromBoot() inter.App {
 
 	/*
