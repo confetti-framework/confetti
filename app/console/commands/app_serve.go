@@ -7,18 +7,22 @@ import (
 	"time"
 )
 
+// AppServe starts the http server to handle requests.
 type AppServe struct {
 	Port int `short:"p" flag:"port"`
 }
 
+// Name of the command
 func (s AppServe) Name() string {
 	return "app:serve"
 }
 
+// Description of the command
 func (s AppServe) Description() string {
 	return "Start the http server to handle requests."
 }
 
+// Handle contains the logic of the command
 func (s AppServe) Handle(c inter.Cli) inter.ExitCode {
 	name := c.App().Make("config.App.Name").(string)
 	handler := c.App().Make((*net.HandlerFunc)(nil)).(func(net.ResponseWriter, *net.Request))

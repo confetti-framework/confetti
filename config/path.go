@@ -2,7 +2,7 @@ package config
 
 import (
 	"os"
-	. "path/filepath"
+	"path/filepath"
 )
 
 // Path contains a list of all paths you can use in your application.
@@ -21,15 +21,15 @@ var Path = struct {
 		|
 	*/
 	Base:      basePath(),
-	App:       Join(basePath(), "app"),
-	Bootstrap: Join(basePath(), "bootstrap"),
-	Config:    Join(basePath(), "app"),
-	Database:  Join(basePath(), "database"),
-	Public:    Join(basePath(), "public"),
-	Storage:   Join(basePath(), "storage"),
-	Resource:  Join(basePath(), "resources"),
-	Lang:      Join(basePath(), "resources", "lang"),
-	Views:     Join(basePath(), "resources", "views"),
+	App:       filepath.Join(basePath(), "app"),
+	Bootstrap: filepath.Join(basePath(), "bootstrap"),
+	Config:    filepath.Join(basePath(), "app"),
+	Database:  filepath.Join(basePath(), "database"),
+	Public:    filepath.Join(basePath(), "public"),
+	Storage:   filepath.Join(basePath(), "storage"),
+	Resource:  filepath.Join(basePath(), "resources"),
+	Lang:      filepath.Join(basePath(), "resources", "lang"),
+	Views:     filepath.Join(basePath(), "resources", "views"),
 }
 
 func basePath() string {

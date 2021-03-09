@@ -7,12 +7,15 @@ import (
 	"strings"
 )
 
+// IntList casts comma separated numbers to a slice
 type IntList []int
 
+// StringList casts a slice to a comma separated string
 func (s *IntList) String() string {
 	return fmt.Sprintf("%v", *s)
 }
 
+// Set casts comma separated numbers to a slice
 func (s *IntList) Set(value string) error {
 	//goland:noinspection GoPreferNilSlice
 	result := []int{}
@@ -33,4 +36,3 @@ func (s *IntList) Set(value string) error {
 func (s *IntList) Get() interface{} {
 	return []int(*s)
 }
-

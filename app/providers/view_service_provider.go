@@ -8,9 +8,10 @@ import (
 	"strings"
 )
 
+// ViewServiceProvider Register here your view helpers and templates to the `template.Template` builder.
 type ViewServiceProvider struct{}
 
-// Define your router model bindings, pattern filters, etc.
+// Register your view helpers and templates to the `template.Template` builder.
 func (v ViewServiceProvider) Register(container inter.Container) inter.Container {
 	container.Bind("template_builder", func(templateBuilder *template.Template) (*template.Template, error) {
 		templateBuilder = addFunctions(templateBuilder)
@@ -20,6 +21,7 @@ func (v ViewServiceProvider) Register(container inter.Container) inter.Container
 	return container
 }
 
+// Register your view helpers.
 func addFunctions(templateBuilder *template.Template) *template.Template {
 	return templateBuilder.Funcs(template.FuncMap{
 		"Replace": func(input, from, to string) string {
@@ -30,6 +32,7 @@ func addFunctions(templateBuilder *template.Template) *template.Template {
 	})
 }
 
+// Register your view templates.
 func addTemplates(templateBuilder *template.Template) (*template.Template, error) {
 	if t, _ := templateBuilder.ParseGlob(config.Path.Views + "/*/*/*/*/*.gohtml"); t != nil {
 		templateBuilder = t
