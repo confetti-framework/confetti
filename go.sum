@@ -1,3 +1,5 @@
+github.com/bosix/foundation v0.5.9-0.20210306230020-8f27d427308d h1:ClpeyaSHJPrJMWsSMJazc9k7+1zgaq6TugVO9bTL/+Q=
+github.com/bosix/foundation v0.5.9-0.20210306230020-8f27d427308d/go.mod h1:OmJfNr2Ltv77HGyogDZgQvonWs6ik/xQCbd8lb/GJCI=
 github.com/chzyer/logex v1.1.10 h1:Swpa1K6QvQznwJRcfTfQJmTE72DqScAa40E+fbHEXEE=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e h1:fY5BOSpyZCqRo5OhCuC+XN+r/bBCmeuuJtjz+bCNIf8=
@@ -12,8 +14,6 @@ github.com/confetti-framework/contract v0.2.1/go.mod h1:Svbmzd7rTz6h7l7wM6QWcA6I
 github.com/confetti-framework/errors v0.11.0-rc.1/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
 github.com/confetti-framework/errors v0.11.0 h1:rIOBgIpw5zGb25q5Pfg2cIk4vMCQb+Gs/kdaEze7BHY=
 github.com/confetti-framework/errors v0.11.0/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
-github.com/confetti-framework/foundation v0.5.8 h1:EOTT2YkUe0qeAiO6ISA7jG/BIdl/oL9g7h0Qyisk9UQ=
-github.com/confetti-framework/foundation v0.5.8/go.mod h1:0nRoyy6zhF//IAhVE94GR0a/DpBEUiXlOQYjI9vqlaY=
 github.com/confetti-framework/foundation v0.5.9 h1:PeYikBXPtd1pGOTNcPbSqvk1irll8C055TzrTqa2FLI=
 github.com/confetti-framework/foundation v0.5.9/go.mod h1:0nRoyy6zhF//IAhVE94GR0a/DpBEUiXlOQYjI9vqlaY=
 github.com/confetti-framework/support v0.2.0-rc.1/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
@@ -128,10 +128,10 @@ golang.org/x/sys v0.0.0-20210119212857-b64e53b001e4/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210228012217-479acdf4ea46 h1:V066+OYJ66oTjnhm4Yrn7SXIwSCiDQJxpBxmvqb1N1c=
 golang.org/x/sys v0.0.0-20210228012217-479acdf4ea46/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
-golang.org/x/sys v0.0.0-20210304152209-afaa3650a925 h1:Ee/Y8w57dY5pI4wYh0ZdFQn++NMCNRNIOKXCZ/82iUM=
-golang.org/x/sys v0.0.0-20210304152209-afaa3650a925/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b h1:ggRgirZABFolTmi3sn6Ivd9SipZwLedQ5wR0aAKnFxU=
 golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 h1:46ULzRKLh1CwgRq2dC5SlBzEqqNCi8rreOZnNrbqcIY=
+golang.org/x/sys v0.0.0-20210309074719-68d13333faf2/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/term v0.0.0-20201117132131-f5c789dd3221/go.mod h1:Nr5EML6q2oocZ2LXRh80K7BxOlk5/8JxuGnuhpl+muw=
 golang.org/x/term v0.0.0-20201210144234-2321bbc49cbf/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d h1:SZxvLBoTP5yHO3Frd4z4vrF+DBX9vMVanchswa69toE=

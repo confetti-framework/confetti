@@ -13,7 +13,7 @@ require (
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/tidwall/pretty v1.1.0 // indirect
 	golang.org/x/mod v0.4.1 // indirect
-	golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b // indirect
+	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect
 	golang.org/x/text v0.3.5
 	golang.org/x/tools v0.1.0 // indirect
 )
