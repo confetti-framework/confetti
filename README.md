@@ -1,4 +1,4 @@
-<a href="https://github.com/confetti-framework/confetti/blob/main/test/README.md"><img align="right" src="https://img.shields.io/badge/average_coverage-87%25-yellowgreen"></a>
+<a href="https://github.com/confetti-framework/confetti/blob/main/test/README.md"><img align="right" src="https://img.shields.io/badge/average_coverage-87%25-yellowgreen"></a><br>
 <a href="https://goreportcard.com/report/github.com/confetti-framework/confetti"><img align="right" src="https://goreportcard.com/badge/github.com/confetti-framework/confetti"></a>
 <br>
 <p align="center">
