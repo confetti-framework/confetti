@@ -9,6 +9,7 @@ import (
 )
 
 var globalMiddlewares = []inter.HttpMiddleware{
+	foundationMiddleware.RequestID{},
 	foundationMiddleware.RequestBodyDecoder{},
 	middleware.RouteModelBinding{},
 }
