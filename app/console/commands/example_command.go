@@ -6,7 +6,7 @@ import (
 
 // ExampleCommand to give you an example of what a command might look like.
 type ExampleCommand struct {
-	FirstFlag string `short:"f" flag:"first" description:"Configure your first flag" required:"true"`
+	FirstFlag string `short:"f" flag:"first" description:"Configure your first flag." required:"true"`
 }
 
 // Name of the command
