@@ -1,13 +1,16 @@
 package views
 
 import (
+	_ "embed"
 	"fmt"
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/errors"
 	"github.com/confetti-framework/support/str"
-	"src/config"
 	"strings"
 )
+
+//go:embed error.gohtml
+var errorHtml string
 
 // Error provide an error view
 func Error(app inter.App, err error) inter.View {
@@ -19,7 +22,6 @@ func Error(app inter.App, err error) inter.View {
 		Status:      status,
 		AppName:     AppName(app),
 		Locale:      Locale(app),
-		template:    config.Path.Views + "/error.gohtml",
 	}
 }
 
@@ -30,10 +32,9 @@ type ErrorView struct {
 	Status      int
 	AppName     string
 	Locale      string
-	template    string
 }
 
 // Template returns the template path
 func (e ErrorView) Template() string {
-	return e.template
+	return errorHtml
 }

@@ -34,17 +34,17 @@ func addFunctions(templateBuilder *template.Template) *template.Template {
 
 // Register your view templates.
 func addTemplates(templateBuilder *template.Template) (*template.Template, error) {
-	if t, _ := templateBuilder.ParseGlob(config.Path.Views + "/*/*/*/*/*.gohtml"); t != nil {
+	if t, _ := templateBuilder.ParseFS(config.Embed.Views, "*/*/*/*/*.gohtml"); t != nil {
 		templateBuilder = t
 	}
-	if t, _ := templateBuilder.ParseGlob(config.Path.Views + "/*/*/*/*.gohtml"); t != nil {
+	if t, _ := templateBuilder.ParseFS(config.Embed.Views, "*/*/*/*.gohtml"); t != nil {
 		templateBuilder = t
 	}
-	if t, _ := templateBuilder.ParseGlob(config.Path.Views + "/*/*/*.gohtml"); t != nil {
+	if t, _ := templateBuilder.ParseFS(config.Embed.Views, "*/*/*.gohtml"); t != nil {
 		templateBuilder = t
 	}
-	if t, _ := templateBuilder.ParseGlob(config.Path.Views + "/*/*.gohtml"); t != nil {
+	if t, _ := templateBuilder.ParseFS(config.Embed.Views, "*/*.gohtml"); t != nil {
 		templateBuilder = t
 	}
-	return templateBuilder.ParseGlob(config.Path.Views + "/*.gohtml")
+	return templateBuilder.ParseFS(config.Embed.Views, "*.gohtml")
 }

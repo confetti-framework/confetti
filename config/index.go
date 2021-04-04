@@ -7,4 +7,5 @@ var Index = map[string]interface{}{
 	"Path":    Path,
 	"Errors":  Errors,
 	"Logging": Logging,
+	"Embed":   Embed,
 }

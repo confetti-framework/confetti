@@ -1,9 +1,12 @@
 package views
 
 import (
+	_ "embed"
 	"github.com/confetti-framework/contract/inter"
-	"src/config"
 )
+
+//go:embed homepage.gohtml
+var homepageHtml string
 
 // Homepage provide the homepage view
 func Homepage(app inter.App, title string, description string) *HomepageView {
@@ -23,5 +26,5 @@ type HomepageView struct {
 
 // Template returns the template path
 func (h HomepageView) Template() string {
-	return config.Path.Views + "/homepage.gohtml"
+	return homepageHtml
 }
