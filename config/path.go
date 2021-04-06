@@ -28,8 +28,6 @@ var Path = struct {
 	Public:    filepath.Join(basePath(), "public"),
 	Storage:   filepath.Join(basePath(), "storage"),
 	Resource:  filepath.Join(basePath(), "resources"),
-	Lang:      filepath.Join(basePath(), "resources", "lang"),
-	Views:     filepath.Join(basePath(), "resources", "views"),
 }
 
 func basePath() string {

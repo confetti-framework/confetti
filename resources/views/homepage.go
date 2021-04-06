@@ -6,7 +6,7 @@ import (
 )
 
 //go:embed homepage.gohtml
-var homepageHtml string
+var homepageTemplate string
 
 // Homepage provide the homepage view
 func Homepage(app inter.App, title string, description string) *HomepageView {
@@ -24,7 +24,7 @@ type HomepageView struct {
 	Locale      string
 }
 
-// Template returns the template path
+// Template returns the content of the template
 func (h HomepageView) Template() string {
-	return homepageHtml
+	return homepageTemplate
 }
