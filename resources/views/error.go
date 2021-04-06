@@ -10,7 +10,7 @@ import (
 )
 
 //go:embed error.gohtml
-var errorHtml string
+var errorTemplate string
 
 // Error provide an error view
 func Error(app inter.App, err error) inter.View {
@@ -36,5 +36,5 @@ type ErrorView struct {
 
 // Template returns the template path
 func (e ErrorView) Template() string {
-	return errorHtml
+	return errorTemplate
 }
