@@ -13,6 +13,8 @@ github.com/confetti-framework/contract v0.2.1 h1:8mQWISbt1MpDcSOEygbY2SOrWaxgss7
 github.com/confetti-framework/contract v0.2.1/go.mod h1:Svbmzd7rTz6h7l7wM6QWcA6IJ44CejZ3Lc7phALp7Qs=
 github.com/confetti-framework/contract v0.2.2 h1:vYZknr2G3U5XoP5ETvXimUah3mclEysXvy8hrX8MRMM=
 github.com/confetti-framework/contract v0.2.2/go.mod h1:yseIvJswP10ujwbu2UEgv+fFxiG0zhSekSh+jMtuso4=
+github.com/confetti-framework/contract v0.2.3 h1:2NpjMIFKs5/v8cbkO8i1cdhRuVGZ0SrweEErIbEAu/Y=
+github.com/confetti-framework/contract v0.2.3/go.mod h1:yseIvJswP10ujwbu2UEgv+fFxiG0zhSekSh+jMtuso4=
 github.com/confetti-framework/errors v0.11.0-rc.1/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
 github.com/confetti-framework/errors v0.11.0 h1:rIOBgIpw5zGb25q5Pfg2cIk4vMCQb+Gs/kdaEze7BHY=
 github.com/confetti-framework/errors v0.11.0/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
@@ -26,6 +28,8 @@ github.com/confetti-framework/foundation v0.7.1 h1:SDT8vUnxZJprkwahG+cNrR7yEe0xy
 github.com/confetti-framework/foundation v0.7.1/go.mod h1:hfByJjIm3tUYmxXnu8enjXq2gVyvyPxV7LCVKoweA6g=
 github.com/confetti-framework/foundation v0.8.0 h1:Ty7fC/DvMzbbXzb5bcOS4HszYsM0CBPW/Qj0LNcTjHs=
 github.com/confetti-framework/foundation v0.8.0/go.mod h1:qLMjZa5YVPlDKHew+Yr3OpZPnxM9XG0BKJ1KPHdac+Q=
+github.com/confetti-framework/foundation v0.8.2 h1:b2RY92L0yC6uolTGE3J3e1qibdaZxl5cBulkszEZrPk=
+github.com/confetti-framework/foundation v0.8.2/go.mod h1:PiPc8FuF65nuDPlbqRgr1A3fBFOmKfhsTU9cqCr6Csg=
 github.com/confetti-framework/support v0.2.0-rc.1/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
 github.com/confetti-framework/support v0.2.3 h1:AOzZVtPeJlZBExW2SjYY3R3973ytve2FvmZoETqluN8=
 github.com/confetti-framework/support v0.2.3/go.mod h1:HtyauB5vd5R+85mwosRpD0h6InS39HDJfKpkjXzdU3s=
@@ -49,6 +53,8 @@ github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/jedib0t/go-pretty/v6 v6.1.0 h1:NVS2PT3ZvzMb47DzS50cmsK6xkf8SSyLfroSSIG20JI=
 github.com/jedib0t/go-pretty/v6 v6.1.0/go.mod h1:+nE9fyyHGil+PuISTCrp7avEdo6bqoMwqZnuiK2r2a0=
+github.com/jedib0t/go-pretty/v6 v6.1.1 h1:h+1mRYOgvlQn10S+IocMkJm/DQiLyumoHHh3ps+pA44=
+github.com/jedib0t/go-pretty/v6 v6.1.1/go.mod h1:+nE9fyyHGil+PuISTCrp7avEdo6bqoMwqZnuiK2r2a0=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
 github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a h1:FaWFmfWdAUKbSCtOU2QjDaorUexogfaMgbipgYATUMU=
@@ -172,6 +178,8 @@ golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d h1:SZxvLBoTP5yHO3Frd4z4vrF+
 golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 h1:EC6+IGYTjPpRfv9a2b/6Puw0W+hLtAhkV1tPsXhutqs=
 golang.org/x/term v0.0.0-20210317153231-de623e64d2a6/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
+golang.org/x/term v0.0.0-20210406210042-72f3dc4e9b72 h1:VqE9gduFZ4dbR7XoL77lHFp0/DyDUBKSXK7CMFkVcV0=
+golang.org/x/term v0.0.0-20210406210042-72f3dc4e9b72/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=

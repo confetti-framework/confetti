@@ -3,7 +3,6 @@ package bootstrap
 import (
 	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/foundation"
-	net "net/http"
 	"src/app/console"
 	"src/app/http"
 	"src/app/http/decorator"
@@ -56,10 +55,10 @@ func NewAppFromBoot() inter.App {
 		console.NewKernel(app),
 	)
 
-	app.Bind(
-		(*net.HandlerFunc)(nil),
-		HandleHttpKernel,
-	)
+	// Bind this function so that a new application can be created later. This is
+	// necessary because an application must be made for the command. Later
+	// applications must be made for each request.
+	app.Bind(inter.AppProvider, NewAppFromBoot)
 
 	return app
 }

@@ -23,7 +23,7 @@ func NewKernel(app inter.App) console.Kernel {
 	return console.Kernel{
 		App: app,
 		Commands: []inter.Command{
-			commands.AppServe{},
+			console.AppServe{},
 			console.LogClear{},
 			commands.ExampleCommand{},
 		},
