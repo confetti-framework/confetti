@@ -17,6 +17,7 @@ var App = struct {
 	Env string
 	OsArgs   []string
 	Port     int
+	Host     string
 	Cipher   string
 	Debug    bool
 	Timezone *time.Location
@@ -120,6 +121,19 @@ var App = struct {
 	   |
 	*/
 	Port: env.Int("APP_PORT"),
+
+	/*
+	   |--------------------------------------------------------------------------
+	   | Application Host
+	   |--------------------------------------------------------------------------
+	   |
+	   | This specifies the TCP address for the server to listen on. The service
+	   | names are defined in RFC 6335 and assigned by IANA. See net.Dial for
+	   | details of the address format (without :port). To match routers with a
+	   | domain name, see the routing documentation.
+	   |
+	*/
+	Host: env.StringOr("APP_HOST", "127.0.0.1"),
 
 	/*
 	   |--------------------------------------------------------------------------
