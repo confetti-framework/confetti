@@ -81,7 +81,7 @@ var App = struct {
 		| will not be safe. Please do this before deploying an application!
 		|
 	*/
-	Key: env.Str("APP_KEY"),
+	Key: env.String("APP_KEY"),
 
 	/*
 		|--------------------------------------------------------------------------
@@ -133,7 +133,7 @@ var App = struct {
 	   | domain name, see the routing documentation.
 	   |
 	*/
-	Host: env.StringOr("APP_HOST", "127.0.0.1"),
+	Host: env.StringOr("APP_HOST", ""),
 
 	/*
 	   |--------------------------------------------------------------------------

@@ -9,10 +9,10 @@ services:
                 WWWGROUP: '${WWWGROUP:-20}'
         image: confetti/app
         ports:
-            - '${APP_PORT:-80}:8080'
+            - '${APP_PORT:-80}:80'
         environment:
             WWWUSER: '${WWWUSER:-$UID}'
-            APP_PORT: 8080
+            APP_PORT: 80
         env_file:
             - .env
         volumes:
