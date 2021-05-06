@@ -49,5 +49,6 @@ var Providers = struct {
 	BootProviders: []inter.BootServiceProvider{
 		AppServiceProvider{},
 		RouteServiceProvider{},
+		providers.DatabaseServiceProvider{Connections: config.Database.Connections},
 	},
 }
