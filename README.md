@@ -18,7 +18,7 @@ many web projects. Confetti is accessible, powerful, and provides tools required
 
 ## Learning Confetti
 
-Confetti has extensive and thorough [documentation](https://confetti-framework.com/), making it a breeze to get started.
+Confetti has extensive and thorough [documentation](https://www.confetti-framework.com/), making it a breeze to get started.
 
 ## License
 
