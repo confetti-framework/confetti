@@ -2,9 +2,7 @@ package config
 
 import (
 	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation/db"
 	"github.com/confetti-framework/support/env"
-	"time"
 )
 
 var Database = struct {
@@ -36,6 +34,7 @@ var Database = struct {
 	*/
 
 	Connections: map[string]inter.Connection{
+		/*
 		"mysql": &db.MySQL{
 			Host:         env.StringOr("DB_HOST", "127.0.0.1"),
 			Port:         env.IntOr("DB_PORT", 3306),
@@ -44,6 +43,7 @@ var Database = struct {
 			Password:     env.StringOr("DB_PASSWORD", ""),
 			QueryTimeout: 10 * time.Second,
 		},
+		 */
 
 		/*
 			"postgresql": &db.PostgreSQL{
