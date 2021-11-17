@@ -120,7 +120,7 @@ var App = struct {
 	   | specified here.
 	   |
 	*/
-	Port: env.Int("APP_PORT"),
+	Port: env.IntOr("APP_PORT", 8080),
 
 	/*
 	   |--------------------------------------------------------------------------
