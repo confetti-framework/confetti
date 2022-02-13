@@ -7,7 +7,7 @@ import (
 
 type bootProviders struct{}
 
-// Bootstrap handles all bootProviders. Providers are located in config/providers/providers.go
+// Bootstrap handles all bootProviders. Providers are configured in app/providers/provider_index.go
 func (r bootProviders) Bootstrap(container inter.Container) inter.Container {
 	for _, bootstrapper := range providers.Providers.BootProviders {
 		container = bootstrapper.Boot(container)
