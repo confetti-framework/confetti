@@ -22,12 +22,12 @@ var flagGetters = func() []flag.Getter {
 func NewKernel(app inter.App) console.Kernel {
 	return console.Kernel{
 		App: app,
-		Commands: []inter.Command{
-			console.AppServe{},
-			console.LogClear{},
-			commands.ExampleCommand{},
-			console.AppInfo{},
-		},
+		Commands: append(
+			[]inter.Command{
+				commands.ExampleCommand{},
+				// Here you can add your own commands.
+			}, console.FoundationCommands...,
+		),
 		FlagProviders: []func() []flag.Getter{flagGetters},
 	}
 }

@@ -17,8 +17,8 @@ github.com/confetti-framework/contract v0.3.0/go.mod h1:5OkIQMwbkwfIfJjww2CJEHyI
 github.com/confetti-framework/errors v0.11.0-rc.1/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
 github.com/confetti-framework/errors v0.11.0 h1:rIOBgIpw5zGb25q5Pfg2cIk4vMCQb+Gs/kdaEze7BHY=
 github.com/confetti-framework/errors v0.11.0/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
-github.com/confetti-framework/foundation v0.10.5 h1:/zkh1hrZqw+M4zopUJJzq9RngdENvySGmG9WVfRr7O0=
-github.com/confetti-framework/foundation v0.10.5/go.mod h1:pAtE0ypRr5BZ5lnylFEPdr1QN2zOVhDHLPpa9DfnxIk=
+github.com/confetti-framework/foundation v0.11.0 h1:SbxErGj+Qe4sAoFUHTAs/owprBedsAayXlTuxJxtD/8=
+github.com/confetti-framework/foundation v0.11.0/go.mod h1:cQP9mTLOuoHjRsrS4gBEQOELgxGrnCGkqzkvlxZgSxE=
 github.com/confetti-framework/support v0.2.0-rc.1/go.mod h1:uwOTcc+vAtkzr5GihkCzjv11YVI15UJMhfU2HLRCk/A=
 github.com/confetti-framework/support v0.4.0 h1:C42pHjAYQRyRWSGh6WIqsXZA7W7SVeW59Z4wQNnRqvI=
 github.com/confetti-framework/support v0.4.0/go.mod h1:QRyVoK7322wmTnLhEzwmZKjVM4didk+w4DhpjaAI8Gc=
@@ -177,13 +177,11 @@ github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/tidwall/gjson v1.7.5/go.mod h1:5/xDoumyyDNerp2U36lyolv46b3uF/9Bu6OfyQ9GImk=
+github.com/tidwall/gjson v1.9.3/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
 github.com/tidwall/gjson v1.11.0 h1:C16pk7tQNiH6VlCrtIXL1w8GaOsi1X3W8KDkE1BuYd4=
 github.com/tidwall/gjson v1.11.0/go.mod h1:/wbyibRr2FHMks5tjHJ5F8dMZh3AcwJEMf5vlfC0lxk=
-github.com/tidwall/match v1.0.3/go.mod h1:eRSPERbgtNPcGhD8UCthc6PmLEQXEWd3PRB5JTxsfmM=
 github.com/tidwall/match v1.1.1 h1:+Ho715JplO36QYgwN9PGYNhgZvoUSc9X2c80KVTi+GA=
 github.com/tidwall/match v1.1.1/go.mod h1:eRSPERbgtNPcGhD8UCthc6PmLEQXEWd3PRB5JTxsfmM=
-github.com/tidwall/pretty v1.1.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/tidwall/pretty v1.2.0 h1:RWIZEg2iJ8/g6fDDYzMpobmaoGh5OLl4AXtGUGPcqCs=
 github.com/tidwall/pretty v1.2.0/go.mod h1:ITEVvHYasfjBbM0u2Pg8T2nJnzm8xPwvNhhsoaGGjNU=
 github.com/uniplaces/carbon v0.1.6/go.mod h1:glebpttsTxh8fBbciRAy3WvLfhBVa8n7qfgDTMAuJ3Y=
