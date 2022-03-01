@@ -8,17 +8,8 @@ import (
 	"src/app/console/getters"
 )
 
-// flagGetters contains a list with custom flag.Getters, you can create custom
-// types to cast the flags to a value.
-var flagGetters = func() []flag.Getter {
-	return []flag.Getter{
-		new(getters.StringList),
-		new(getters.IntList),
-	}
-}
-
-// NewKernel ensures that the kernel receives all existing commands and that the
-// correct flag.Getters are used.
+// NewKernel ensures that the kernel receives all existing commands
+// and that the correct flag.Getters are used.
 func NewKernel(app inter.App) console.Kernel {
 	return console.Kernel{
 		App: app,
@@ -28,6 +19,12 @@ func NewKernel(app inter.App) console.Kernel {
 				// Here you can add your own commands.
 			}, console.FoundationCommands...,
 		),
-		FlagProviders: []func() []flag.Getter{flagGetters},
+
+		// This list includes custom flag.Getters, you can create custom
+		// types to cast flags from the command to a value.
+		Getters: []flag.Getter{
+			new(getters.StringList),
+			new(getters.IntList),
+		},
 	}
 }

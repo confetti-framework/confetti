@@ -6,6 +6,7 @@ import (
 )
 
 // StringList casts comma separated string to a slice
+// Example: --names="Piet,Anne" to []string
 type StringList []string
 
 // StringList casts a slice to a comma separated string

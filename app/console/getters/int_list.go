@@ -8,6 +8,7 @@ import (
 )
 
 // IntList casts comma separated numbers to a slice
+// Example: --ids="1,2,3,4" to []int
 type IntList []int
 
 // StringList casts a slice to a comma separated string
