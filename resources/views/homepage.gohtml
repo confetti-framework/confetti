@@ -1,4 +1,4 @@
-{{- /*gotype: confetti-framework/resources/views.HomepageView*/ -}}
+{{- /*gotype: src/resources/views.HomepageView*/ -}}
 <!DOCTYPE html>
 <html lang="{{ .Locale }}">
 <head>
@@ -407,6 +407,9 @@
 
         {{template "blocks"}}
 
+        <div class="pt-8 sm:justify-start sm:pt-0 dark:text-white">
+            <p><a href="{{ .ApiUrl }}">API: {{ .ApiUrl }}</a></p>
+        </div>
     </div>
 </div>
 </body>

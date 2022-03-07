@@ -12,5 +12,5 @@ import (
 // placed with "/api" prefix. Feel free to remove the prefix if you are using a
 // subdomain for your API (which is recommended). Enjoy building your API!
 var Api = Group(
-	Get("/ping", controllers.Ping),
+	Get("/ping", controllers.Ping).Name("ping"),
 ).Prefix("/api").Middleware(middleware.Api...)

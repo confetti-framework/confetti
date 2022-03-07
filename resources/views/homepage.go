@@ -3,6 +3,7 @@ package views
 import (
 	_ "embed"
 	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/foundation/http/outcome"
 )
 
 //go:embed homepage.gohtml
@@ -14,6 +15,7 @@ func Homepage(app inter.App, title string, description string) *HomepageView {
 		Title:       title,
 		Description: description,
 		Locale:      Locale(app),
+		ApiUrl:      outcome.UrlByName(app, "ping"),
 	}
 }
 
@@ -22,6 +24,7 @@ type HomepageView struct {
 	Title       string
 	Description string
 	Locale      string
+	ApiUrl      string
 }
 
 // Template returns the content of the template
