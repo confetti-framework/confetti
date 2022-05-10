@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/confetti-framework/foundation/http/routing"
+	"github.com/confetti-framework/framework/foundation/http/routing"
 	"src/app/report"
 )
 

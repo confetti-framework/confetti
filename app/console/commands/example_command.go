@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 )
 
 // ExampleCommand to give you an example of what a command might look like.

@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/confetti-framework/support/env"
+	"github.com/confetti-framework/framework/support/env"
 	"golang.org/x/text/language"
 	"os"
 	"time"

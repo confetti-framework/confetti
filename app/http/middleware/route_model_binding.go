@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 )
 
 // RouteModelBinding For simple transformation of a parameter to a model, you can bind a

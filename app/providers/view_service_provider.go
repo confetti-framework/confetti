@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/validation/val_errors"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/validation/val_errors"
 	"html/template"
 	"src/config"
 	"strings"

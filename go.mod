@@ -3,12 +3,9 @@ module src
 go 1.17
 
 require (
-	github.com/confetti-framework/contract v0.3.0
 	github.com/confetti-framework/errors v0.12.0
-	github.com/confetti-framework/foundation v0.13.0
-	github.com/confetti-framework/support v0.5.1
+	github.com/confetti-framework/framework v0.29.3-beta
 	github.com/confetti-framework/syslog v0.1.1
-	github.com/confetti-framework/validation v0.1.0
 	golang.org/x/text v0.3.7
 )
 
@@ -19,14 +16,14 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
-	github.com/jackc/pgconn v1.11.0 // indirect
+	github.com/jackc/pgconn v1.12.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
-	github.com/jackc/pgproto3/v2 v2.2.0 // indirect
+	github.com/jackc/pgproto3/v2 v2.3.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
-	github.com/jackc/pgtype v1.10.0 // indirect
-	github.com/jackc/pgx/v4 v4.15.0 // indirect
-	github.com/jedib0t/go-pretty/v6 v6.2.7 // indirect
+	github.com/jackc/pgtype v1.11.0 // indirect
+	github.com/jackc/pgx/v4 v4.16.1 // indirect
+	github.com/jedib0t/go-pretty/v6 v6.3.1 // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/manifoldco/promptui v0.9.0 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
@@ -36,7 +33,7 @@ require (
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/schollz/progressbar/v3 v3.8.6 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
-	github.com/tidwall/gjson v1.14.0 // indirect
+	github.com/tidwall/gjson v1.14.1 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/vigneshuvi/GoDateFormat v0.0.0-20210204121036-67364dc23c79 // indirect

@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/support/env"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/support/env"
 )
 
 var Database = struct {
@@ -35,15 +35,15 @@ var Database = struct {
 
 	Connections: map[string]inter.Connection{
 		/*
-		"mysql": &db.MySQL{
-			Host:         env.StringOr("DB_HOST", "127.0.0.1"),
-			Port:         env.IntOr("DB_PORT", 3306),
-			Database:     env.StringOr("DB_DATABASE", "confetti"),
-			Username:     env.StringOr("DB_USERNAME", "app"),
-			Password:     env.StringOr("DB_PASSWORD", ""),
-			QueryTimeout: 10 * time.Second,
-		},
-		 */
+			"mysql": &db.MySQL{
+				Host:         env.StringOr("DB_HOST", "127.0.0.1"),
+				Port:         env.IntOr("DB_PORT", 3306),
+				Database:     env.StringOr("DB_DATABASE", "confetti"),
+				Username:     env.StringOr("DB_USERNAME", "app"),
+				Password:     env.StringOr("DB_PASSWORD", ""),
+				QueryTimeout: 10 * time.Second,
+			},
+		*/
 
 		/*
 			"postgresql": &db.PostgreSQL{
