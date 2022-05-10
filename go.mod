@@ -1,6 +1,6 @@
 module src
 
-go 1.17
+go 1.18
 
 require (
 	github.com/confetti-framework/errors v0.12.0
