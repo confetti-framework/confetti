@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"os"
 	"src/bootstrap"
 )

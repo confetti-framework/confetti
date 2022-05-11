@@ -1,9 +1,9 @@
 package providers
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	decorator "github.com/confetti-framework/framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/framework/foundation/encoder"
+	"github.com/confetti-framework/framework/inter"
 	net "net/http"
 	"src/resources/views"
 )

@@ -1,9 +1,9 @@
 package providers
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	foundationMiddleware "github.com/confetti-framework/framework/foundation/http/middleware"
 	"github.com/confetti-framework/framework/foundation/http/routing"
+	"github.com/confetti-framework/framework/inter"
 	"src/app/http/middleware"
 	"src/routes"
 )

@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/http"
+	"github.com/confetti-framework/framework/inter"
 )
 
 // NewKernel generates an HTTP Kernel. The kernel is responsible

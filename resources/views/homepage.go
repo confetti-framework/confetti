@@ -2,8 +2,8 @@ package views
 
 import (
 	_ "embed"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
+	"github.com/confetti-framework/framework/inter"
 )
 
 //go:embed homepage.gohtml

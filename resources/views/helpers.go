@@ -3,7 +3,7 @@ package views
 import (
 	"fmt"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"golang.org/x/text/language"
 	"strings"
 )
