@@ -1,9 +1,9 @@
 package decorator
 
 import (
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation"
-	"github.com/confetti-framework/foundation/decorator/container_decorator"
+	"github.com/confetti-framework/framework/foundation"
+	"github.com/confetti-framework/framework/foundation/decorator/container_decorator"
+	"github.com/confetti-framework/framework/inter"
 )
 
 var bootstraps = []inter.Bootstrap{

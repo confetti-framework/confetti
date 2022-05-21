@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"src/config"
 )
 

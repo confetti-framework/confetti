@@ -3,9 +3,9 @@ package views
 import (
 	_ "embed"
 	"fmt"
-	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/support/str"
+	"github.com/confetti-framework/framework/inter"
+	"github.com/confetti-framework/framework/support/str"
 	"strings"
 )
 
