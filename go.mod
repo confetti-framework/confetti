@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/confetti-framework/errors v0.12.0
-	github.com/confetti-framework/framework v0.29.4-beta
+	github.com/confetti-framework/framework v0.29.4
 	github.com/confetti-framework/syslog v0.1.1
 	golang.org/x/text v0.3.7
 )
