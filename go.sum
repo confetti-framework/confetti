@@ -16,8 +16,8 @@ github.com/confetti-framework/baker v1.1.1 h1:SN1FaRciig7CeNfE6MQyMUuQN1FYDRGwfV
 github.com/confetti-framework/baker v1.1.1/go.mod h1:Ym6MeJ5WNtQGJFqdfMgdZXSBqFyZs2dc1Q52AjJvEBo=
 github.com/confetti-framework/errors v0.12.0 h1:aeJg+m5xdTHWmV+EEYXKboHfvzsit3HL60Vsnye4oMI=
 github.com/confetti-framework/errors v0.12.0/go.mod h1:a59waUvDS3t8nOeqI0yQDrhILEicAvlca7Kbeilsrao=
-github.com/confetti-framework/framework v0.29.4 h1:T9myLVu+vZJpV8st9d3JzC7Zl5zeUuCnvvAmVaaOjYw=
-github.com/confetti-framework/framework v0.29.4/go.mod h1:s6GocUn/iZU78BdDoppm4DFQyKtwFLEThyWvnhZFLW8=
+github.com/confetti-framework/framework v0.29.5 h1:6gSrlSu143BEFqUI5kUHz23TVk5AGqtnVcpKVliQ+1s=
+github.com/confetti-framework/framework v0.29.5/go.mod h1:s6GocUn/iZU78BdDoppm4DFQyKtwFLEThyWvnhZFLW8=
 github.com/confetti-framework/syslog v0.1.0-rc/go.mod h1:O6eT3y5cYDGQSVT6lrhScB5NKdylG0R304PmGiChm7Y=
 github.com/confetti-framework/syslog v0.1.1 h1:ZYea1UXjp/m1DajS6regPislq+kUhe6+/RpNzCaJ8js=
 github.com/confetti-framework/syslog v0.1.1/go.mod h1:O6eT3y5cYDGQSVT6lrhScB5NKdylG0R304PmGiChm7Y=
