@@ -1,5 +1,5 @@
-FROM amd64/ubuntu:20.04
 
+FROM amd64/ubuntu:20.04 as confetti-component
 LABEL maintainer="Reindert Vetter"
 
 ARG WWWGROUP
@@ -7,7 +7,7 @@ ARG WWWGROUP
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
 ENV INITRD No
-ENV GOVERSION 1.17
+ENV GOVERSION 1.18
 ENV GOCACHE /var/www/gocache
 ENV GOMODCACHE /var/www/gomodcache
 
@@ -49,9 +49,12 @@ RUN apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get update && apt-get install -y gcc
+
 ## Install Go
 RUN cd /usr/local && wget --progress=bar:force:noscroll https://golang.org/dl/go$GOVERSION.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go$GOVERSION.linux-amd64.tar.gz
+
 ENV PATH PATH=$PATH:/usr/local/go/bin
 
 RUN groupadd --force -g $WWWGROUP confetti
@@ -60,5 +63,8 @@ RUN mkdir $GOCACHE $GOMODCACHE
 RUN chown -R confetti:confetti $GOCACHE $GOMODCACHE
 USER confetti
 
-RUN go get github.com/cespare/reflex
+RUN GO111MODULE=off go get github.com/cespare/reflex
+
+COPY ./ ./
+
 CMD ~/go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "go run -race main.go app:serve"
