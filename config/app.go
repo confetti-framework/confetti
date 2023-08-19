@@ -18,6 +18,7 @@ var App = struct {
 	OsArgs   []string
 	Port     int
 	Host     string
+	Timeout  time.Duration
 	Cipher   string
 	Debug    bool
 	Timezone *time.Location
@@ -37,6 +38,9 @@ var App = struct {
 	   |
 	*/
 	Name: env.StringOr("APP_NAME", "Confetti"),
+
+
+	Timeout: 3 * time.Minute,
 
 	/*
 		|--------------------------------------------------------------------------
