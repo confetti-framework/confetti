@@ -11,15 +11,15 @@
 ## About Confetti
 
 Confetti is a web application framework with an expressive, elegant syntax. We believe development must be an enjoyable
-and creative experience to be truly fulfilling. Confetti takes the pain out of development by easing common tasks used in
-many web projects. Confetti is accessible, powerful, and provides tools required for large, robust applications.
-
-> Confetti combines the elegance of Laravel and the simplicity of Golang.
+and creative experience to be truly fulfilling. Confetti takes the pain out of development by easing common tasks used
+in
+many Confetti projects. Confetti is accessible, powerful, and provides tools required for large, robust applications.
 
 ## Learning Confetti
 
-Confetti has extensive and thorough [documentation](https://confetti-framework.github.io/docs/), making it a breeze to get started.
+Confetti has extensive and thorough [documentation](https://confetti-framework.github.io/docs/), making it a breeze to
+get started.
 
 ## License
 
-Confetti is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Confetti Framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
