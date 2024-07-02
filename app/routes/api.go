@@ -6,23 +6,35 @@ import (
     "src/app/http/controllers"
 )
 
-type controller func(w http.ResponseWriter, req *http.Request) error
-
-var Api = func(mux *http.ServeMux) {
-    // Here you can register all your routes
-    apiRoute(mux, "/ping", controllers.Ping)
+type route struct {
+    pattern    string
+    controller controller
 }
 
-func apiRoute(mux *http.ServeMux, pattern string, handler controller) {
-    mux.HandleFunc(pattern, func(writer http.ResponseWriter, request *http.Request) {
-        // Here you can:
-        // - call middlewares to change the request and reponse
-        // - use http.NewResponseController(w) to change server options like timeouts
-        err := handler(writer, request)
-        if err != nil {
-            apiErrorHandler(writer, err)
+func newRoute(pattern string, controller controller) route {
+    return route{pattern: pattern, controller: controller}
+}
+
+type controller func(w http.ResponseWriter, req *http.Request) error
+
+var Api = groupApiRoutes([]route{
+    newRoute("/ping", controllers.Ping),
+})
+
+func groupApiRoutes(routes []route) func(mux *http.ServeMux) {
+    return func(mux *http.ServeMux) {
+        for _, route := range routes {
+            mux.HandleFunc(route.pattern, func(writer http.ResponseWriter, request *http.Request) {
+                // Here you can:
+                // - call middlewares to change the request and reponse
+                // - use http.NewResponseController(w) to change server options like timeouts
+                err := route.controller(writer, request)
+                if err != nil {
+                    apiErrorHandler(writer, err)
+                }
+            })
         }
-    })
+    }
 }
 
 // apiErrorHandler converts the error to a reponse. Feel free to modify this to your needs.
