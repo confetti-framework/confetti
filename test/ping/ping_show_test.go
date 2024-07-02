@@ -6,6 +6,7 @@ import (
     "net/http"
     "net/http/httptest"
     "src/app/http/controllers"
+    "src/app/routes"
     "testing"
 )
 
@@ -16,11 +17,10 @@ func Test_show_unkown_endpoint(t *testing.T) {
     response := httptest.NewRecorder()
 
     // When
-    err := controllers.Ping(response, request)
+	routes.HandleApiRoute(response, request, controllers.Ping)
     result := response.Result()
 
     // Then
-	i.NoErr(err)
     i.Equal(result.StatusCode, http.StatusOK)
     i.Equal(getBody(result), "pong")
 }
@@ -31,5 +31,5 @@ func getBody(result *http.Response) string {
     if err != nil {
         panic(err)
     }
-	return string(body)
+    return string(body)
 }

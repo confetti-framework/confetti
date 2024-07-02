@@ -11,29 +11,33 @@ type route struct {
     controller controller
 }
 
-func newRoute(pattern string, controller controller) route {
+func newApiRoute(pattern string, controller controller) route {
     return route{pattern: pattern, controller: controller}
 }
 
 type controller func(w http.ResponseWriter, req *http.Request) error
 
-var Api = groupApiRoutes([]route{
-    newRoute("/ping", controllers.Ping),
+var Api = GroupApiRoutes([]route{
+    newApiRoute("/ping", controllers.Ping),
 })
 
-func groupApiRoutes(routes []route) func(mux *http.ServeMux) {
+func GroupApiRoutes(routes []route) func(mux *http.ServeMux) {
     return func(mux *http.ServeMux) {
         for _, route := range routes {
-            mux.HandleFunc(route.pattern, func(writer http.ResponseWriter, request *http.Request) {
-                // Here you can:
-                // - call middlewares to change the request and reponse
-                // - use http.NewResponseController(w) to change server options like timeouts
-                err := route.controller(writer, request)
-                if err != nil {
-                    apiErrorHandler(writer, err)
-                }
+            mux.HandleFunc(route.pattern, func(response http.ResponseWriter, request *http.Request) {
+                HandleApiRoute(response, request, route.controller)
             })
         }
+    }
+}
+
+func HandleApiRoute(response http.ResponseWriter, request *http.Request, controller controller) {
+    // Here you can:
+    // - call middlewares to change the request and reponse
+    // - use http.NewResponseController(w) to change server options like timeouts
+    err := controller(response, request)
+    if err != nil {
+        apiErrorHandler(response, err)
     }
 }
 
