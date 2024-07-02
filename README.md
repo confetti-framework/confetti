@@ -10,7 +10,9 @@
 
 # ⚠️ This project is being renewed.
 
-If you want to view the old version, you can go to:
+If you want to view the old version, you can go
+to: [1e5209f
+](https://github.com/confetti-framework/confetti/tree/1e5209f7a189ba2551f5b4284b26b3c12e60613c)
 
 ## About Confetti
 
