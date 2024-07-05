@@ -2,34 +2,26 @@ package ping
 
 import (
     "github.com/matryer/is"
-    "io"
     "net/http"
     "net/http/httptest"
-    "src/app/http/controllers"
-    "src/app/routes"
+    routes "src/app/http/routes"
+    "src/test"
     "testing"
 )
 
-func Test_show_unkown_endpoint(t *testing.T) {
+var pingShow = test.GetRoute(routes.Api, "/ping")
+
+func Test_show_ping_endpoint(t *testing.T) {
     // Given
     i := is.New(t)
     request := httptest.NewRequest(http.MethodGet, "/ping", nil)
     response := httptest.NewRecorder()
 
     // When
-	routes.HandleApiRoute(response, request, controllers.Ping)
+    routes.HandleApiRoute(response, request, pingShow)
     result := response.Result()
 
     // Then
     i.Equal(result.StatusCode, http.StatusOK)
-    i.Equal(getBody(result), "pong")
-}
-
-func getBody(result *http.Response) string {
-    defer result.Body.Close()
-    body, err := io.ReadAll(result.Body)
-    if err != nil {
-        panic(err)
-    }
-    return string(body)
+    i.Equal(test.GetBody(result), "pong")
 }

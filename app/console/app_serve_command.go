@@ -5,7 +5,8 @@ import (
     "fmt"
     "net/http"
     "src/app/config"
-    "src/app/routes"
+    "src/app/http/entities"
+    "src/app/http/routes"
 )
 
 type AppServe struct {
@@ -50,11 +51,11 @@ func (s AppServe) getListenAddr() string {
     return fmt.Sprintf("%s:%d", config.AppServe.Host, config.AppServe.Port)
 }
 
-func registerRoutes(routes []routes.Route, routeHandler func(response http.ResponseWriter, request *http.Request, controller routes.Controller)) func(mux *http.ServeMux) {
+func registerRoutes(routes []entities.Route, routeHandler func(response http.ResponseWriter, request *http.Request, route entities.Route)) func(mux *http.ServeMux) {
     return func(mux *http.ServeMux) {
         for _, route := range routes {
             mux.HandleFunc(route.Pattern, func(response http.ResponseWriter, request *http.Request) {
-                routeHandler(response, request, route.Controller)
+                routeHandler(response, request, route)
             })
         }
     }
