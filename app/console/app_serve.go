@@ -24,7 +24,8 @@ func (s AppServe) Handle() error {
 
     // Register the routes
     mux := http.NewServeMux()
-    routes.Api(mux)
+    registrar := registerRoutes(routes.Api, routes.HandleApiRoute)
+    registrar(mux)
 
     // Create the server
     server := http.Server{
@@ -47,4 +48,14 @@ func (s AppServe) Handle() error {
 
 func (s AppServe) getListenAddr() string {
     return fmt.Sprintf("%s:%d", config.AppServe.Host, config.AppServe.Port)
+}
+
+func registerRoutes(routes []routes.Route, routeHandler func(response http.ResponseWriter, request *http.Request, controller routes.Controller)) func(mux *http.ServeMux) {
+    return func(mux *http.ServeMux) {
+        for _, route := range routes {
+            mux.HandleFunc(route.Pattern, func(response http.ResponseWriter, request *http.Request) {
+                routeHandler(response, request, route.Controller)
+            })
+        }
+    }
 }
