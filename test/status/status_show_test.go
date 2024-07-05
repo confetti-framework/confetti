@@ -9,16 +9,16 @@ import (
     "testing"
 )
 
-var userShowMe = test.GetRoute(routes.Api, "/users/me")
+var statusIndexMe = test.GetRoute(routes.Api, "/status")
 
-func Test_show_user_me_but_unauthorized(t *testing.T) {
+func Test_index_status_but_unauthorized(t *testing.T) {
     // Given
     i := is.New(t)
-    request := httptest.NewRequest(http.MethodGet, "/users/me", nil)
+    request := httptest.NewRequest(http.MethodGet, "/status", nil)
     response := httptest.NewRecorder()
 
     // When
-    routes.HandleApiRoute(response, request, userShowMe)
+    routes.HandleApiRoute(response, request, statusIndexMe)
     result := response.Result()
 
     // Then

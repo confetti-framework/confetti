@@ -15,7 +15,7 @@ type HttpStatusGetter interface {
 
 var Api = []entities.Route{
     route("/ping", controllers.Ping),
-    route("/users/me", controllers.UsersMeShow).AppendMiddleware(middlewares.Auth),
+    route("/status", controllers.Status).AppendMiddleware(middlewares.Auth),
 }
 
 func HandleApiRoute(response http.ResponseWriter, request *http.Request, route entities.Route) {
