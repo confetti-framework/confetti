@@ -5,32 +5,34 @@ import (
     "strconv"
 )
 
-// EnvToString fetches the value of the environment variable named by the key.
+var EnvProvider = os.LookupEnv
+
+// EnvString fetches the value of the environment variable named by the key.
 // It panics if the variable is not found.
-func EnvToString(search string) string {
-    env, ok := os.LookupEnv(search)
+func EnvString(search string) string {
+    env, ok := EnvProvider(search)
     if !ok {
-        panic("environment variable not found: " + search)
+        return ""
     }
     return env
 }
 
-// EnvToStringOr fetches the value of the environment variable named by the key.
+// EnvStringOr fetches the value of the environment variable named by the key.
 // If the variable is not present, it returns the provided default value.
-func EnvToStringOr(search string, def string) string {
-    env, ok := os.LookupEnv(search)
+func EnvStringOr(search string, def string) string {
+    env, ok := EnvProvider(search)
     if !ok {
         return def
     }
     return env
 }
 
-// EnvToInt fetches the value of the environment variable named by the key
+// EnvInt fetches the value of the environment variable named by the key
 // and converts it to an integer. It panics if the variable is not present or the conversion fails.
-func EnvToInt(search string) int {
-    env, ok := os.LookupEnv(search)
+func EnvInt(search string) int {
+    env, ok := EnvProvider(search)
     if !ok {
-        panic("environment variable not found: " + search)
+        return 0 
     }
     value, err := strconv.Atoi(env)
     if err != nil {
@@ -39,11 +41,11 @@ func EnvToInt(search string) int {
     return value
 }
 
-// EnvToIntOr fetches the value of the environment variable named by the key
+// EnvIntOr fetches the value of the environment variable named by the key
 // and converts it to an integer. If the variable is not present, it returns the provided default value.
 // If the conversion fails, it panics.
-func EnvToIntOr(search string, def int) int {
-    env, ok := os.LookupEnv(search)
+func EnvIntOr(search string, def int) int {
+    env, ok := EnvProvider(search)
     if !ok {
         return def
     }
@@ -54,12 +56,12 @@ func EnvToIntOr(search string, def int) int {
     return value
 }
 
-// EnvToBool fetches the value of the environment variable named by the key
+// EnvBool fetches the value of the environment variable named by the key
 // and converts it to a boolean. It panics if the variable is not present or the conversion fails.
-func EnvToBool(search string) bool {
-    env, ok := os.LookupEnv(search)
+func EnvBool(search string) bool {
+    env, ok := EnvProvider(search)
     if !ok {
-        panic("environment variable not found: " + search)
+        return false 
     }
     value, err := strconv.ParseBool(env)
     if err != nil {
@@ -68,11 +70,11 @@ func EnvToBool(search string) bool {
     return value
 }
 
-// EnvToBoolOr fetches the value of the environment variable named by the key
+// EnvBoolOr fetches the value of the environment variable named by the key
 // and converts it to a boolean. If the variable is not present, it returns the provided default value.
 // If the conversion fails, it panics.
-func EnvToBoolOr(search string, def bool) bool {
-    env, ok := os.LookupEnv(search)
+func EnvBoolOr(search string, def bool) bool {
+    env, ok := EnvProvider(search)
     if !ok {
         return def
     }

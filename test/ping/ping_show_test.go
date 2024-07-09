@@ -4,12 +4,12 @@ import (
     "github.com/matryer/is"
     "net/http"
     "net/http/httptest"
-    routes "src/app/http/routes"
+    routes "src/app/http/route"
     "src/test"
     "testing"
 )
 
-var pingShow = test.GetRoute(routes.Api, "/ping")
+var pingShow = test.GetRoute(route.Api, "/ping")
 
 func Test_show_ping_endpoint(t *testing.T) {
     // Given
@@ -18,7 +18,7 @@ func Test_show_ping_endpoint(t *testing.T) {
     response := httptest.NewRecorder()
 
     // When
-    routes.HandleApiRoute(response, request, pingShow)
+    route.HandleApiRoute(response, request, pingShow)
     result := response.Result()
 
     // Then

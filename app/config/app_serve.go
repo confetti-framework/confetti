@@ -8,8 +8,8 @@ var AppServe = struct {
     Port    int
     Timeout time.Duration
 }{
-    Ssl:     EnvToBoolOr("APP_SSL", false),
-    Host:    EnvToStringOr("APP_HOST", ""),
-    Port:    EnvToIntOr("APP_PORT", 8080),
-    Timeout: time.Duration(EnvToIntOr("APP_TIMEOUT", 30)) * time.Second,
+    Ssl:     EnvBoolOr("APP_SSL", false),
+    Host:    EnvStringOr("APP_HOST", ""),
+    Port:    EnvIntOr("APP_PORT", 8080),
+    Timeout: time.Duration(EnvIntOr("APP_TIMEOUT", 30)) * time.Second,
 }

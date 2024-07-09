@@ -5,8 +5,8 @@ import (
     "fmt"
     "net/http"
     "src/app/config"
-    "src/app/http/entities"
-    "src/app/http/routes"
+    "src/app/entity"
+    "src/app/http/route"
 )
 
 type AppServe struct {
@@ -25,7 +25,7 @@ func (s AppServe) Handle() error {
 
     // Register the routes
     mux := http.NewServeMux()
-    registrar := registerRoutes(routes.Api, routes.HandleApiRoute)
+    registrar := registerRoutes(route.Api, route.HandleApiRoute())
     registrar(mux)
 
     // Create the server
@@ -51,7 +51,7 @@ func (s AppServe) getListenAddr() string {
     return fmt.Sprintf("%s:%d", config.AppServe.Host, config.AppServe.Port)
 }
 
-func registerRoutes(routes []entities.Route, routeHandler func(response http.ResponseWriter, request *http.Request, route entities.Route)) func(mux *http.ServeMux) {
+func registerRoutes(routes []entity.Route, routeHandler func(response http.ResponseWriter, request *http.Request, route entity.Route)) func(mux *http.ServeMux) {
     return func(mux *http.ServeMux) {
         for _, route := range routes {
             mux.HandleFunc(route.Pattern, func(response http.ResponseWriter, request *http.Request) {
