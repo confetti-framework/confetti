@@ -1,4 +1,4 @@
-package services
+package service
 
 import (
     "encoding/json"
@@ -87,18 +87,18 @@ func (g AuthService) Can(checkPermissions ...string) error {
     }
     for _, permission := range checkPermissions {
         if !g.hasPermission(permission) {
-    		return errors.New("your permission does not have the required privileges. Permission: " + permission)
+            return errors.New("your permission does not have the required privileges. Permission: " + permission)
         }
     }
-	return nil 
+    return nil
 }
 
 func (g AuthService) hasPermission(checkPermission string) bool {
-    
+
     for _, permission := range g.user.Permissions {
         if checkPermission == permission.Id {
             return true
         }
     }
-	return false
+    return false
 }

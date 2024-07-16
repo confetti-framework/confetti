@@ -1,12 +1,12 @@
-package controllers
+package controller
 
 import (
     "fmt"
-    "net/http"
+    net "net/http"
 )
 
 // Ping is an endpoint with which you can check whether your application is responding.
-func Ping(response http.ResponseWriter, req *http.Request) error {
+func Ping(response net.ResponseWriter, request *net.Request) error {
     _, err := fmt.Fprintf(response, "pong")
     return err
 }

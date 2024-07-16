@@ -1,4 +1,4 @@
-package test
+package http
 
 import (
     "context"
@@ -16,10 +16,10 @@ type AuthServiceMock struct {
 func (a AuthServiceMock) Can(checkPermissions ...string) error {
     for _, permission := range checkPermissions {
         if !a.hasPermission(permission) {
-    		return errors.New("your permission does not have the required privileges. Permission: " + permission)
+            return errors.New("your permission does not have the required privileges. Permission: " + permission)
         }
     }
-	return nil 
+    return nil
 }
 
 func (a AuthServiceMock) hasPermission(checkPermission string) bool {
@@ -28,7 +28,7 @@ func (a AuthServiceMock) hasPermission(checkPermission string) bool {
             return true
         }
     }
-	return false
+    return false
 }
 
 func Auth(request *http.Request, permissions []entity.Permission) *http.Request {

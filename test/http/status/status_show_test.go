@@ -2,21 +2,21 @@ package ping
 
 import (
     "github.com/matryer/is"
-    "net/http"
+    net "net/http"
     "net/http/httptest"
     "src/app/entity"
     "src/app/http/route"
-    "src/test"
+    helper "src/test/http"
     "testing"
 )
 
-var statusIndexMe = test.GetRoute(route.Api, "/status")
+var statusIndexMe = helper.GetRoute(route.Api, "GET /status")
 
 func Test_index_status_but_unauthorized(t *testing.T) {
     // Given
     i := is.New(t)
-    request := httptest.NewRequest(http.MethodGet, "/status", nil)
-    request = test.Auth(request, []entity.Permission{{Id: "/org1/project1/status/index"}})
+    request := httptest.NewRequest(net.MethodGet, "/status", nil)
+    request = helper.Auth(request, []entity.Permission{{Id: "/org1/project1/status/index"}})
     response := httptest.NewRecorder()
 
     // When
@@ -24,14 +24,14 @@ func Test_index_status_but_unauthorized(t *testing.T) {
     result := response.Result()
 
     // Then
-    i.Equal(result.StatusCode, http.StatusUnauthorized)
+    i.Equal(result.StatusCode, net.StatusUnauthorized)
 }
 
 func Test_index_status_authorized(t *testing.T) {
     // Given
     i := is.New(t)
-    request := httptest.NewRequest(http.MethodGet, "/status", nil)
-    request = test.Auth(request, []entity.Permission{{Id: "/org1/project1/status/index"}})
+    request := httptest.NewRequest(net.MethodGet, "/status", nil)
+    request = helper.Auth(request, []entity.Permission{{Id: "/status/index"}})
     response := httptest.NewRecorder()
 
     // When
@@ -39,5 +39,5 @@ func Test_index_status_authorized(t *testing.T) {
     result := response.Result()
 
     // Then
-    i.Equal(result.StatusCode, http.StatusOK)
+    i.Equal(result.StatusCode, net.StatusOK)
 }

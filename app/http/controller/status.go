@@ -1,11 +1,12 @@
-package controllers
+package controller
 
 import (
-    "net/http"
+    "fmt"
+    net "net/http"
 )
 
 // Status returns the status of the application
-func Status(response http.ResponseWriter, req *http.Request) error {
-    println("the line")
-    return nil
+func Status(response net.ResponseWriter, req *net.Request) error {
+    _, err := fmt.Fprintf(response, "Ok")
+    return err
 }

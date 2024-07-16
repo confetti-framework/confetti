@@ -47,7 +47,7 @@ func (a auth) Handle(next entity.Controller) entity.Controller {
         if err := service.(AuthServiceInterface).Can(a.permissions...); err == nil {
             return next(w, r)
         } else {
-            return errors.Join(err, entity.UnauthorizedError{HttpStatus: http.StatusUnauthorized})
+            return errors.Join(err, entity.UserError{HttpStatus: http.StatusUnauthorized})
         }
     }
 }
