@@ -1,11 +1,11 @@
 package config
 
 var AppInfo = struct {
-    ApiByPathPrefix,
+    ServiceUriPrefix,
     Repository,
     Service string
 }{
-    ApiByPathPrefix: EnvString("API_BY_PATH_PREFIX"),
-    Repository:      EnvString("PROJECT_REPOSITORY_NAME"),
-    Service:         EnvString("APP_SERVICE"),
+    ServiceUriPrefix: EnvString("SERVICE_URI_PREFIX"),
+    Repository:       EnvString("PROJECT_REPOSITORY_NAME"),
+    Service:          EnvString("APP_SERVICE"),
 }

@@ -102,10 +102,9 @@ func getApiByPathPattern(pattern string) string {
     // Consider that the space can't be further than index 7 when using method `OPTIONS `
     if index != -1 && index <= 7 {
         return fmt.Sprintf(
-            "%s /%s/%s%s",
+            "%s %s%s",
             pattern[:index],
-            config.AppInfo.ApiByPathPrefix,
-            config.AppInfo.Service,
+            config.AppInfo.ServiceUriPrefix,
             pattern[index+1:],
         )
     }
@@ -113,9 +112,8 @@ func getApiByPathPattern(pattern string) string {
     // Without method
     // /images/ to /conf_api/repo/service/images/
     return fmt.Sprintf(
-        "/%s/%s%s",
-        config.AppInfo.ApiByPathPrefix,
-        config.AppInfo.Service,
+        "%s%s",
+        config.AppInfo.ServiceUriPrefix,
         pattern,
     )
 }
