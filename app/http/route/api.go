@@ -24,7 +24,7 @@ var apiRoutes = []entity.Route{
 }
 
 func GetApiRoutes() []entity.Route {
-    return AppendApiByPath(apiRoutes)
+    return appendApiByPath(apiRoutes)
 }
 
 func HandleApiRoute(response net.ResponseWriter, request *net.Request, route entity.Route) {
@@ -83,7 +83,7 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
     }
 }
 
-func AppendApiByPath(routes []entity.Route) []entity.Route {
+func appendApiByPath(routes []entity.Route) []entity.Route {
     for _, r := range routes {
         pattern := getApiByPathPattern(r.Pattern)
         routes = append(routes, entity.Route{
@@ -97,11 +97,12 @@ func AppendApiByPath(routes []entity.Route) []entity.Route {
 
 func getApiByPathPattern(pattern string) string {
     index := strings.Index(pattern, " ")
+    // With method
     // GET /images/ to GET /conf_api/repo/service/images/
     // Consider that the space can't be further than index 7 when using method `OPTIONS `
     if index != -1 && index <= 7 {
         return fmt.Sprintf(
-            "%s %s%s%s",
+            "%s /%s/%s%s",
             pattern[:index],
             config.AppInfo.ApiByPathPrefix,
             config.AppInfo.Service,
@@ -109,9 +110,10 @@ func getApiByPathPattern(pattern string) string {
         )
     }
 
+    // Without method
     // /images/ to /conf_api/repo/service/images/
     return fmt.Sprintf(
-        "/%s%s%s",
+        "/%s/%s%s",
         config.AppInfo.ApiByPathPrefix,
         config.AppInfo.Service,
         pattern,

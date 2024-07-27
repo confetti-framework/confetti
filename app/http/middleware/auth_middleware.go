@@ -7,7 +7,7 @@ import (
     "path"
     "src/app/config"
     "src/app/entity"
-    services "src/app/service"
+    service "src/app/service"
     "strings"
 )
 
@@ -26,7 +26,7 @@ func Auth(permissions ...string) entity.Middleware {
     for _, permission := range permissions {
         if !strings.HasPrefix(permission, "/") {
             // Prefix current project. E.g. `status/index` to `/org1/rep1/status/index`
-            permission = path.Join(config.AppInfo.Service, permission)
+            permission = "/" + path.Join(config.AppInfo.Repository, config.AppInfo.Service, permission)
         }
         result = append(result, permission)
     }
@@ -37,14 +37,14 @@ func Auth(permissions ...string) entity.Middleware {
 func (a auth) Handle(next entity.Controller) entity.Controller {
     return func(w http.ResponseWriter, r *http.Request) error {
         ctx := r.Context()
-        service := ctx.Value(AuthServiceKey)
-        if service == nil {
-            service = services.AuthService{}.InitByRequest(r)
-            ctx = context.WithValue(ctx, AuthServiceKey, service)
+        authService := ctx.Value(AuthServiceKey)
+        if authService == nil {
+            authService = service.AuthService{}.InitByRequest(r)
+            ctx = context.WithValue(ctx, AuthServiceKey, authService)
             r.WithContext(ctx)
         }
 
-        if err := service.(AuthServiceInterface).Can(a.permissions...); err == nil {
+        if err := authService.(AuthServiceInterface).Can(a.permissions...); err == nil {
             return next(w, r)
         } else {
             return errors.Join(err, entity.UserError{HttpStatus: http.StatusUnauthorized})

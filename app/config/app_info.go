@@ -1,13 +1,11 @@
 package config
 
-import (
-    "path"
-)
-
 var AppInfo = struct {
     ApiByPathPrefix,
+    Repository,
     Service string
 }{
     ApiByPathPrefix: EnvString("API_BY_PATH_PREFIX"),
-    Service:         "/" + path.Join(EnvString("PROJECT_REPOSITORY_NAME"), EnvString("APP_SERVICE")),
+    Repository:      EnvString("PROJECT_REPOSITORY_NAME"),
+    Service:         EnvString("APP_SERVICE"),
 }
