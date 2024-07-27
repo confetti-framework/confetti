@@ -22,7 +22,7 @@ func main() {
     if len(os.Args) <= 1 {
         fmt.Printf("All commands:\n\n")
         for _, command := range commands {
-            fmt.Printf("%s\n", command.Name())
+            fmt.Printf("%s\t%s\n", command.Name(), command.Description())
         }
         return
     }
@@ -46,5 +46,5 @@ func getCommandByName(name string) (Command, error) {
             return command, nil
         }
     }
-    return nil, fmt.Errorf("command not found")
+    return nil, fmt.Errorf("command not found\n")
 }

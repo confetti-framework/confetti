@@ -6,9 +6,11 @@ import (
     "fmt"
     "log"
     net "net/http"
+    "src/app/config"
     "src/app/entity"
     "src/app/http/controller"
     "src/app/http/middleware"
+    "strings"
     "time"
 )
 
@@ -16,9 +18,13 @@ type HttpStatusGetter interface {
     GetHttpStatus() int
 }
 
-var Api = []entity.Route{
+var apiRoutes = []entity.Route{
     route("GET /ping", controller.Ping),
     route("GET /status", controller.Status).AppendMiddleware(middleware.Auth("status/index")),
+}
+
+func GetApiRoutes() []entity.Route {
+    return AppendApiByPath(apiRoutes)
 }
 
 func HandleApiRoute(response net.ResponseWriter, request *net.Request, route entity.Route) {
@@ -75,4 +81,39 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
     if err != nil {
         log.Panicln("can't print error: " + err.Error())
     }
+}
+
+func AppendApiByPath(routes []entity.Route) []entity.Route {
+    for _, r := range routes {
+        pattern := getApiByPathPattern(r.Pattern)
+        routes = append(routes, entity.Route{
+            Pattern:     pattern,
+            Controller:  r.Controller,
+            Middlewares: r.Middlewares,
+        })
+    }
+    return routes
+}
+
+func getApiByPathPattern(pattern string) string {
+    index := strings.Index(pattern, " ")
+    // GET /images/ to GET /conf_api/repo/service/images/
+    // Consider that the space can't be further than index 7 when using method `OPTIONS `
+    if index != -1 && index <= 7 {
+        return fmt.Sprintf(
+            "%s %s%s%s",
+            pattern[:index],
+            config.AppInfo.ApiByPathPrefix,
+            config.AppInfo.Service,
+            pattern[index+1:],
+        )
+    }
+
+    // /images/ to /conf_api/repo/service/images/
+    return fmt.Sprintf(
+        "/%s%s%s",
+        config.AppInfo.ApiByPathPrefix,
+        config.AppInfo.Service,
+        pattern,
+    )
 }

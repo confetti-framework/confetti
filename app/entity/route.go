@@ -9,14 +9,14 @@ type Controller func(w http.ResponseWriter, req *http.Request) error
 type Route struct {
     Pattern     string
     Controller  Controller
-    middlewares []Middleware
+    Middlewares []Middleware
 }
 
 func (r Route) AppendMiddleware(middlewares ...Middleware) Route {
-    r.middlewares = append(r.middlewares, middlewares...)
+    r.Middlewares = append(r.Middlewares, middlewares...)
     return r
 }
 
 func (r Route) GetMiddlewares() []Middleware {
-    return r.middlewares
+    return r.Middlewares
 }
