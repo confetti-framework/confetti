@@ -87,7 +87,7 @@ func (g AuthService) Can(checkPermissions ...string) error {
 	}
 	for _, permission := range checkPermissions {
 		if !g.hasPermission(permission) {
-			return errors.New("your permission does not have the required privileges. Permission: " + permission)
+			return errors.New("Your permission does not have the required privileges. Permission: " + permission)
 		}
 	}
 	return nil

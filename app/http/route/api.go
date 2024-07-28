@@ -56,7 +56,7 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
 	} else if errors.As(err, &userError) {
 		// Handle user error
 		status = userError.GetHttpStatus()
-		publicMessage = net.StatusText(status)
+		publicMessage = userError.Message
 	} else {
 		// Handle unknown error as a system error
 		// Please join the error with with a user error:
@@ -71,7 +71,10 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
 	// Write the status code as 500 Internal Server Error
 	writer.WriteHeader(status)
 	// Create a JSON response with the error publicMessage
-	_ = json.NewEncoder(writer).Encode(map[string]string{"report": report, "publicMessage": publicMessage})
+	_ = json.NewEncoder(writer).Encode(map[string]string{
+		"report":  report,
+		"message": publicMessage,
+	})
 
 	// If it is a user error, we don't want to log that
 	if errors.As(err, &userError) {

@@ -2,12 +2,11 @@ package middleware
 
 import (
 	"context"
-	"errors"
-	"net/http"
+	net "net/http"
 	"path"
 	"src/app/config"
 	"src/app/entity"
-	service "src/app/service"
+	"src/app/service"
 	"strings"
 )
 
@@ -35,7 +34,7 @@ func Auth(permissions ...string) entity.Middleware {
 
 // Handle authenticates users
 func (a auth) Handle(next entity.Controller) entity.Controller {
-	return func(w http.ResponseWriter, r *http.Request) error {
+	return func(w net.ResponseWriter, r *net.Request) error {
 		ctx := r.Context()
 		authService := ctx.Value(AuthServiceKey)
 		if authService == nil {
@@ -47,7 +46,7 @@ func (a auth) Handle(next entity.Controller) entity.Controller {
 		if err := authService.(AuthServiceInterface).Can(a.permissions...); err == nil {
 			return next(w, r)
 		} else {
-			return errors.Join(err, entity.UserError{HttpStatus: http.StatusUnauthorized})
+			return entity.NewUserError(err.Error(), net.StatusUnauthorized)
 		}
 	}
 }
