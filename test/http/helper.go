@@ -16,7 +16,7 @@ type AuthServiceMock struct {
 func (a AuthServiceMock) Can(checkPermissions ...string) error {
 	for _, permission := range checkPermissions {
 		if !a.hasPermission(permission) {
-			return errors.New("your permission does not have the required privileges. Permission: " + permission)
+			return errors.New("You do not have the required privileges for permission: " + permission)
 		}
 	}
 	return nil

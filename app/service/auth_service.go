@@ -5,9 +5,10 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"net/http"
+	net "net/http"
 	"src/app/entity"
 	"strconv"
+	"strings"
 )
 
 const getPermissionsEndpoint = "http://confetti-cms-auth:80/users/me/permissions"
@@ -17,15 +18,15 @@ type AuthService struct {
 	error error
 }
 
-func (g AuthService) InitByRequest(request *http.Request) AuthService {
+func (g AuthService) InitByRequest(request *net.Request) AuthService {
 	accessToken := request.Header.Get("Authorization")
 	if accessToken == "" {
-		g.error = errors.New("header Authorization not found or empty")
+		g.error = entity.NewUserError("header `Authorization` not found or empty", net.StatusUnsupportedMediaType)
 		return g
 	}
 	// Create request
-	req, err := http.NewRequest(
-		http.MethodGet,
+	req, err := net.NewRequest(
+		net.MethodGet,
 		getPermissionsEndpoint,
 		nil,
 	)
@@ -39,7 +40,7 @@ func (g AuthService) InitByRequest(request *http.Request) AuthService {
 	h.Add("Authorization", accessToken)
 	req.Header = h
 	// Send request
-	client := &http.Client{}
+	client := &net.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		g.error = errors.New("internal server error: h34jkhjk34")
@@ -63,7 +64,7 @@ func (g AuthService) InitByRequest(request *http.Request) AuthService {
 		} else {
 			g.error = errors.New(
 				"error with status: " + strconv.Itoa(resp.StatusCode) +
-					" with request: " + http.MethodGet + " " + getPermissionsEndpoint +
+					" with request: " + net.MethodGet + " " + getPermissionsEndpoint +
 					" and response: " + string(response),
 			)
 			return g
@@ -87,7 +88,7 @@ func (g AuthService) Can(checkPermissions ...string) error {
 	}
 	for _, permission := range checkPermissions {
 		if !g.hasPermission(permission) {
-			return errors.New("Your permission does not have the required privileges. Permission: " + permission)
+			return errors.New("You do not have the required privileges for permission: " + permission)
 		}
 	}
 	return nil
@@ -96,7 +97,12 @@ func (g AuthService) Can(checkPermissions ...string) error {
 func (g AuthService) hasPermission(checkPermission string) bool {
 
 	for _, permission := range g.user.Permissions {
+		// if exact match
 		if checkPermission == permission.Id {
+			return true
+		}
+		// if given permission e.g. `/image/store` starts with `/image/`
+		if strings.HasPrefix(permission.Id, checkPermission+"/") {
 			return true
 		}
 	}

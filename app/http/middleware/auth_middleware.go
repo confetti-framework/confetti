@@ -25,7 +25,7 @@ func Auth(permissions ...string) entity.Middleware {
 	for _, permission := range permissions {
 		if !strings.HasPrefix(permission, "/") {
 			// Prefix current project. E.g. `status/index` to `/org1/rep1/status/index`
-			permission = "/" + path.Join(config.AppInfo.Repository, config.AppInfo.Service, permission)
+			permission = "/" + path.Join(config.AppInfo.Permission, permission)
 		}
 		result = append(result, permission)
 	}

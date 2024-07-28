@@ -1,11 +1,13 @@
 package config
 
 var AppInfo = struct {
-	ServiceUriPrefix,
+	Permission,
 	Repository,
-	Service string
+	Service,
+	ServiceUriPrefix string
 }{
-	ServiceUriPrefix: EnvString("SERVICE_URI_PREFIX"),
+	Permission:       EnvString("APP_PERMISSION"),
 	Repository:       EnvString("PROJECT_REPOSITORY_NAME"),
 	Service:          EnvString("APP_SERVICE"),
+	ServiceUriPrefix: EnvString("SERVICE_URI_PREFIX"),
 }
