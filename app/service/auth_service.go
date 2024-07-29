@@ -102,7 +102,7 @@ func (g AuthService) hasPermission(checkPermission string) bool {
 			return true
 		}
 		// if given permission e.g. `/image/store` starts with `/image/`
-		if strings.HasPrefix(permission.Id, checkPermission+"/") {
+		if strings.HasPrefix(checkPermission, permission.Id+"/") {
 			return true
 		}
 	}
