@@ -13,5 +13,5 @@ func Index(response http.ResponseWriter, req *http.Request) error {
 	// Get the number of CPUs and store in the map
 	data["status"] = "active"
 
-	return handler.ToJson(response, data)
+	return handler.ToJson(response, data, http.StatusOK)
 }

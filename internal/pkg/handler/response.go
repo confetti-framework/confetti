@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func ToJson(response http.ResponseWriter, data any) error {
+func ToJson(response http.ResponseWriter, data any, status int) error {
 	// Convert the map to JSON
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -14,7 +14,7 @@ func ToJson(response http.ResponseWriter, data any) error {
 
 	// Write the JSON to the response
 	response.Header().Set("Content-Type", "application/json")
-	response.WriteHeader(http.StatusOK)
+	response.WriteHeader(status)
 	_, err = response.Write(jsonData)
 	return err
 }
