@@ -5,10 +5,8 @@ import (
 	"fmt"
 	"net/http"
 	"src/config"
-	"src/internal/auth"
 	"src/internal/ping"
 	"src/internal/pkg/handler"
-	"src/internal/status"
 )
 
 type AppServe struct {
@@ -24,7 +22,6 @@ func (s AppServe) Description() string {
 
 var ApiRoutes = []handler.Route{
 	handler.New("GET /ping", ping.Index),
-	handler.New("GET /status", status.Index).AppendMiddleware(auth.Middleware("status/index")),
 }
 
 func (s AppServe) Handle() error {
