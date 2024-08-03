@@ -1,8 +1,8 @@
-package entity
+package handler
 
 import (
 	"errors"
-	net "net/http"
+	"net/http"
 )
 
 type UserError struct {
@@ -16,7 +16,7 @@ func NewUserError(message string, httpStatus int) error {
 
 func (e UserError) Error() string {
 	if e.Message == "" {
-		return net.StatusText(e.HttpStatus)
+		return http.StatusText(e.HttpStatus)
 	}
 	return e.Message
 }
@@ -25,7 +25,7 @@ func (e UserError) GetHttpStatus() int {
 	if e.HttpStatus != 0 {
 		return e.HttpStatus
 	}
-	return net.StatusBadRequest
+	return http.StatusBadRequest
 }
 
 type SystemError struct {
@@ -39,7 +39,7 @@ func NewSystemError(err error, code string) error {
 
 func (e SystemError) Error() string {
 	if e.Message == "" {
-		return net.StatusText(e.HttpStatus)
+		return http.StatusText(e.HttpStatus)
 	}
 	return e.Message
 }
@@ -48,5 +48,5 @@ func (e SystemError) GetHttpStatus() int {
 	if e.HttpStatus != 0 {
 		return e.HttpStatus
 	}
-	return net.StatusInternalServerError
+	return http.StatusInternalServerError
 }

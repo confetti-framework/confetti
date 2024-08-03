@@ -1,23 +1,30 @@
-package console
+package command
 
 import (
 	"errors"
 	"fmt"
 	"net/http"
-	"src/app/config"
-	"src/app/entity"
-	"src/app/http/route"
+	"src/config"
+	"src/internal/auth"
+	"src/internal/ping"
+	"src/internal/pkg/handler"
+	"src/internal/status"
 )
 
 type AppServe struct {
 }
 
 func (s AppServe) Name() string {
-	return "app:serve"
+	return "api:serve"
 }
 
 func (s AppServe) Description() string {
 	return "Start the http server to handle requests"
+}
+
+var ApiRoutes = []handler.Route{
+	handler.New("GET /ping", ping.Index),
+	handler.New("GET /status", status.Index).AppendMiddleware(auth.Middleware("status/index")),
 }
 
 func (s AppServe) Handle() error {
@@ -25,7 +32,8 @@ func (s AppServe) Handle() error {
 
 	// Register the routes
 	mux := http.NewServeMux()
-	registrar := registerRoutes(route.GetApiRoutes(), route.HandleApiRoute)
+
+	registrar := handler.RegisterRoutes(handler.AppendApiByPath(ApiRoutes), handler.HandleApiRoute)
 	registrar(mux)
 
 	// Create the server
@@ -49,14 +57,4 @@ func (s AppServe) Handle() error {
 
 func (s AppServe) getListenAddr() string {
 	return fmt.Sprintf("%s:%d", config.AppServe.Host, config.AppServe.Port)
-}
-
-func registerRoutes(routes []entity.Route, routeHandler func(http.ResponseWriter, *http.Request, entity.Route)) func(mux *http.ServeMux) {
-	return func(mux *http.ServeMux) {
-		for _, r := range routes {
-			mux.HandleFunc(r.Pattern, func(response http.ResponseWriter, request *http.Request) {
-				routeHandler(response, request, r)
-			})
-		}
-	}
 }

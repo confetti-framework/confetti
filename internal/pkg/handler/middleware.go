@@ -1,4 +1,4 @@
-package entity
+package handler
 
 type Middleware interface {
 	Handle(Controller) Controller

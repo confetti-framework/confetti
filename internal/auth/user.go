@@ -1,4 +1,4 @@
-package entity
+package auth
 
 type User struct {
 	Id          string       `json:"id"`

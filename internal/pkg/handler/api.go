@@ -1,15 +1,12 @@
-package route
+package handler
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
-	net "net/http"
-	"src/app/config"
-	"src/app/entity"
-	"src/app/http/controller"
-	"src/app/http/middleware"
+	"net/http"
+	"src/config"
 	"strings"
 	"time"
 )
@@ -18,17 +15,22 @@ type HttpStatusGetter interface {
 	GetHttpStatus() int
 }
 
-var apiRoutes = []entity.Route{
-	route("GET /ping", controller.Ping),
-	route("GET /status", controller.Status).AppendMiddleware(middleware.Auth("status/index")),
+func New(pattern string, controller Controller) Route {
+	return Route{Pattern: pattern, Controller: controller}
 }
 
-func GetApiRoutes() []entity.Route {
-	return appendApiByPath(apiRoutes)
+func RegisterRoutes(routes []Route, routeHandler func(http.ResponseWriter, *http.Request, Route)) func(mux *http.ServeMux) {
+	return func(mux *http.ServeMux) {
+		for _, r := range routes {
+			mux.HandleFunc(r.Pattern, func(response http.ResponseWriter, request *http.Request) {
+				routeHandler(response, request, r)
+			})
+		}
+	}
 }
 
-func HandleApiRoute(response net.ResponseWriter, request *net.Request, route entity.Route) {
-	handler := entity.MiddlewareChain{Middlewares: route.GetMiddlewares()}
+func HandleApiRoute(response http.ResponseWriter, request *http.Request, route Route) {
+	handler := MiddlewareChain{Middlewares: route.GetMiddlewares()}
 
 	err := handler.Handle(route.Controller)(response, request)
 	if err != nil {
@@ -36,18 +38,14 @@ func HandleApiRoute(response net.ResponseWriter, request *net.Request, route ent
 	}
 }
 
-func route(pattern string, controller entity.Controller) entity.Route {
-	return entity.Route{Pattern: pattern, Controller: controller}
-}
-
 // apiErrorHandler converts the error to a reponse. Feel free to modify this to your needs.
-func apiErrorHandler(writer net.ResponseWriter, err error) {
-	status := net.StatusInternalServerError
+func apiErrorHandler(writer http.ResponseWriter, err error) {
+	status := http.StatusInternalServerError
 	publicMessage := ""
 	internalMessage := ""
 	report := fmt.Sprintf("%d", time.Now().UnixMilli())
-	var systemError entity.SystemError
-	var userError entity.UserError
+	var systemError SystemError
+	var userError UserError
 	if errors.As(err, &systemError) {
 		// Handle system error
 		status = systemError.GetHttpStatus()
@@ -60,8 +58,8 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
 	} else {
 		// Handle unknown error as a system error
 		// Please join the error with with a user error:
-		// errors.Join(err, entity.UserError{HttpStatus: net.StatusUnauthorized})
-		status = net.StatusInternalServerError
+		// errors.Join(err, handler.UserError{HttpStatus: http.StatusUnauthorized})
+		status = http.StatusInternalServerError
 		publicMessage = "unhandled internal server error"
 		internalMessage = err.Error()
 	}
@@ -86,10 +84,15 @@ func apiErrorHandler(writer net.ResponseWriter, err error) {
 	}
 }
 
-func appendApiByPath(routes []entity.Route) []entity.Route {
+func AppendApiByPath(routes []Route) []Route {
+	if config.AppInfo.ServiceUriPrefix == "" {
+		return routes
+	}
+	// When using this in Confetti CMS we want to register the endoints so
+	// we can call them internaly with a server prefix but without a subdomain.
 	for _, r := range routes {
 		pattern := getApiByPathPattern(r.Pattern)
-		routes = append(routes, entity.Route{
+		routes = append(routes, Route{
 			Pattern:     pattern,
 			Controller:  r.Controller,
 			Middlewares: r.Middlewares,

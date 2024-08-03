@@ -15,7 +15,3 @@ main
 
 # Dependency directories
 vendor
-
-# Environment files
-.env*
-!.env.example

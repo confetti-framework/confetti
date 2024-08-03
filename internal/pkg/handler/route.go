@@ -1,4 +1,4 @@
-package entity
+package handler
 
 import (
 	"net/http"

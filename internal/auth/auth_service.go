@@ -1,32 +1,32 @@
-package service
+package auth
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
-	net "net/http"
-	"src/app/entity"
+	"net/http"
+	"src/internal/pkg/handler"
 	"strconv"
 	"strings"
 )
 
 const getPermissionsEndpoint = "http://confetti-cms-auth:80/users/me/permissions"
 
-type AuthService struct {
-	user  entity.User
+type Service struct {
+	user  User
 	error error
 }
 
-func (g AuthService) InitByRequest(request *net.Request) AuthService {
+func (g Service) InitByRequest(request *http.Request) Service {
 	accessToken := request.Header.Get("Authorization")
 	if accessToken == "" {
-		g.error = entity.NewUserError("header `Authorization` not found or empty", net.StatusUnsupportedMediaType)
+		g.error = handler.NewUserError("header `Authorization` not found or empty", http.StatusUnsupportedMediaType)
 		return g
 	}
 	// Create request
-	req, err := net.NewRequest(
-		net.MethodGet,
+	req, err := http.NewRequest(
+		http.MethodGet,
 		getPermissionsEndpoint,
 		nil,
 	)
@@ -40,7 +40,7 @@ func (g AuthService) InitByRequest(request *net.Request) AuthService {
 	h.Add("Authorization", accessToken)
 	req.Header = h
 	// Send request
-	client := &net.Client{}
+	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		g.error = errors.New("internal server error: h34jkhjk34")
@@ -64,7 +64,7 @@ func (g AuthService) InitByRequest(request *net.Request) AuthService {
 		} else {
 			g.error = errors.New(
 				"error with status: " + strconv.Itoa(resp.StatusCode) +
-					" with request: " + net.MethodGet + " " + getPermissionsEndpoint +
+					" with request: " + http.MethodGet + " " + getPermissionsEndpoint +
 					" and response: " + string(response),
 			)
 			return g
@@ -81,7 +81,7 @@ func (g AuthService) InitByRequest(request *net.Request) AuthService {
 	return g
 }
 
-func (g AuthService) Can(checkPermissions ...string) error {
+func (g Service) Can(checkPermissions ...string) error {
 	if g.error != nil {
 		println("Error: " + g.error.Error())
 		return g.error
@@ -94,7 +94,7 @@ func (g AuthService) Can(checkPermissions ...string) error {
 	return nil
 }
 
-func (g AuthService) hasPermission(checkPermission string) bool {
+func (g Service) hasPermission(checkPermission string) bool {
 
 	for _, permission := range g.user.Permissions {
 		// if exact match

@@ -14,4 +14,4 @@ RUN go mod download
 COPY ./ ./
 
 CMD /go/bin/reflex -r '(\.go$|\.gohtml$|go\.mod$|\.env$)' -s -- sh -c "\
-    go run main.go app:serve"
+    go run cmd/api/main.go api:serve"

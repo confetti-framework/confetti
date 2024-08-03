@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"src/app/console"
+	"src/cmd/api/command"
 )
 
 type Command interface {
@@ -14,26 +14,26 @@ type Command interface {
 
 var commands = []Command{
 	// Here you can add your own custom commands
-	console.AppServe{},
+	command.AppServe{},
 }
 
 func main() {
 	// First argument
 	if len(os.Args) <= 1 {
 		fmt.Printf("All commands:\n\n")
-		for _, command := range commands {
-			fmt.Printf("%s\t%s\n", command.Name(), command.Description())
+		for _, cmd := range commands {
+			fmt.Printf("%s\t%s\n", cmd.Name(), cmd.Description())
 		}
 		return
 	}
 	// Get command
-	command, err := getCommandByName(os.Args[1])
+	cmd, err := getCommandByName(os.Args[1])
 	if err != nil {
 		fmt.Printf(err.Error())
 		os.Exit(1)
 	}
 	// Handle command
-	err = command.Handle()
+	err = cmd.Handle()
 	if err != nil {
 		fmt.Printf("%s\n", err.Error())
 		os.Exit(1)
@@ -41,9 +41,9 @@ func main() {
 }
 
 func getCommandByName(name string) (Command, error) {
-	for _, command := range commands {
-		if command.Name() == name {
-			return command, nil
+	for _, cmd := range commands {
+		if cmd.Name() == name {
+			return cmd, nil
 		}
 	}
 	return nil, fmt.Errorf("command not found\n")

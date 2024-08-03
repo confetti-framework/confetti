@@ -1,18 +1,17 @@
-package route
+package handler
 
 import (
 	"github.com/matryer/is"
-	"src/app/config"
-	"src/app/entity"
+	"src/config"
 	"testing"
 )
 
 func Test_append_route_by_path_returns_original_pattern(t *testing.T) {
 	// Given
-	routes := []entity.Route{{Pattern: "GET /images/"}}
+	routes := []Route{{Pattern: "GET /images/"}}
 
 	// When
-	routes = appendApiByPath(routes)
+	routes = AppendApiByPath(routes)
 
 	// Then
 	i := is.New(t)
@@ -21,11 +20,11 @@ func Test_append_route_by_path_returns_original_pattern(t *testing.T) {
 
 func Test_append_route_by_path_returns_new_pattern(t *testing.T) {
 	// Given
-	routes := []entity.Route{{Pattern: "GET /images/"}}
+	routes := []Route{{Pattern: "GET /images/"}}
 	config.AppInfo.ServiceUriPrefix = "/conf_api/confetti-cms/media"
 
 	// When
-	routes = appendApiByPath(routes)
+	routes = AppendApiByPath(routes)
 
 	// Then
 	i := is.New(t)
@@ -34,11 +33,11 @@ func Test_append_route_by_path_returns_new_pattern(t *testing.T) {
 
 func Test_append_route_by_path_without_method(t *testing.T) {
 	// Given
-	routes := []entity.Route{{Pattern: "/images/"}}
+	routes := []Route{{Pattern: "/images/"}}
 	config.AppInfo.ServiceUriPrefix = "/conf_api/confetti-cms/media"
 
 	// When
-	routes = appendApiByPath(routes)
+	routes = AppendApiByPath(routes)
 
 	// Then
 	i := is.New(t)
@@ -47,11 +46,11 @@ func Test_append_route_by_path_without_method(t *testing.T) {
 
 func Test_append_route_by_path_without_method_with_space_on_the_end(t *testing.T) {
 	// Given
-	routes := []entity.Route{{Pattern: "/images/1 2"}}
+	routes := []Route{{Pattern: "/images/1 2"}}
 	config.AppInfo.ServiceUriPrefix = "/conf_api/confetti-cms/media"
 
 	// When
-	routes = appendApiByPath(routes)
+	routes = AppendApiByPath(routes)
 
 	// Then
 	i := is.New(t)
