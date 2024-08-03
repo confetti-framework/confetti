@@ -1,4 +1,4 @@
-FROM golang:1.22 as media
+FROM golang:1.22-alpine as project
 LABEL for_development_only="false"
 
 ENV TZ=UTC
