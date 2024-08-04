@@ -6,11 +6,11 @@ import (
 )
 
 // Index returns the status of the application
-func Index(response http.ResponseWriter, req *http.Request) error {
-	// Create a map to store the CPU information
-	data := make(map[string]any)
+func Index(response http.ResponseWriter, request *http.Request) error {
+	// Create a map to store the information
+	data := map[string]any{}
 
-	// Get the number of CPUs and store in the map
+	// For now, the system is active
 	data["status"] = "active"
 
 	return handler.ToJson(response, data, http.StatusOK)
