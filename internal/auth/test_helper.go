@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"net/http"
+	"strings"
 )
 
 type ServiceMock struct {
@@ -21,14 +22,19 @@ func (a ServiceMock) Can(checkPermissions ...string) error {
 
 func (a ServiceMock) hasPermission(checkPermission string) bool {
 	for _, permission := range a.Permissions {
+		// if exact match
 		if checkPermission == permission.Id {
+			return true
+		}
+		// if given permission e.g. `/image/store` starts with `/image/`
+		if strings.HasPrefix(checkPermission, permission.Id+"/") {
 			return true
 		}
 	}
 	return false
 }
 
-func Auth(request *http.Request, permissions []Permission) *http.Request {
+func MockRequest(request *http.Request, permissions []Permission) *http.Request {
 	ctx := request.Context()
 	ctx = context.WithValue(ctx, ServiceKey, ServiceMock{Permissions: permissions})
 	return request.WithContext(ctx)

@@ -16,7 +16,7 @@ func Test_index_status_but_unauthorized(t *testing.T) {
 	// Given
 	i := is.New(t)
 	request := httptest.NewRequest(http.MethodGet, "/status", nil)
-	request = auth.Auth(request, []auth.Permission{{Id: "/org1/project1/status/index"}})
+	request = auth.MockRequest(request, []auth.Permission{{Id: "/org1/project1/status/index"}})
 	response := httptest.NewRecorder()
 
 	// When
@@ -31,7 +31,7 @@ func Test_index_status_authorized(t *testing.T) {
 	// Given
 	i := is.New(t)
 	request := httptest.NewRequest(http.MethodGet, "/status", nil)
-	request = auth.Auth(request, []auth.Permission{{Id: "/status/index"}})
+	request = auth.MockRequest(request, []auth.Permission{{Id: "/status/index"}})
 	response := httptest.NewRecorder()
 
 	// When
@@ -46,7 +46,7 @@ func Test_index_status_cpu(t *testing.T) {
 	// Given
 	i := is.New(t)
 	request := httptest.NewRequest(http.MethodGet, "/status", nil)
-	request = auth.Auth(request, []auth.Permission{{Id: "/status/index"}})
+	request = auth.MockRequest(request, []auth.Permission{{Id: "/status/index"}})
 	response := httptest.NewRecorder()
 
 	// When
