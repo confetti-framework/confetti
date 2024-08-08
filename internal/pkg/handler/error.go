@@ -34,18 +34,18 @@ func (e UserError) GetHttpStatus() int {
 
 type SystemError struct {
 	HttpStatus int
-	Message    string
+	Code       string
 }
 
 func NewSystemError(err error, code string) error {
-	return errors.Join(err, SystemError{Message: code}, err)
+	return errors.Join(err, SystemError{Code: code}, err)
 }
 
 func (e SystemError) Error() string {
-	if e.Message == "" {
+	if e.Code == "" {
 		return http.StatusText(e.HttpStatus)
 	}
-	return e.Message
+	return e.Code
 }
 
 func (e SystemError) GetHttpStatus() int {
@@ -60,13 +60,14 @@ func apiErrorHandler(writer http.ResponseWriter, err error) {
 	status := http.StatusInternalServerError
 	publicMessage := ""
 	internalMessage := ""
-	report := fmt.Sprintf("%d", time.Now().UnixMilli())
+	reference := fmt.Sprintf("%d", time.Now().UnixMilli())
 	var systemError SystemError
 	var userError UserError
 	if errors.As(err, &systemError) {
 		// Handle system error
 		status = systemError.GetHttpStatus()
-		publicMessage = "internal server error"
+		reference = fmt.Sprintf("%s/%s", systemError.Code, reference)
+		publicMessage = "internal server error: " + reference
 		internalMessage = err.Error()
 	} else if errors.As(err, &userError) {
 		// Handle user error
@@ -87,15 +88,15 @@ func apiErrorHandler(writer http.ResponseWriter, err error) {
 	writer.WriteHeader(status)
 	// Create a JSON response with the error publicMessage
 	_ = json.NewEncoder(writer).Encode(map[string]string{
-		"report":  report,
-		"message": publicMessage,
+		"reference": reference,
+		"message":   publicMessage,
 	})
 
 	// If it is a user error, we don't want to log that
 	if errors.As(err, &userError) {
 		return
 	}
-	_, err = fmt.Printf("Error report: %s, message: %s", report, internalMessage)
+	_, err = fmt.Printf("Error report: %s, message: %s", reference, internalMessage)
 	if err != nil {
 		log.Panicln("can't print error: " + err.Error())
 	}
