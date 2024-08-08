@@ -42,10 +42,10 @@ func (a middleware) Handle(next handler.Controller) handler.Controller {
 			r.WithContext(ctx)
 		}
 
-		if err := authService.(ServiceInterface).Can(a.permissions...); err == nil {
-			return next(w, r)
-		} else {
-			return handler.NewUserError(err.Error(), http.StatusUnauthorized)
+		if err := authService.(ServiceInterface).Can(a.permissions...); err != nil {
+			return err
 		}
+
+		return next(w, r)
 	}
 }

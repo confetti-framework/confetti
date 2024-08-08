@@ -55,38 +55,33 @@ func (g Service) InitByRequest(request *http.Request) Service {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		g.error = errors.New("internal server error: h34jkhjk34")
-		fmt.Printf("Errored when sending request to the server: h34jkhjk34: %s", err)
+		g.error = handler.NewSystemError(fmt.Errorf("errored when sending request to the server: %w", err), "h34jkhjk34")
 		return g
 	}
 	// Read response
 	defer resp.Body.Close()
 	response, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		g.error = errors.New("internal server error: o879der")
-		fmt.Printf("Errored when reading response: o879der: %s", err)
+		g.error = handler.NewSystemError(fmt.Errorf("errored when when reading response: %w", err), "o879der")
 		return g
 	}
 
 	if resp.StatusCode > 299 {
 		if resp.StatusCode >= 500 {
-			g.error = errors.New("internal server error: 9jeggre")
-			fmt.Printf("Error from response: 9jeggre: status: %s, response body %s", resp.Status, string(response))
+			g.error = handler.NewSystemError(fmt.Errorf("error from response: status: %s, response body %s", resp.Status, string(response)), "9jeggre")
 			return g
 		} else {
-			g.error = errors.New(
-				"error with status: " + strconv.Itoa(resp.StatusCode) +
-					" with request: " + http.MethodGet + " " + getPermissionsEndpoint +
-					" and response: " + string(response),
-			)
+			g.error = handler.NewUserError(
+				"error with status: "+strconv.Itoa(resp.StatusCode)+
+					" with request: "+http.MethodGet+" "+getPermissionsEndpoint+
+					" and response: "+string(response), resp.StatusCode)
 			return g
 		}
 	}
 
 	err = json.Unmarshal(response, &g.user)
 	if err != nil {
-		g.error = errors.New("internal server error: hasd9ure")
-		fmt.Printf("Errored when unmarchal response: hasd9ure: %s, with response: %s", err, string(response))
+		g.error = handler.NewSystemError(fmt.Errorf("errored when unmarchal response: hasd9ure: %s, with response: %s", err, string(response)), "hasd9ure")
 		return g
 	}
 
@@ -100,7 +95,7 @@ func (g Service) Can(checkPermissions ...string) error {
 	}
 	for _, permission := range checkPermissions {
 		if !g.hasPermission(permission) {
-			return errors.New("You do not have the required privileges for permission: " + permission)
+			return handler.NewUserError("You do not have the required privileges for permission: "+permission, http.StatusForbidden)
 		}
 	}
 	return nil
