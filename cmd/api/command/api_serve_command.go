@@ -7,6 +7,7 @@ import (
 	"src/config"
 	"src/internal/ping"
 	"src/internal/pkg/handler"
+	"src/internal/pkg/middleware"
 	"src/internal/status"
 )
 
@@ -23,7 +24,7 @@ func (s AppServe) Description() string {
 
 var ApiRoutes = []handler.Route{
 	handler.New("GET /ping", ping.Index),
-	handler.New("GET /status", status.Index),
+	handler.New("GET /status", status.Index).AppendMiddleware(middleware.AuthMiddleware{Permission: "Show status"}),
 }
 
 func (s AppServe) Handle() error {
