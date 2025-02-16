@@ -9,7 +9,7 @@ var AppServe = struct {
 	Timeout time.Duration
 }{
 	Ssl:     EnvBoolOr("APP_SSL", false),
-	Host:    EnvStringOr("APP_HOST", ""),
+	Host:    EnvStringOr("APP_HOST", "localhost"),
 	Port:    EnvIntOr("APP_PORT", 8080),
 	Timeout: time.Duration(EnvIntOr("APP_TIMEOUT", 30)) * time.Second,
 }

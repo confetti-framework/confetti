@@ -7,6 +7,7 @@ import (
 	"src/config"
 	"src/internal/ping"
 	"src/internal/pkg/handler"
+	"src/internal/status"
 )
 
 type AppServe struct {
@@ -22,10 +23,11 @@ func (s AppServe) Description() string {
 
 var ApiRoutes = []handler.Route{
 	handler.New("GET /ping", ping.Index),
+	handler.New("GET /status", status.Index),
 }
 
 func (s AppServe) Handle() error {
-	fmt.Printf("\u001B[32mStarting server:\u001B[0m %s\n", s.getListenAddr())
+	fmt.Printf("\u001B[32mStarting server:\u001B[0m %s\n", getExampleUrl())
 
 	// Register the routes
 	mux := http.NewServeMux()
@@ -54,4 +56,13 @@ func (s AppServe) Handle() error {
 
 func (s AppServe) getListenAddr() string {
 	return fmt.Sprintf("%s:%d", config.AppServe.Host, config.AppServe.Port)
+}
+
+func getExampleUrl() string {
+	protocol := "http://"
+	if config.AppServe.Ssl {
+		protocol = "https://"
+	}
+
+	return fmt.Sprintf("%s%s:%d/status", protocol, config.AppServe.Host, config.AppServe.Port)
 }
