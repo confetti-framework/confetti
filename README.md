@@ -8,18 +8,12 @@
   <img src="https://avatars1.githubusercontent.com/u/57274804?s=400&u=058242df13e206950c08efd68a540445ce4da17f&v=4" width="100">
 </p>
 
-# ⚠️ This project is being renewed. A stable version will be released in January. It is better to wait until then.
-
-If you want to view the old version, you can go
-to: [1e5209f
-](https://github.com/confetti-framework/confetti/tree/1e5209f7a189ba2551f5b4284b26b3c12e60613c)
+# ⚠️ Confetti Framework
 
 ## About Confetti
 
-Confetti is a web application framework with an expressive, elegant syntax. We believe development must be an enjoyable
-and creative experience to be truly fulfilling. Confetti takes the pain out of development by easing common tasks used
-in
-many Confetti projects. Confetti is accessible, powerful, and provides tools required for large, robust applications.
+Confetti is a web application framework that can be used in a monolitic or in microservice enviroment. We 
+
 
 ## Learning Confetti
 

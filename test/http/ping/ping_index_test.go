@@ -1,7 +1,6 @@
 package ping
 
 import (
-	"github.com/matryer/is"
 	"net/http"
 	"net/http/httptest"
 	"src/cmd/api/command"
@@ -13,7 +12,6 @@ var pingIndex = handler.GetRoute(command.ApiRoutes, "GET /ping")
 
 func Test_show_ping_endpoint(t *testing.T) {
 	// Given
-	i := is.New(t)
 	request := httptest.NewRequest(http.MethodGet, "/ping", nil)
 	response := httptest.NewRecorder()
 
@@ -22,6 +20,10 @@ func Test_show_ping_endpoint(t *testing.T) {
 	result := response.Result()
 
 	// Then
-	i.Equal(result.StatusCode, http.StatusOK)
-	i.Equal(handler.GetBody(result), "pong")
+	if result.StatusCode != http.StatusOK {
+		t.Errorf("expected status %v, got %v", http.StatusOK, result.StatusCode)
+	}
+	if body := handler.GetBody(result); body != "pong" {
+		t.Errorf("expected body %v, got %v", "pong", body)
+	}
 }
