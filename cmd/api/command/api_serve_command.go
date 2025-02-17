@@ -4,10 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"src/cmd/api/command/internal/middleware"
 	"src/config"
 	"src/internal/ping"
 	"src/internal/pkg/handler"
-	"src/internal/pkg/middleware"
 	"src/internal/status"
 )
 

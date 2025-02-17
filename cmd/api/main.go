@@ -13,7 +13,7 @@ type Command interface {
 }
 
 var commands = []Command{
-	command.ApiList{},
+	command.ApiRouteList{},
 	command.AppServe{},
 	// Here you can add your own custom commands
 }

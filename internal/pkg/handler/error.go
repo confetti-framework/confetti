@@ -67,7 +67,7 @@ func apiErrorHandler(writer http.ResponseWriter, err error) {
 		// Handle system error
 		status = systemError.GetHttpStatus()
 		reference = fmt.Sprintf("%s/%s", systemError.Code, reference)
-		publicMessage = "internal server error: " + reference
+		publicMessage = "internal server error, reference: " + reference
 		internalMessage = err.Error()
 	} else if errors.As(err, &userError) {
 		// Handle user error
