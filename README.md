@@ -16,13 +16,25 @@ Confetti is a lightweight web application framework that can be used in both mon
 
 ## Get Started
 
-To start your Confetti application, use the following command:
+Welcome to your Confetti application! This repository serves as a template for your new project, providing essential configuration files and a robust foundation for your codebase.
 
-```sh
-go run cmd/api/main.go api:serve
-```
+### Steps to Begin
 
-This will start the API server and make your routes available.
+1. **Create Your Repository:**  
+   Click **"Use this template"** followed by **"Create a new repository"** to set up your project.
+
+2. **Clone the Repository:**  
+   Once your repository is created, clone it to your local machine.
+
+3. **Launch the API Server:**  
+   Navigate to your project directory and run the following command:
+   ```sh
+   go run cmd/api/main.go api:serve
+   ```
+   This command starts the API server and activates your routes.
+
+4. **Access Your First Endpoint:**  
+   Your initial endpoint is now live! Visit [http://localhost:8080/status](http://localhost:8080/status) to see it in action.
 
 ### File Structure
 
